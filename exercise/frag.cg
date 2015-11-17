@@ -1,0 +1,10 @@
+void main_f(float3 color : COLOR,
+            float3 normal : TEXCOORD0,
+            float3 halfDirecction : TEXCOORD1
+
+            out float4 oColor : COLOR
+            )
+{
+    oColor.xyz = color;
+    oColor.w = 1;
+}
