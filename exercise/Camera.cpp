@@ -6,10 +6,15 @@ Camera::Camera()
     _viewMatrix.SetZero();
 }
 
-Camera::Camera(const Vector3f& eyePos, const Vector3f& center, Vector3f& up)
+Camera::Camera(const Vector3f& eyePos, const Vector3f& center,const Vector3f& up)
+{
+    SetExtrinsicParams(eyePos, center, up);
+}
+
+void Camera::SetExtrinsicParams(const Vector3f& eyePos, const Vector3f& center, const Vector3f& up)
 {
     // build the uvn viewing-coordinate reference
-    Vector3f n = center - eyePos;
+    Vector3f n = eyePos - center;
     n.Normalized();
     Vector3f u = up.Cross(n);
     u.Normalized();

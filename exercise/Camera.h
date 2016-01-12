@@ -7,10 +7,11 @@ class Camera
 public:
     friend class Transform;
     Camera();
-    Camera(const Vector3f& eyePos, const Vector3f& center, Vector3f& up);
+    Camera(const Vector3f& eyePos, const Vector3f& center, const Vector3f& up);
+    void SetExtrinsicParams(const Vector3f& eyePos, const Vector3f& center, const Vector3f& up);
+    int GetViewMatrix(Matrix4f& viewMatrix);
 private:
 
-    int GetViewMatrix(Matrix4f& viewMatrix);
     Matrix4f _viewMatrix;
 };
 #endif // Camera_h__

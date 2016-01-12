@@ -50,15 +50,16 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(CG_INC_PATH);G:\project\shader\cg\examples\OpenGL\glew\include;E:\download\chrome\cppunit-1.12.1\cppunit-1.12.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(CG_INC_PATH);..\thirdparty\glew\include;..\thirdparty\gtest\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(CG_LIB_PATH);E:\download\chrome\cppunit-1.12.1\cppunit-1.12.1\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>cg.lib;cgGL.lib;glut32.lib;glu32.lib;opengl32.lib;cppunitd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(CG_LIB_PATH);..\thirdparty\gtest\lib;..\thirdparty\glew\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>cg.lib;cgGL.lib;glut32.lib;glu32.lib;opengl32.lib;glewlib.lib;gtestd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -82,23 +83,25 @@
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Constants.cpp" />
     <ClCompile Include="Matrix.cpp" />
-    <ClCompile Include="MatrixTest.cpp" />
     <ClCompile Include="renderFramework.cpp" />
     <ClCompile Include="Transform.cpp" />
     <ClCompile Include="unitTest.cpp" />
     <ClCompile Include="Vector3f.cpp" />
     <ClCompile Include="Vector4f.cpp" />
-    <ClCompile Include="VectorTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="CameraGtest.h" />
     <ClInclude Include="cgProgParams.h" />
     <ClInclude Include="Constants.h" />
+    <ClInclude Include="GtestBase.h" />
+    <ClInclude Include="MathUtil.h" />
     <ClInclude Include="Matrix.h" />
-    <ClInclude Include="MatrixTest.h" />
+    <ClInclude Include="MatrixGtest.h" />
     <ClInclude Include="Transform.h" />
+    <ClInclude Include="TransformGtest.h" />
     <ClInclude Include="Vector3f.h" />
-    <ClInclude Include="VectorTest.h" />
+    <ClInclude Include="VectorGtest.h" />
     <ClInclude Include="Vector4f.h" />
   </ItemGroup>
   <ItemGroup>

@@ -4,31 +4,35 @@
 #include "Constants.h"
 #include <assert.h>
 using namespace Constants;
-Transform::Transform(): _transRotUpdated(false),
-                        _modelCahed(false),
-                        _viewCached(false),
-                        _prjCached(false),
-                        _MVCached(false),
-                        _MVPCached(false)
+Transform::Transform(): _transRotTranDirty(true),
+                        _viewDirty(true),
+                        _projDirty(true),
+                        _MVDirty(true),
+                        _MVPDirty(true)
 {
+    _translateMatrix.SetIdentity();
+    _rotateMatrix.SetIdentity();
+    _modelMatrix.SetIdentity();
+    _viewMatrix.SetIdentity();
+    _modelViewMatrix.SetIdentity();
+    _modelViewProjMatrix.SetIdentity();
 }
 
 void Transform::SetTranslate(float x, float y, float z)
 {
-    _transRotUpdated = true;
-    _translateMatrix.SetIdentity();
+    _transRotTranDirty = true;
     _translateMatrix(1, 4) = x;
     _translateMatrix(2, 4) = y;
     _translateMatrix(3, 4) = z;
 }
 
-void Transform::SetRotation(float angle, float axisX, float axisY, float axisZ)
+void Transform::SetArbitraryRotation(float angle, float axisX, float axisY, float axisZ)
 {
-    _transRotUpdated = true;
-    float radians, sine, cosine, ab, bc, ca, tx, ty, tz;
+    _transRotTranDirty = true;
+    float radians, sine, cosine;
     Vector3f r(axisX, axisY, axisZ);
     r.Normalized();
-    radians = angle * Constants::Math::PI / 180.0f;
+    radians = angle * Math::PI / 180.0f;
     sine = sin(radians);
     cosine = cos(radians);
     float xy1MinusCos = r.x * r.y * (1 - cosine);
@@ -50,6 +54,18 @@ void Transform::SetRotation(float angle, float axisX, float axisY, float axisZ)
     _rotateMatrix(4, 4) = 1.0f;
 }
 
+void Transform::SetArbitraryRotation(float angle, Vector3f axis)
+{
+    SetArbitraryRotation(angle, axis.x, axis.y, axis.z);
+}
+
+void Transform::SetAxisAngles(float xDegree, float yDegree, float zDegree)
+{
+    Matrix4f xAxisRotation;
+    xAxisRotation.SetIdentity();
+
+}
+
 void Transform::SetProjection(float fov, float aspectRatio, float zNear, float zFar)
 {
     float radians = fov * Math::PI / 360.0f;
@@ -69,7 +85,7 @@ void Transform::SetProjection(float fov, float aspectRatio, float zNear, float z
     _projectionMatrix(3, 4) = -2 * zNear * zFar / deltaZ;
 
     _projectionMatrix(4, 3) = -1;
-    _prjCached = true;
+    _projDirty = true;
 }
 
 int Transform::GetModelMatrix(Matrix4f& result)
@@ -77,11 +93,11 @@ int Transform::GetModelMatrix(Matrix4f& result)
     if (_CanModelMatrixRead())
     {
         result = _modelMatrix;
-        _transRotUpdated = false;
+        return ErrorCode::SUCCESS;
     }
-    assert(_transRotUpdated);
     _modelMatrix = _translateMatrix.Mul(_rotateMatrix);
-    _modelCahed = true;
+    result = _modelMatrix;
+    _transRotTranDirty = false;
     return ErrorCode::SUCCESS;
 }
 
@@ -89,13 +105,20 @@ void Transform::SetCamera(const Camera camera)
 {
     _camera = camera;
     _camera.GetViewMatrix(_viewMatrix);
-    _viewCached = true;
+    _viewDirty = true;
 }
 
 int Transform::GetViewMatrix(Matrix4f& viewMatrix)
 {
-    assert(_viewCached);
     viewMatrix = _viewMatrix;
+    _viewDirty = false;
+    return ErrorCode::SUCCESS;
+}
+
+int Transform::GetProjMatrix(Matrix4f& projMatrix)
+{
+    projMatrix = _projectionMatrix;
+    _projDirty = false;
     return ErrorCode::SUCCESS;
 }
 
@@ -112,10 +135,9 @@ int Transform::GetMVMatrix(Matrix4f& modelViewMatrix)
     }
     if (!_CanViewMatrixRead())
     {
-        _camera.GetViewMatrix(_viewMatrix);
+        GetViewMatrix(_viewMatrix);
     }
-    _modelViewMatrix = _modelMatrix.Mul(_viewMatrix);
-    _MVCached = true;
+    _modelViewMatrix = _viewMatrix.Mul(_modelMatrix);
     modelViewMatrix = _modelViewMatrix;
     return ErrorCode::SUCCESS;
 }
@@ -129,28 +151,33 @@ int Transform::GetMVPMatrix(Matrix4f& MVPMatrix)
     }
 
     GetMVMatrix(_modelViewMatrix);
-    _modelViewProjMatrix = _modelViewMatrix.Mul(_projectionMatrix);
-    _MVPCached = true;
+    GetProjMatrix(_projectionMatrix);
+    _modelViewProjMatrix = _projectionMatrix.Mul(_modelViewMatrix);
     MVPMatrix = _modelViewProjMatrix;
     return ErrorCode::SUCCESS;
 }
 
 bool Transform::_CanModelMatrixRead()
 {
-    return _modelCahed && !_transRotUpdated;
+    return !_transRotTranDirty;
 }
 
 bool Transform::_CanViewMatrixRead()
 {
-    return _viewCached;
+    return !_viewDirty;
+}
+
+bool Transform::_CanProjMatrixRead()
+{
+    return !_projDirty;
 }
 
 bool Transform::_CanMVMatrixRead()
 {
-    return _MVCached && _CanModelMatrixRead();
+    return _CanModelMatrixRead() && _CanViewMatrixRead();
 }
 
 bool Transform::_CanMVPMatrixRead()
 {
-    return _MVPCached ;
+    return  _CanModelMatrixRead() && _CanViewMatrixRead() && _CanProjMatrixRead();
 }

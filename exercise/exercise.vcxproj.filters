@@ -9,11 +9,11 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
-    <Filter Include="Header Files\unitTest">
-      <UniqueIdentifier>{4f83bdf7-ba0c-42a4-9749-64ea98728930}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\unitTest">
       <UniqueIdentifier>{ba4882e1-3b1e-48af-b844-3f154a9feca0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gtest">
+      <UniqueIdentifier>{300a73c4-af4f-405a-af94-17a9c7535e7f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -33,12 +33,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="unitTest.cpp">
-      <Filter>Source Files\unitTest</Filter>
-    </ClCompile>
-    <ClCompile Include="MatrixTest.cpp">
-      <Filter>Source Files\unitTest</Filter>
-    </ClCompile>
-    <ClCompile Include="VectorTest.cpp">
       <Filter>Source Files\unitTest</Filter>
     </ClCompile>
     <ClCompile Include="Constants.cpp">
@@ -64,16 +58,28 @@
     <ClInclude Include="Matrix.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MatrixTest.h">
-      <Filter>Header Files\unitTest</Filter>
-    </ClInclude>
     <ClInclude Include="Vector4f.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="VectorTest.h">
-      <Filter>Header Files\unitTest</Filter>
-    </ClInclude>
     <ClInclude Include="Vector3f.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MatrixGtest.h">
+      <Filter>Header Files\gtest</Filter>
+    </ClInclude>
+    <ClInclude Include="VectorGtest.h">
+      <Filter>Header Files\gtest</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraGtest.h">
+      <Filter>Header Files\gtest</Filter>
+    </ClInclude>
+    <ClInclude Include="GtestBase.h">
+      <Filter>Header Files\gtest</Filter>
+    </ClInclude>
+    <ClInclude Include="TransformGtest.h">
+      <Filter>Header Files\gtest</Filter>
+    </ClInclude>
+    <ClInclude Include="MathUtil.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

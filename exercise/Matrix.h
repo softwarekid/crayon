@@ -16,15 +16,16 @@ public:
     int static const DIM;
     explicit Matrix4f();
     Matrix4f(const Matrix4f& m);
+    void SetZero();
     Matrix4f Mul(const Matrix4f& m);
     Vector4f Mul(const Vector4f& v);
     void SetIdentity();
     Matrix4f Invert();
+    void GetInnerValue(float * innerValue);
     void Print();
     Matrix4f& operator = (const Matrix4f& m);
-    float& operator() (int row, int col);
+    float& operator() (int rowIndex, int colIndex);
     ~Matrix4f();
-    void SetZero();
 private:
     inline void _SwapRow(double* a, double*b);
     float operator() (int row, int col) const;

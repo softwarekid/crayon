@@ -65,9 +65,9 @@ Vector4f Matrix4f::Mul(const Vector4f& v)
 {
     Vector4f result;
     Matrix4f m(*this);
-    for (int i = 0; i < DIM; i++)
+    for (int i = 1; i <= DIM; i++)
     {
-        for(int j = 0; j< DIM; j++)
+        for(int j = 1; j <= DIM; j++)
         {
             result[i] += v[j] * m(i,j);
         }
@@ -202,6 +202,14 @@ Matrix4f Matrix4f::Invert()
     return result;
 }
 
+void Matrix4f::GetInnerValue(float* innerValue)
+{
+    for(int i = 0; i < DIM * DIM; i++)
+    {
+        innerValue[i] = _pInnerValues[i];
+    }
+}
+
 // row and col index starts from 1
 float& Matrix4f::operator() (int row, int col) 
 {
@@ -212,6 +220,8 @@ float& Matrix4f::operator() (int row, int col)
 
 float Matrix4f::operator()(int row, int col) const
 {
+    assert(row > 0 && row <= DIM);
+    assert(col > 0 && col <= DIM);
     return _pInnerValues[(row - 1) * DIM + (col - 1)];
 }
 

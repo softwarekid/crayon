@@ -8,12 +8,26 @@ Vector3f::Vector3f(float x_, float y_, float z_)
     x = x_, y = y_, z = z_;
 }
 
+void Vector3f::SetData(float x, float y, float z)
+{
+    this->x = x;
+    this->y = y;
+    this->z = z;
+}
+
 Vector3f::Vector3f()
 {
     x = y = z = 0;
 }
 
 Vector3f Vector3f::Cross(const Vector3f& v)
+{
+    return Vector3f(y * v.z - z * v.y, 
+                    z * v.x - x * v.z,
+                    x * v.y - y * v.x);
+}
+
+Vector3f Vector3f::Cross(const Vector3f& v) const
 {
     return Vector3f(y * v.z - z * v.y, 
                     z * v.x - x * v.z,
@@ -96,4 +110,3 @@ Vector3f Vector3f::operator+(const Vector3f v)
 {
     return Vector3f(x + v.x, y + v.y, z + v.z);
 }
-

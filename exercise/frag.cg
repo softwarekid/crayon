@@ -1,10 +1,36 @@
-void main_f(float3 color : COLOR,
-            float3 normal : TEXCOORD0,
-            float3 halfDirecction : TEXCOORD1
+void main_f(
+            float3 position : TEXCOORD0,
+            float3 halfDirecction : TEXCOORD1,
+            float3 normal : TEXCOORD2,
+            
+            out float4 oColor : COLOR,
 
-            out float4 oColor : COLOR
+            uniform float3 globalAmbient,
+            uniform float3 lightColor,
+            uniform float3 lightPosition,
+            uniform float3 eyePosition,
+            uniform float3 Ke,
+            uniform float3 Ka,
+            uniform float3 Kd
+            uniform float3 Ks,
+            uniform float  shininess
             )
 {
-    oColor.xyz = color;
-    oColor.w = 1;
+    float3 P = position;
+    float3 N = normalize(normal);
+
+    float3 emissive = Ke;
+
+    float3 ambient = Ka * globalAmbient;
+
+    float3 L = normalize(lightPosition - P);
+    float diffuseCoef = max(dot(N, L), 0);
+    float3 diffuse = Kd * lightColor * diffuseCoef;
+
+    float3 = halfDirecction;
+    float specularCoef = pow(max(dot(H, N), 0), shininess);
+    if(diffuseCoef <= 0) specularCoef = 0;
+    float3 specular = Ks * lightColor * specularCoef;
+    color.xyz = emissive + ambient + diffuse + specular;
+    Color.w = 1;
 }

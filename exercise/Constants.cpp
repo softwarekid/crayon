@@ -7,6 +7,3 @@ namespace Constants
     float const Math::FLOATMAX = 3.402823466e+38F        /* max value */ ;
     int const ErrorCode::SUCCESS = 1;
 }
-
-
-
