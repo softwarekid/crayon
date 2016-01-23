@@ -22,8 +22,8 @@ static CGprogram programFragment;
 static CGparameter paramVertexmodelViewProj;
 //static CGparameter paramVertexGolbalAmbient;
 //static CGparameter paramVertexLightColor;
-//static CGparameter paramVertexLightPosition;
-//static CGparameter paramVertexEyePosition;
+static CGparameter paramVertexLightPosition;
+static CGparameter paramVertexEyePosition;
 //static CGparameter paramVertexKe;
 //static CGparameter paramVertexKa;
 //static CGparameter paramVertexKd;
@@ -198,8 +198,8 @@ int main(int argc, char **argv)
     GetProgramParam(programVertex, paramVertexmodelViewProj, "modelViewProj");
     //GetProgramParam(programVertex, paramVertexGolbalAmbient, "globalAmbient");
     //GetProgramParam(programVertex, paramVertexLightColor, "lightColor");
-    //GetProgramParam(programVertex, paramVertexLightPosition, "lightPosition");
-    //GetProgramParam(programVertex, paramVertexEyePosition, "eyePosition");
+    GetProgramParam(programVertex, paramVertexLightPosition, "lightPosition");
+    GetProgramParam(programVertex, paramVertexEyePosition, "eyePosition");
     //GetProgramParam(programVertex, paramVertexKe, "Ke");
     //GetProgramParam(programVertex, paramVertexKa, "Ka");
     //GetProgramParam(programVertex, paramVertexKd, "Kd");
@@ -223,13 +223,13 @@ int main(int argc, char **argv)
     cgGLLoadProgram(programFragment);
     Log("loading fragment program");
 
-    GetProgramParam(programVertex, paramFragmentGolbalAmbient, "globalAmbient");
+    GetProgramParam(programFragment, paramFragmentGolbalAmbient, "globalAmbient");
     GetProgramParam(programFragment, paramFragmentLightColor, "lightColor");
-    GetProgramParam(programVertex, paramFragmentLightPosition, "lightPosition");
-    GetProgramParam(programVertex, paramFragmentEyePosition, "eyePosition");
-    GetProgramParam(programVertex, paramFragmentKe, "Ke");
-    GetProgramParam(programVertex, paramFragmentKa, "Ka");
-    GetProgramParam(programVertex, paramFragmentKd, "Kd");
+    GetProgramParam(programFragment, paramFragmentLightPosition, "lightPosition");
+    //GetProgramParam(programFragment, paramFragmentEyePosition, "eyePosition");
+    GetProgramParam(programFragment, paramFragmentKe, "Ke");
+    GetProgramParam(programFragment, paramFragmentKa, "Ka");
+    GetProgramParam(programFragment, paramFragmentKd, "Kd");
     GetProgramParam(programFragment, paramFragmentKs, "Ks");
     GetProgramParam(programFragment, paramFragmentShininess, "shininess");
 
@@ -265,8 +265,8 @@ static void setBrassMaterial(void)
     cgSetParameter3fv(paramFragmentKe, brassEmissive);
     cgSetParameter3fv(paramFragmentKa, brassAmbient);
     cgSetParameter3fv(paramFragmentKd, brassDiffuse);
-    /*cgSetParameter3fv(myCgFragmentParam_Ks, brassSpecular);
-    cgSetParameter1f(myCgFragmentParam_shininess, brassShininess);*/
+    cgSetParameter3fv(paramFragmentKs, brassSpecular);
+    cgSetParameter1f(paramFragmentShininess, brassShininess);
 }
 
 static void display()
@@ -302,8 +302,12 @@ static void display()
     transform.GetMVPMatrix(modelViewProjMatix);
     CgSetParam(paramVertexmodelViewProj, modelViewProjMatix);
 
-    CgSetParam(paramFragmentEyePosition, objSpaceEyePosition);
+    //CgSetParam(paramFragmentEyePosition, objSpaceEyePosition);
     CgSetParam(paramFragmentLightPosition, objSpaceLightPosition);
+
+    CgSetParam(paramVertexLightPosition, objSpaceLightPosition);
+    CgSetParam(paramVertexEyePosition, objSpaceEyePosition);
+
     cgUpdateProgramParameters(programVertex);
     cgUpdateProgramParameters(programFragment);
     glutSolidSphere(2.0, 10, 10);

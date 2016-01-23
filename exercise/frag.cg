@@ -8,10 +8,10 @@ void main_f(
             uniform float3 globalAmbient,
             uniform float3 lightColor,
             uniform float3 lightPosition,
-            uniform float3 eyePosition,
+            //uniform float3 eyePosition,
             uniform float3 Ke,
             uniform float3 Ka,
-            uniform float3 Kd
+            uniform float3 Kd,
             uniform float3 Ks,
             uniform float  shininess
             )
@@ -27,10 +27,12 @@ void main_f(
     float diffuseCoef = max(dot(N, L), 0);
     float3 diffuse = Kd * lightColor * diffuseCoef;
 
-    float3 = halfDirecction;
+    float3 H = halfDirecction;
+    //float3 V = normalize(eyePosition - P);
+    //float3 H = normalize(L + V);
     float specularCoef = pow(max(dot(H, N), 0), shininess);
     if(diffuseCoef <= 0) specularCoef = 0;
     float3 specular = Ks * lightColor * specularCoef;
-    color.xyz = emissive + ambient + diffuse + specular;
-    Color.w = 1;
+    oColor.xyz = emissive + ambient + diffuse + specular;
+    oColor.w = 1;
 }

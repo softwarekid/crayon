@@ -15,6 +15,9 @@
     <Filter Include="Header Files\gtest">
       <UniqueIdentifier>{300a73c4-af4f-405a-af94-17a9c7535e7f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\cgProgram">
+      <UniqueIdentifier>{8305bd6c-b4cd-495b-8d16-9670dbe6ea23}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Vector4f.cpp">
@@ -39,6 +42,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Vector3f.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GlutWrapper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -81,6 +87,24 @@
     </ClInclude>
     <ClInclude Include="MathUtil.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GlutWrapper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="VertShader.h">
+      <Filter>Header Files\cgProgram</Filter>
+    </ClInclude>
+    <ClInclude Include="FragmentShader.h">
+      <Filter>Header Files\cgProgram</Filter>
+    </ClInclude>
+    <ClInclude Include="CgLog.h">
+      <Filter>Header Files\cgProgram</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseShader.h">
+      <Filter>Header Files\cgProgram</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

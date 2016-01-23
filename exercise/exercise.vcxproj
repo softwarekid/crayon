@@ -82,6 +82,7 @@
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Constants.cpp" />
+    <ClCompile Include="GlutWrapper.cpp" />
     <ClCompile Include="Matrix.cpp" />
     <ClCompile Include="renderFramework.cpp" />
     <ClCompile Include="Transform.cpp" />
@@ -90,19 +91,25 @@
     <ClCompile Include="Vector4f.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BaseShader.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CameraGtest.h" />
+    <ClInclude Include="CgLog.h" />
     <ClInclude Include="cgProgParams.h" />
     <ClInclude Include="Constants.h" />
+    <ClInclude Include="FragmentShader.h" />
+    <ClInclude Include="GlutWrapper.h" />
     <ClInclude Include="GtestBase.h" />
     <ClInclude Include="MathUtil.h" />
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="MatrixGtest.h" />
+    <ClInclude Include="Mesh.h" />
     <ClInclude Include="Transform.h" />
     <ClInclude Include="TransformGtest.h" />
     <ClInclude Include="Vector3f.h" />
     <ClInclude Include="VectorGtest.h" />
     <ClInclude Include="Vector4f.h" />
+    <ClInclude Include="VertShader.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="frag.cg" />

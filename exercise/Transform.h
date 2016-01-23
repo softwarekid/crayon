@@ -1,6 +1,7 @@
 #include "Matrix.h"
 #include "Camera.h"
 
+// todo: refractor this class, camera and model-view transform ought to be seperate
 class Transform
 {
 public:

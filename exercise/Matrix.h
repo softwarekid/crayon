@@ -25,7 +25,10 @@ public:
     void Print();
     Matrix4f& operator = (const Matrix4f& m);
     float& operator() (int rowIndex, int colIndex);
-    ~Matrix4f();
+    ~Matrix4f()
+    {
+        delete _pInnerValues;
+    };
 private:
     inline void _SwapRow(double* a, double*b);
     float operator() (int row, int col) const;

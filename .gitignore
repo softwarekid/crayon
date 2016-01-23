@@ -9,6 +9,7 @@
 *.pch
 *.sdf
 *.suo
+*.opensdf
 
 # Compiled Dynamic libraries
 *.so

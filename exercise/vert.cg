@@ -5,20 +5,20 @@ void main_v(    float4 position:POSITION,
                 out float4 oPosition : POSITION,
                 out float3 objectPos : TEXCOORD0,
                 out float3 halfDirection : TEXCOORD1,
-                out float3 oNormal : TEXCOORD2
+                out float3 oNormal : TEXCOORD2,
                 uniform float4x4 modelViewProj,
                 //uniform float3 globalAmbient,
                 //uniform float3 lightColor,
-                //uniform float3 lightPosition,
-                //uniform float3 eyePosition,
+                uniform float3 lightPosition,
+                uniform float3 eyePosition
                 //uniform float3 Ke,
                 //uniform float3 Ka,
                 //uniform float3 Kd
                 )
 {
-    //float3 P = position.xyz;
+    float3 P = position.xyz;
     oPosition = mul(modelViewProj, position);
-    objectPos = oPosition.xy;
+    objectPos = position.xyz;
     float3 N = normal;
     oNormal = normal;
     //// emissive term
@@ -26,7 +26,7 @@ void main_v(    float4 position:POSITION,
     //// ambient term
     //float3 ambient = Ka * globalAmbient;
     //// diffuse term
-    //float3 L = normalize(lightPosition - P);
+    float3 L = normalize(lightPosition - P);
     //float diffuseCoef = max(dot(N, L), 0);
     //float3 diffuse = Kd * lightColor * diffuseCoef;
     //// halfDirection and normal of specular term
