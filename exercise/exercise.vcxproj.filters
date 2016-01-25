@@ -18,6 +18,9 @@
     <Filter Include="Header Files\cgProgram">
       <UniqueIdentifier>{8305bd6c-b4cd-495b-8d16-9670dbe6ea23}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\transform">
+      <UniqueIdentifier>{5cc0f669-6440-45f8-9c0f-2f9c968faa0f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Vector4f.cpp">
@@ -52,22 +55,7 @@
     <ClInclude Include="cgProgParams.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Transform.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Constants.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Camera.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Matrix.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Vector4f.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Vector3f.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MatrixGtest.h">
@@ -85,13 +73,7 @@
     <ClInclude Include="TransformGtest.h">
       <Filter>Header Files\gtest</Filter>
     </ClInclude>
-    <ClInclude Include="MathUtil.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="GlutWrapper.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Mesh.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="VertShader.h">
@@ -105,6 +87,30 @@
     </ClInclude>
     <ClInclude Include="BaseShader.h">
       <Filter>Header Files\cgProgram</Filter>
+    </ClInclude>
+    <ClInclude Include="CgViewer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector4f.h">
+      <Filter>Header Files\transform</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector3f.h">
+      <Filter>Header Files\transform</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform.h">
+      <Filter>Header Files\transform</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>Header Files\transform</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix.h">
+      <Filter>Header Files\transform</Filter>
+    </ClInclude>
+    <ClInclude Include="MathUtil.h">
+      <Filter>Header Files\transform</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Header Files\transform</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

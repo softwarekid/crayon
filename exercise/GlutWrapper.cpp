@@ -4,58 +4,33 @@
 #include <GL/glut.h>
 #include <iostream>
 
-void GlutWrapper::keyboard(unsigned char c, int x, int y)
+std::map<int, GlutWrapper*> _windows;
+
+void GlutWrapper::__Keyboard(unsigned char c, int x, int y)
 {
-    switch (c)
-    {
-    case 'p':
-        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-        glutPostRedisplay();
-        break;
-    case 'l':
-        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-        glutPostRedisplay();
-        break;
-    case ' ':
-        //animating = !animating; /* Toggle */
-        //if (animating)
-        {
-            glutIdleFunc(_idle);
-        }
-        //else 
-        {
-            glutIdleFunc(nullptr);
-        }    
-        break;
-    case 27:  /* Esc key */
-        /* Demonstrate proper deallocation of Cg runtime data structures.
-        Not strictly necessary if we are simply going to exit. */
-        //cgDestroyProgram(programVertex);
-        //cgDestroyContext(context);
-        exit(0);
-        break;
-    }
+    __CurrentWindow()->_Keyboard(c, x, y);
 }
 
-void GlutWrapper::_idle()
+void GlutWrapper::__Idle()
 {
-
+    __CurrentWindow()->_Idle();
 }
 
-void GlutWrapper::_display()
+void GlutWrapper::__Display()
 {
-    Matrix4f MVPMatrix;
-    transform.GetMVPMatrix(MVPMatrix);
-    verShader.SetMVPParam(MVPMatrix);
-
-    if(mesh.GetVertexCount() == 0)
-    {
-        glutSolidTeapot(2.0);
-        //glutSolidSphere(2.0, 10, 10);
-    }
+    __CurrentWindow()->_Display();
 }
 
-void GlutWrapper::requestSynchronizedSwapBuffers()
+GlutWrapper* GlutWrapper::__CurrentWindow()
+{
+    return _windows[glutGetWindow()];
+}
+
+void GlutWrapper::Init()
+{
+}
+
+void GlutWrapper::_RequestSynchronizedSwapBuffers()
 {
 #ifdef _WIN32
     if(wglSwapIntervalEXT)
@@ -73,21 +48,25 @@ void GlutWrapper::UpdateParam()
 GlutWrapper::GlutWrapper(const char* title, int width, int height, float lightAngle)
     :_width(width), _height(height), _lightAngle(lightAngle)
 {
-    glutInitWindowSize(400,400);
     glutInitDisplayMode(GLUT_RGB| GLUT_DOUBLE | GLUT_DEPTH | GLUT_MULTISAMPLE);
+    glutInitWindowSize(width, height);
+    _windowID = glutCreateWindow(title);
+    _windows[_windowID] = this;
 
-    glutCreateWindow(title);
-    glutDisplayFunc(_display);
-    glutKeyboardFunc(keyboard);
-    glutReshapeFunc(_reshape);
+    glutDisplayFunc(__Display);
+    glutKeyboardFunc(__Keyboard);
+    glutReshapeFunc(__Reshape);
 
     if (glewInit() != GLEW_OK || !GLEW_VERSION_1_1)
     {
         std::cout<<"failed to initialize GLEW, OpenGL 1.1 required.\n"<< title;
         exit(1);
     }
+    _RequestSynchronizedSwapBuffers();
+    Init();
+}
 
-    requestSynchronizedSwapBuffers();
-    glClearColor(0.1, 0.3, 0.6, 0.0);  /* Blue background */
-    glEnable(GL_DEPTH_TEST);
+GlutWrapper::~GlutWrapper()
+{
+    glutDestroyWindow(_windowID);
 }

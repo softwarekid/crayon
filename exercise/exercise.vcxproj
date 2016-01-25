@@ -51,7 +51,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(CG_INC_PATH);..\thirdparty\glew\include;..\thirdparty\gtest\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(CG_INC_PATH);..\thirdparty\glew\include;..\thirdparty\gtest\include;c:\Program Files\NVIDIA Corporation\Cg\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
@@ -96,6 +96,7 @@
     <ClInclude Include="CameraGtest.h" />
     <ClInclude Include="CgLog.h" />
     <ClInclude Include="cgProgParams.h" />
+    <ClInclude Include="CgViewer.h" />
     <ClInclude Include="Constants.h" />
     <ClInclude Include="FragmentShader.h" />
     <ClInclude Include="GlutWrapper.h" />
