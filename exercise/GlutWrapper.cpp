@@ -8,6 +8,15 @@ std::map<int, GlutWrapper*> _windows;
 
 void GlutWrapper::__Keyboard(unsigned char c, int x, int y)
 {
+    static bool animating = false;
+    if(c == ' ')
+    {
+        animating = !animating;
+        if(animating)
+            glutIdleFunc(__Idle);
+        else
+            glutIdleFunc(nullptr);
+    }
     __CurrentWindow()->_Keyboard(c, x, y);
 }
 

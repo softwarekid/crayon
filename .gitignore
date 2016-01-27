@@ -10,6 +10,10 @@
 *.sdf
 *.suo
 *.opensdf
+*.ipch
+*.vcxproj
+*.filters
+
 
 # Compiled Dynamic libraries
 *.so

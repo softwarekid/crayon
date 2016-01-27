@@ -2,6 +2,9 @@
 #define vertShader_h__
 #include <Cg/cg.h>
 #include "BaseShader.h"
+#include "FragmentShader.h"
+
+class Matrix4f;
 
 class VerShader : public BaseShader
 {

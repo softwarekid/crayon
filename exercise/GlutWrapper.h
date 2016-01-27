@@ -33,7 +33,6 @@ protected:
 private:
     void _RequestSynchronizedSwapBuffers();
 
-
     int _windowID;
     float _lightAngle;
     int _width;
