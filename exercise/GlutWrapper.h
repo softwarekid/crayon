@@ -27,27 +27,28 @@ protected:
     virtual void _Reshape(int width, int height);
     virtual void _Display(void);
     virtual void _Menu();
+    virtual void _exit();
 
-
-    virtual void Init();
+    Transform _transform;
 private:
     void _RequestSynchronizedSwapBuffers();
 
     int _windowID;
-    float _lightAngle;
     int _width;
     int _height;
-    Transform transform;
-    VerShader verShader;
-    FragmentShader fragmentShader;
-    Mesh mesh;
+
+    CGcontext _context;
+    VerShader _verShader;
+    FragmentShader _fragmentShader;
+    Mesh _mesh;
 public:
-    void SetTransform(float x, float y, float z);
+    void SetTranslate(float x, float y, float z);
     void SetRotation(float angle, float axis_x, float axis_y, float axis_z);
     void SetCamera(Camera camera);
     void SetMesh(Mesh mesh);
     void UpdateParam();
-    GlutWrapper(const char* title, int width, int height, float lightAngle);
+    inline void SetRenderingFixture(CGcontext context, VerShader vertShader, FragmentShader fragShader);
+    GlutWrapper(const char* title, int width, int height);
     virtual ~GlutWrapper();
 };
 #endif

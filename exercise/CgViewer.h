@@ -1,12 +1,12 @@
 #ifndef cg_viewer_h__
 #define cg_viewer_h__
 #include "GlutWrapper.h"
+#include "VertShader.h"
 class CgViewer : public GlutWrapper
 {
 private:
-    bool _isAnimating;
-    CGprogram vertexProgarm;
-    CGprogram fragProgarm;
+    CGcontext _context;
+    float _lightAngle;
 
 private:
     void _Draw() override;
@@ -17,13 +17,8 @@ private:
     void _Menu() override;
 
 public:
-    CgViewer(const char* title, int width, int height, float lightAngle, bool isAnimating);
-    ~CgViewer()
-    {
-        
-    }
+    CgViewer(const char* title, int width, int height, float lightAngle);
+    ~CgViewer(){}
 };
-
-
 
 #endif

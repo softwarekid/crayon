@@ -17,7 +17,10 @@ void GlutWrapper::__Keyboard(unsigned char c, int x, int y)
         else
             glutIdleFunc(nullptr);
     }
-    __CurrentWindow()->_Keyboard(c, x, y);
+    else
+    {
+        __CurrentWindow()->_Keyboard(c, x, y);
+    }
 }
 
 void GlutWrapper::__Idle()
@@ -25,9 +28,19 @@ void GlutWrapper::__Idle()
     __CurrentWindow()->_Idle();
 }
 
+void GlutWrapper::__Reshape(int width, int height)
+{
+    __CurrentWindow()->_Reshape(width, height);
+}
+
 void GlutWrapper::__Display()
 {
     __CurrentWindow()->_Display();
+}
+
+void GlutWrapper::__Menu()
+{
+    __CurrentWindow()->_Menu();
 }
 
 GlutWrapper* GlutWrapper::__CurrentWindow()
@@ -35,8 +48,10 @@ GlutWrapper* GlutWrapper::__CurrentWindow()
     return _windows[glutGetWindow()];
 }
 
-void GlutWrapper::Init()
+void GlutWrapper::_exit()
 {
+    cgDestroyContext(_context);
+    exit(0);
 }
 
 void GlutWrapper::_RequestSynchronizedSwapBuffers()
@@ -49,13 +64,38 @@ void GlutWrapper::_RequestSynchronizedSwapBuffers()
 #endif
 }
 
+void GlutWrapper::SetTranslate(float x, float y, float z)
+{
+    _transform.SetTranslate(x,y,z);
+}
+
+void GlutWrapper::SetRotation(float angle, float axis_x, float axis_y, float axis_z)
+{
+    _transform.SetArbitraryRotation(angle, axis_x, axis_y, axis_z);
+}
+
+void GlutWrapper::SetCamera(Camera camera)
+{
+    _transform.SetCamera(camera);
+}
+
+void GlutWrapper::SetMesh(Mesh mesh)
+{
+    _mesh = mesh;
+}
+
 void GlutWrapper::UpdateParam()
 {
 
 }
 
-GlutWrapper::GlutWrapper(const char* title, int width, int height, float lightAngle)
-    :_width(width), _height(height), _lightAngle(lightAngle)
+void GlutWrapper::SetRenderingFixture(CGcontext context, VerShader vertShader, FragmentShader fragShader)
+{
+    
+}
+
+GlutWrapper::GlutWrapper(const char* title, int width, int height)
+    :_width(width), _height(height) 
 {
     glutInitDisplayMode(GLUT_RGB| GLUT_DOUBLE | GLUT_DEPTH | GLUT_MULTISAMPLE);
     glutInitWindowSize(width, height);
@@ -72,7 +112,6 @@ GlutWrapper::GlutWrapper(const char* title, int width, int height, float lightAn
         exit(1);
     }
     _RequestSynchronizedSwapBuffers();
-    Init();
 }
 
 GlutWrapper::~GlutWrapper()
