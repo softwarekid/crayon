@@ -11,8 +11,6 @@
 *.suo
 *.opensdf
 *.ipch
-*.vcxproj
-*.filters
 
 
 # Compiled Dynamic libraries

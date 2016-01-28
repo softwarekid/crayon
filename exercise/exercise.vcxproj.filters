@@ -21,6 +21,9 @@
     <Filter Include="Header Files\transform">
       <UniqueIdentifier>{5cc0f669-6440-45f8-9c0f-2f9c968faa0f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\CgProgram">
+      <UniqueIdentifier>{11bb0aea-134c-4394-bc37-0288397f9f30}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Vector4f.cpp">
@@ -49,6 +52,15 @@
     </ClCompile>
     <ClCompile Include="GlutWrapper.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Cgviewer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VertShader.cpp">
+      <Filter>Source Files\CgProgram</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseShader.cpp">
+      <Filter>Source Files\CgProgram</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -111,6 +123,9 @@
     </ClInclude>
     <ClInclude Include="Camera.h">
       <Filter>Header Files\transform</Filter>
+    </ClInclude>
+    <ClInclude Include="CgUtil.h">
+      <Filter>Header Files\cgProgram</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
