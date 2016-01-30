@@ -8,8 +8,14 @@ protected:
     CGparameter lightPosition;
     CGparameter eyePosition;
     CGprogram program;
+
+    virtual void OnLoadProgram();
+    virtual void OnUnloadProgram();
+    virtual void OnUpdateParam();
 public:
-    virtual void UpdateParam();
+    void LoadProgram();
+    void UnloadProgram();
+    void UpdateParam();
     virtual ~BaseShader();
 };
 #endif

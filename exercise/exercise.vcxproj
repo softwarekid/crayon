@@ -82,6 +82,7 @@
   <ItemGroup>
     <ClCompile Include="BaseShader.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="CgLog.cpp" />
     <ClCompile Include="Cgviewer.cpp" />
     <ClCompile Include="Constants.cpp" />
     <ClCompile Include="GlutWrapper.cpp" />

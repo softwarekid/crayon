@@ -48,7 +48,7 @@ GlutWrapper* GlutWrapper::__CurrentWindow()
     return _windows[glutGetWindow()];
 }
 
-void GlutWrapper::_exit()
+void GlutWrapper::_Exit()
 {
     cgDestroyContext(_context);
     exit(0);
@@ -84,14 +84,11 @@ void GlutWrapper::SetMesh(Mesh mesh)
     _mesh = mesh;
 }
 
-void GlutWrapper::UpdateParam()
+void GlutWrapper::SetRenderingFixture(CGcontext context, const VerShader& vertShader, const FragmentShader& fragShader)
 {
-
-}
-
-void GlutWrapper::SetRenderingFixture(CGcontext context, VerShader vertShader, FragmentShader fragShader)
-{
-    
+    _context = context;
+    _verShader = vertShader;
+    _fragShader = fragShader;
 }
 
 GlutWrapper::GlutWrapper(const char* title, int width, int height)

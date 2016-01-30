@@ -21,15 +21,16 @@ private:
     static std::map<int, GlutWrapper*> _windows;
 
 protected:
-    virtual void _Draw() = 0;
     virtual void _Keyboard(int c, int x, int y);
     virtual void _Idle(void);
     virtual void _Reshape(int width, int height);
-    virtual void _Display(void);
+    virtual void _Display(void) = 0;
     virtual void _Menu();
-    virtual void _exit();
+    virtual void _Exit();
 
     Transform _transform;
+    VerShader _verShader;
+    FragmentShader _fragShader;
 private:
     void _RequestSynchronizedSwapBuffers();
 
@@ -38,16 +39,13 @@ private:
     int _height;
 
     CGcontext _context;
-    VerShader _verShader;
-    FragmentShader _fragmentShader;
     Mesh _mesh;
 public:
     void SetTranslate(float x, float y, float z);
     void SetRotation(float angle, float axis_x, float axis_y, float axis_z);
     void SetCamera(Camera camera);
     void SetMesh(Mesh mesh);
-    void UpdateParam();
-    inline void SetRenderingFixture(CGcontext context, VerShader vertShader, FragmentShader fragShader);
+    inline void SetRenderingFixture(CGcontext context, const VerShader& vertShader, const FragmentShader& fragShader);
     GlutWrapper(const char* title, int width, int height);
     virtual ~GlutWrapper();
 };

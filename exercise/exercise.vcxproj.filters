@@ -62,6 +62,9 @@
     <ClCompile Include="BaseShader.cpp">
       <Filter>Source Files\CgProgram</Filter>
     </ClCompile>
+    <ClCompile Include="CgLog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cgProgParams.h">
