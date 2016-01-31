@@ -55,8 +55,8 @@ void CgViewer::_Reshape(int width, int height)
 void CgViewer::_Display()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    _verShader.LoadProgram();
-    _fragShader.LoadProgram();
+    _verShader.BindProgram();
+    _fragShader.BindProgram();
     cgGLBindProgram(programVertex);
     Log("binding vertex program");
 

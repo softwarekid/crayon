@@ -5,6 +5,7 @@
 using namespace std;
 class CgLog
 {
+public:
     void static Log(string situation, CGcontext context);
 };
 
