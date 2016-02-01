@@ -84,10 +84,10 @@ void GlutWrapper::SetMesh(Mesh mesh)
     _mesh = mesh;
 }
 
-void GlutWrapper::SetRenderingFixture(CGcontext context, const VerShader& vertShader, const FragmentShader& fragShader)
+void GlutWrapper::SetRenderingFixture(CGcontext context, const VertShader& vertShader, const FragmentShader& fragShader)
 {
     _context = context;
-    _verShader = vertShader;
+    _vertShader = vertShader;
     _fragShader = fragShader;
 }
 

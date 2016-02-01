@@ -3,7 +3,7 @@
 #include <Cg/cg.h>
 #include <CG/cgGL.h>
 
-void BaseShader::_GetProgramParam(CGparameter param, const char * paramName)
+void BaseShader::_GetProgramParam(CGparameter& param, const char * paramName)
 {
     param = cgGetNamedParameter(_program, paramName);
     string error("could not get param");
@@ -33,12 +33,16 @@ void BaseShader::EnableProfile()
     cgGLEnableProfile(_profile);
 }
 
-BaseShader::BaseShader(CGcontext context, CGprofile profile, CgParamtersWrapper params)
+BaseShader::BaseShader(CGcontext context, CGprofile profile, CgParametersBase* params)
 {
     this->_context = context;
     this->_profile = profile;
     this->_params = params;
-    this->_params.Init();
+    _program = cgCreateProgram(context, CG_SOURCE, _fileName, profile, _enteryFunName, nullptr);
+    CgLog::Log("Creating vertex program", context);
+    cgGLLoadProgram(_program);
+    CgLog::Log("Loading vertex program", context);
+    _params->BindProgram(_context, _program);
 }
 
 BaseShader::~BaseShader()

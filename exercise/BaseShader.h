@@ -1,7 +1,7 @@
 #ifndef baseShader_h__
 #define baseShader_h__
 #include <Cg/cg.h>
-#include "CgParametersWrapper.h"
+#include "CgParametersBase.h"
 
 class BaseShader
 {
@@ -9,13 +9,13 @@ private:
     CGcontext _context;
     CGprofile _profile;
 
-    CgParamtersWrapper _params;
-    void _GetProgramParam(CGparameter param, const char * paramName);
+    void _GetProgramParam(CGparameter& param, const char * paramName);
 
 protected:
     CGprogram _program;
     const char* _fileName;
     const char* _enteryFunName;
+    CgParametersBase* _params;
 
     //virtual void _OnBindProgram() = 0;
     //virtual void _OnLoadProgram() = 0;
@@ -26,7 +26,7 @@ protected:
     // decide whether you should provide a default implementation in
     // base class, you'd better not. Because the higher abstraction the
     // class has, the less detail it should contain.
-    virtual void _InitParams() = 0;
+    void InitParams();
 public:
     void BindProgram();
     void LoadProgram();
@@ -34,7 +34,7 @@ public:
     void EnableProfile();
 
     void UpdateParam();
-    BaseShader(CGcontext context, CGprofile profile, CgParamtersWrapper params);
+    BaseShader(CGcontext context, CGprofile profile, CgParametersBase* params);
     virtual ~BaseShader();
 };
 #endif

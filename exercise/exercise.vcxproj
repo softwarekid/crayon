@@ -83,7 +83,6 @@
     <ClCompile Include="BaseShader.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CgLog.cpp" />
-    <ClCompile Include="CgParamtersWrapper.cpp" />
     <ClCompile Include="Cgviewer.cpp" />
     <ClCompile Include="Constants.cpp" />
     <ClCompile Include="GlutWrapper.cpp" />
@@ -100,12 +99,11 @@
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CameraGtest.h" />
     <ClInclude Include="CgLog.h" />
-    <ClInclude Include="CgParametersWrapper.h" />
+    <ClInclude Include="CgParametersBase.h" />
     <ClInclude Include="cgProgParams.h" />
     <ClInclude Include="CgUtil.h" />
     <ClInclude Include="CgViewer.h" />
     <ClInclude Include="Constants.h" />
-    <ClInclude Include="FragmentShader.h" />
     <ClInclude Include="GlutWrapper.h" />
     <ClInclude Include="GtestBase.h" />
     <ClInclude Include="MathUtil.h" />
@@ -117,7 +115,6 @@
     <ClInclude Include="Vector3f.h" />
     <ClInclude Include="VectorGtest.h" />
     <ClInclude Include="Vector4f.h" />
-    <ClInclude Include="VertShader.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="frag.cg" />

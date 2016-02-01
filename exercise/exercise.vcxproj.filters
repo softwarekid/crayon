@@ -65,9 +65,6 @@
     <ClCompile Include="CgLog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CgParamtersWrapper.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cgProgParams.h">
@@ -90,15 +87,6 @@
     </ClInclude>
     <ClInclude Include="TransformGtest.h">
       <Filter>Header Files\gtest</Filter>
-    </ClInclude>
-    <ClInclude Include="GlutWrapper.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="VertShader.h">
-      <Filter>Header Files\cgProgram</Filter>
-    </ClInclude>
-    <ClInclude Include="FragmentShader.h">
-      <Filter>Header Files\cgProgram</Filter>
     </ClInclude>
     <ClInclude Include="CgLog.h">
       <Filter>Header Files\cgProgram</Filter>
@@ -133,7 +121,10 @@
     <ClInclude Include="CgUtil.h">
       <Filter>Header Files\cgProgram</Filter>
     </ClInclude>
-    <ClInclude Include="CgParametersWrapper.h">
+    <ClInclude Include="GlutWrapper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CgParametersBase.h">
       <Filter>Header Files\cgProgram</Filter>
     </ClInclude>
   </ItemGroup>

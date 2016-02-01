@@ -55,46 +55,51 @@ void CgViewer::_Reshape(int width, int height)
 void CgViewer::_Display()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    _verShader.BindProgram();
+    _vertShader.BindProgram();
+    _vertShader.EnableProfile();
     _fragShader.BindProgram();
-    cgGLBindProgram(programVertex);
-    Log("binding vertex program");
+    _fragShader.EnableProfile();
 
-    cgGLEnableProfile(profileVertex);
-    Log("enabling vertex profile");
 
-    cgGLBindProgram(programFragment);
-    Log("binding fragment program");
+    _vertShader
+    //cgGLBindProgram(programVertex);
+    //Log("binding vertex program");
 
-    cgGLEnableProfile(profileFragment);
-    Log("enabling fragment profile");
+    //cgGLEnableProfile(profileVertex);
+    //Log("enabling vertex profile");
 
-    setBrassMaterial();
-    transform.SetTranslate(2, 0, 0);
-    transform.SetArbitraryRotation(20, 1, 1, 1);
-    Matrix4f modelMatrix;
-    transform.GetModelMatrix(modelMatrix);
-    Matrix4f invModelMatrix = modelMatrix.Invert();
-    Vector4f objSpaceEyePosition = invModelMatrix.Mul(eyePosition);
-    Vector4f objSpaceLightPosition = invModelMatrix.Mul(lightPosition);
-    Matrix4f modelViewProjMatix;
-    transform.GetMVPMatrix(modelViewProjMatix);
-    CgSetParam(paramVertexmodelViewProj, modelViewProjMatix);
+    //cgGLBindProgram(programFragment);
+    //Log("binding fragment program");
 
-    //CgSetParam(paramFragmentEyePosition, objSpaceEyePosition);
-    CgSetParam(paramFragmentLightPosition, objSpaceLightPosition);
+    //cgGLEnableProfile(profileFragment);
+    //Log("enabling fragment profile");
 
-    CgSetParam(paramVertexLightPosition, objSpaceLightPosition);
-    CgSetParam(paramVertexEyePosition, objSpaceEyePosition);
+    //setBrassMaterial();
+    //transform.SetTranslate(2, 0, 0);
+    //transform.SetArbitraryRotation(20, 1, 1, 1);
+    //Matrix4f modelMatrix;
+    //transform.GetModelMatrix(modelMatrix);
+    //Matrix4f invModelMatrix = modelMatrix.Invert();
+    //Vector4f objSpaceEyePosition = invModelMatrix.Mul(eyePosition);
+    //Vector4f objSpaceLightPosition = invModelMatrix.Mul(lightPosition);
+    //Matrix4f modelViewProjMatix;
+    //transform.GetMVPMatrix(modelViewProjMatix);
+    //CgSetParam(paramVertexmodelViewProj, modelViewProjMatix);
 
-    cgUpdateProgramParameters(programVertex);
-    cgUpdateProgramParameters(programFragment);
-    glutSolidSphere(2.0, 10, 10);
+    ////CgSetParam(paramFragmentEyePosition, objSpaceEyePosition);
+    //CgSetParam(paramFragmentLightPosition, objSpaceLightPosition);
 
-    cgGLDisableProfile(profileVertex);
-    Log("disabling vertex profile");
+    //CgSetParam(paramVertexLightPosition, objSpaceLightPosition);
+    //CgSetParam(paramVertexEyePosition, objSpaceEyePosition);
 
-    cgGLDisableProfile(profileFragment);
-    Log("disabling fragment profile");
+    //cgUpdateProgramParameters(programVertex);
+    //cgUpdateProgramParameters(programFragment);
+    //glutSolidSphere(2.0, 10, 10);
+
+    //cgGLDisableProfile(profileVertex);
+    //Log("disabling vertex profile");
+
+    //cgGLDisableProfile(profileFragment);
+    //Log("disabling fragment profile");
     glutSwapBuffers();
 }

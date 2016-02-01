@@ -29,7 +29,7 @@ protected:
     virtual void _Exit();
 
     Transform _transform;
-    VerShader _verShader;
+    VertShader _vertShader;
     FragmentShader _fragShader;
 private:
     void _RequestSynchronizedSwapBuffers();
@@ -45,7 +45,7 @@ public:
     void SetRotation(float angle, float axis_x, float axis_y, float axis_z);
     void SetCamera(Camera camera);
     void SetMesh(Mesh mesh);
-    inline void SetRenderingFixture(CGcontext context, const VerShader& vertShader, const FragmentShader& fragShader);
+    inline void SetRenderingFixture(CGcontext context, const VertShader& vertShader, const FragmentShader& fragShader);
     GlutWrapper(const char* title, int width, int height);
     virtual ~GlutWrapper();
 };
