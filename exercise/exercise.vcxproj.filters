@@ -65,6 +65,9 @@
     <ClCompile Include="CgLog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CgParamtersWrapper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cgProgParams.h">
@@ -128,6 +131,9 @@
       <Filter>Header Files\transform</Filter>
     </ClInclude>
     <ClInclude Include="CgUtil.h">
+      <Filter>Header Files\cgProgram</Filter>
+    </ClInclude>
+    <ClInclude Include="CgParametersWrapper.h">
       <Filter>Header Files\cgProgram</Filter>
     </ClInclude>
   </ItemGroup>
