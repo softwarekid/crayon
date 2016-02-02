@@ -2,8 +2,25 @@
 #include <GL/glew.h>
 #include <GL/glut.h>
 #include "Constants.h"
+#include <CG/cgGL.h>
+#include "CgLog.h"
+#include "VertShaderParam.h"
 using namespace std;
 
+
+void CgViewer::InitVertShader()
+{
+    auto profileVertex = cgGLGetLatestProfile(CG_GL_VERTEX);
+    auto vertShaderParam = new VertShaderParam();
+    _vertShader = new CgShader(_context,profileVertex, vertShaderParam);
+    cgGLSetOptimalOptions(profileVertex);
+}
+
+void CgViewer::StartRendering()
+{
+    InitVertShader();
+    glutMainLoop();
+}
 
 CgViewer::CgViewer(const char* title, int width, int height, float lightAngle):
          GlutWrapper(title, width, height)
@@ -11,7 +28,11 @@ CgViewer::CgViewer(const char* title, int width, int height, float lightAngle):
     _lightAngle = lightAngle;
     glClearColor(0.1, 0.3, 0.6, 0.0);  /* Blue background */
     glEnable(GL_DEPTH_TEST);
-    glutMainLoop();
+    _context = cgCreateContext();
+    CgLog::Log("create content", _context);
+    cgGLSetDebugMode(CG_TRUE);
+    cgSetParameterSettingMode(_context,CG_DEFERRED_PARAMETER_SETTING);
+    CgLog::Log("selecting vertex profile", _context);
 }
 
 void CgViewer::_Keyboard(int c, int x, int y)

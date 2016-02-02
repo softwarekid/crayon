@@ -3,6 +3,7 @@
 #include <GL/wglew.h>
 #include <GL/glut.h>
 #include <iostream>
+#include "CgShader.h"
 
 std::map<int, GlutWrapper*> _windows;
 
@@ -84,7 +85,7 @@ void GlutWrapper::SetMesh(Mesh mesh)
     _mesh = mesh;
 }
 
-void GlutWrapper::SetRenderingFixture(CGcontext context, const VertShader& vertShader, const FragmentShader& fragShader)
+void GlutWrapper::SetRenderingFixture(CGcontext context, const CgShader& vertShader, const CgShader& fragShader)
 {
     _context = context;
     _vertShader = vertShader;
@@ -108,10 +109,13 @@ GlutWrapper::GlutWrapper(const char* title, int width, int height)
         std::cout<<"failed to initialize GLEW, OpenGL 1.1 required.\n"<< title;
         exit(1);
     }
+
     _RequestSynchronizedSwapBuffers();
 }
 
 GlutWrapper::~GlutWrapper()
 {
     glutDestroyWindow(_windowID);
+    delete _vertShader;
+    delete _fragShader;
 }

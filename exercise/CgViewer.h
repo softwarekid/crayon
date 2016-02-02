@@ -1,7 +1,8 @@
 #ifndef cg_viewer_h__
 #define cg_viewer_h__
 #include "GlutWrapper.h"
-#include "VertShader.h"
+#include <Cg/cg.h>
+
 class CgViewer : public GlutWrapper
 {
 private:
@@ -16,7 +17,10 @@ private:
     void _Menu() override;
     void _Init();
 
+protected:
+    void InitVertShader() override;
 public:
+    void StartRendering();
     CgViewer(const char* title, int width, int height, float lightAngle);
     ~CgViewer(){}
 };
