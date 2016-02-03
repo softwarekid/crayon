@@ -85,12 +85,6 @@ void GlutWrapper::SetMesh(Mesh mesh)
     _mesh = mesh;
 }
 
-void GlutWrapper::SetRenderingFixture(CGcontext context, const CgShader& vertShader, const CgShader& fragShader)
-{
-    _context = context;
-    _vertShader = vertShader;
-    _fragShader = fragShader;
-}
 
 GlutWrapper::GlutWrapper(const char* title, int width, int height)
     :_width(width), _height(height) 

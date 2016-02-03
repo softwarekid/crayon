@@ -86,6 +86,8 @@
     <ClCompile Include="CgShaderParametersBase.cpp" />
     <ClCompile Include="Cgviewer.cpp" />
     <ClCompile Include="Constants.cpp" />
+    <ClCompile Include="Crayon.cpp" />
+    <ClCompile Include="FragShaderParam.cpp" />
     <ClCompile Include="GlutWrapper.cpp" />
     <ClCompile Include="Matrix.cpp" />
     <ClCompile Include="renderFramework.cpp" />
@@ -101,10 +103,10 @@
     <ClInclude Include="CameraGtest.h" />
     <ClInclude Include="CgLog.h" />
     <ClInclude Include="CgShaderParametersBase.h" />
-    <ClInclude Include="cgProgParams.h" />
     <ClInclude Include="CgUtil.h" />
     <ClInclude Include="CgViewer.h" />
     <ClInclude Include="Constants.h" />
+    <ClInclude Include="FragShaderParam.h" />
     <ClInclude Include="GlutWrapper.h" />
     <ClInclude Include="GtestBase.h" />
     <ClInclude Include="MathUtil.h" />

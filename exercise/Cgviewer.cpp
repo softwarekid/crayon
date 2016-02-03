@@ -5,6 +5,7 @@
 #include <CG/cgGL.h>
 #include "CgLog.h"
 #include "VertShaderParam.h"
+#include "FragShaderParam.h"
 using namespace std;
 
 
@@ -12,13 +13,29 @@ void CgViewer::InitVertShader()
 {
     auto profileVertex = cgGLGetLatestProfile(CG_GL_VERTEX);
     auto vertShaderParam = new VertShaderParam();
-    _vertShader = new CgShader(_context,profileVertex, vertShaderParam);
+    string fileName("");
+    string entry("");
+    _vertShader = new CgShader(_context, profileVertex, fileName, entry, vertShaderParam);
     cgGLSetOptimalOptions(profileVertex);
+}
+
+void CgViewer::InitFragShader()
+{
+    auto profileFrag = cgGLGetLatestProfile(CG_GL_FRAGMENT);
+    auto fragShaderParam = new FragShaderParam();
+    string fileName("");
+    string entry("");
+    _fragShader = new CgShader(_context, profileFrag, fileName, entry, fragShaderParam);
+    cgGLSetOptimalOptions(profileFrag);
 }
 
 void CgViewer::StartRendering()
 {
+    // At the beginning I plan to initialize the two shaders in the ctor, but as 
+    // virtual functions they are not allowed to appear in the ctor, so I add 
+    // this "indirect layer" to do the start.
     InitVertShader();
+    InitFragShader();
     glutMainLoop();
 }
 
@@ -76,13 +93,13 @@ void CgViewer::_Reshape(int width, int height)
 void CgViewer::_Display()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    _vertShader.BindProgram();
-    _vertShader.EnableProfile();
-    _fragShader.BindProgram();
-    _fragShader.EnableProfile();
+    _vertShader->BindProgram();
+    _vertShader->EnableProfile();
+    _fragShader->BindProgram();
+    _fragShader->EnableProfile();
 
 
-    _vertShader
+    
     //cgGLBindProgram(programVertex);
     //Log("binding vertex program");
 

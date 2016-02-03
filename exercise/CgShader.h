@@ -2,6 +2,7 @@
 #define CgShader_h__
 #include <Cg/cg.h>
 #include "CgShaderParametersBase.h"
+#include <string>
 
 class CgShader
 {
@@ -13,8 +14,6 @@ private:
 
 protected:
     CGprogram _program;
-    const char* _fileName;
-    const char* _enteryFunName;
     CgShaderParametersBase* _params;
 
     //virtual void _OnBindProgram() = 0;
@@ -22,8 +21,8 @@ protected:
     //virtual void _OnUnloadProgram();
     //virtual void _OnUpdateParam();
 
-    // seperate interface and implementation, anytime when you can't
-    // decide whether you should provide a default implementation in
+    // seperate interface from implementation, anytime you can't
+    // decide whether you should _entry_entry_entryprovide a default implementation in
     // base class, you'd better not. Because the higher abstraction the
     // class has, the less detail it should contain.
     void InitParams();
@@ -34,7 +33,7 @@ public:
     void EnableProfile();
 
     void UpdateParam();
-    CgShader(CGcontext context, CGprofile profile, CgShaderParametersBase* params);
+    CgShader(CGcontext context, CGprofile profile, const std::string& fileName, const std::string& entry, CgShaderParametersBase* params);
     virtual ~CgShader();
 };
 #endif

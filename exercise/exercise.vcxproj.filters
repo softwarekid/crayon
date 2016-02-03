@@ -68,11 +68,14 @@
     <ClCompile Include="CgShader.cpp">
       <Filter>Source Files\CgProgram</Filter>
     </ClCompile>
+    <ClCompile Include="FragShaderParam.cpp">
+      <Filter>Source Files\CgProgram</Filter>
+    </ClCompile>
+    <ClCompile Include="Crayon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="cgProgParams.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Constants.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -131,6 +134,9 @@
       <Filter>Header Files\cgProgram</Filter>
     </ClInclude>
     <ClInclude Include="CgShader.h">
+      <Filter>Header Files\cgProgram</Filter>
+    </ClInclude>
+    <ClInclude Include="FragShaderParam.h">
       <Filter>Header Files\cgProgram</Filter>
     </ClInclude>
   </ItemGroup>

@@ -16,9 +16,12 @@ private:
     void _Display(void) override;
     void _Menu() override;
     void _Init();
-
+    
+    CgShaderParametersBase* vertParam;
+    CgShaderParametersBase* fragParam;
 protected:
     void InitVertShader() override;
+    void InitFragShader() override;
 public:
     void StartRendering();
     CgViewer(const char* title, int width, int height, float lightAngle);

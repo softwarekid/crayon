@@ -47,7 +47,6 @@ public:
     void SetRotation(float angle, float axis_x, float axis_y, float axis_z);
     void SetCamera(Camera camera);
     void SetMesh(Mesh mesh);
-    inline void SetRenderingFixture(CGcontext context, const CgShader& vertShader, const CgShader& fragShader);
     GlutWrapper(const char* title, int width, int height);
     virtual ~GlutWrapper();
 };

@@ -33,12 +33,12 @@ void CgShader::EnableProfile()
     cgGLEnableProfile(_profile);
 }
 
-CgShader::CgShader(CGcontext context, CGprofile profile, CgShaderParametersBase* params)
+CgShader::CgShader(CGcontext context, CGprofile profile, const std::string& fileName, const std::string& entry, CgShaderParametersBase* params)
 {
     this->_context = context;
     this->_profile = profile;
     this->_params = params;
-    _program = cgCreateProgram(context, CG_SOURCE, _fileName, profile, _enteryFunName, nullptr);
+    _program = cgCreateProgram(context, CG_SOURCE, fileName.c_str(), profile, entry.c_str(), nullptr);
     CgLog::Log("Creating vertex program", context);
     cgGLLoadProgram(_program);
     CgLog::Log("Loading vertex program", context);
