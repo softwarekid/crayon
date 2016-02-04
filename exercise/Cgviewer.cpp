@@ -12,20 +12,22 @@ using namespace std;
 void CgViewer::InitVertShader()
 {
     auto profileVertex = cgGLGetLatestProfile(CG_GL_VERTEX);
-    auto vertShaderParam = new VertShaderParam();
     string fileName("");
     string entry("");
-    _vertShader = new CgShader(_context, profileVertex, fileName, entry, vertShaderParam);
+    _vertShader = new CgShader(_context, profileVertex, fileName, entry);
+    _vertParams = new VertShaderParam();
+    _vertShader->BindParams(_vertParams);
     cgGLSetOptimalOptions(profileVertex);
 }
 
 void CgViewer::InitFragShader()
 {
     auto profileFrag = cgGLGetLatestProfile(CG_GL_FRAGMENT);
-    auto fragShaderParam = new FragShaderParam();
     string fileName("");
     string entry("");
-    _fragShader = new CgShader(_context, profileFrag, fileName, entry, fragShaderParam);
+    _fragShader = new CgShader(_context, profileFrag, fileName, entry);
+    _fragParams = new FragShaderParam();
+    _fragShader->BindParams(_fragParams);
     cgGLSetOptimalOptions(profileFrag);
 }
 
@@ -98,7 +100,6 @@ void CgViewer::_Display()
     _fragShader->BindProgram();
     _fragShader->EnableProfile();
 
-
     
     //cgGLBindProgram(programVertex);
     //Log("binding vertex program");
@@ -140,4 +141,22 @@ void CgViewer::_Display()
     //cgGLDisableProfile(profileFragment);
     //Log("disabling fragment profile");
     glutSwapBuffers();
+}
+
+void CgViewer::SetMaterial()
+{
+    // brass 
+    const float  = {0.0,  0.0,  0.0};
+    const float brassAmbient[3]  = {0.33, 0.22, 0.03};
+    const float brassDiffuse[3]  = {0.78, 0.57, 0.11};
+    const float brassSpecular[3] = {0.99, 0.91, 0.81};
+    const float brassShininess = 27.8;
+
+    
+    _fragParams->SetKaCoef(brassAmbient);
+    cgSetParameter3fv(paramFragmentKe, brassEmissive);
+    cgSetParameter3fv(paramFragmentKa, brassAmbient);
+    cgSetParameter3fv(paramFragmentKd, brassDiffuse);
+    cgSetParameter3fv(paramFragmentKs, brassSpecular);
+    cgSetParameter1f(paramFragmentShininess, brassShininess);
 }

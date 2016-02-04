@@ -9,11 +9,11 @@ Vector4f::Vector4f()
     _SetZero();
 }
 
-Vector4f::Vector4f(const Vector4f& lsv)
+Vector4f::Vector4f(const Vector4f& lhs)
 {
     for (int i = 0; i < DIM; i++)
     {
-        _innerArray[i] = lsv._innerArray[i];
+        _innerArray[i] = lhs._innerArray[i];
     }
 }
 

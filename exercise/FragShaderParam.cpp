@@ -1,6 +1,37 @@
 #include "FragShaderParam.h"
 
-void FragShaderParam::BindProgram(CGcontext context, CGprogram program)
+void FragShaderParam::SetKeCoef(const Vector3f& value)
 {
+    _Set3fvParam(_keParam, value);
+}
 
+void FragShaderParam::SetKaCoef(const Vector3f& value)
+{
+    _Set3fvParam(_kaParam, value);
+}
+
+void FragShaderParam::SetKdCoef(const Vector3f& value)
+{
+    _Set3fvParam(_kdParam, value);
+}
+
+void FragShaderParam::SetKsCoef(const Vector3f& value)
+{
+    _Set3fvParam(_ksParam, value);
+}
+
+void FragShaderParam::Init()
+{
+    _GetProgramParam(_keParam, "");
+    _GetProgramParam(_kaParam, "");
+    _GetProgramParam(_kdParam, "");
+    _GetProgramParam(_ksParam, "");
+    _GetProgramParam(_globleAmbient, "");
+    _GetProgramParam(_lightColor, "");
+    _GetProgramParam(_lightPosition, "");
+    _GetProgramParam(_shininess, "");
+}
+
+FragShaderParam::FragShaderParam(CGcontext context, CGprogram program): CgShaderParametersBase(context, program)
+{
 }

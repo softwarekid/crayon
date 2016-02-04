@@ -202,7 +202,7 @@ Matrix4f Matrix4f::Invert()
     return result;
 }
 
-void Matrix4f::GetInnerValue(float* innerValue)
+void Matrix4f::GetInnerValue(float* innerValue) const
 {
     for(int i = 0; i < DIM * DIM; i++)
     {

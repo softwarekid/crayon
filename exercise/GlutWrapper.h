@@ -48,6 +48,7 @@ public:
     void SetCamera(Camera camera);
     void SetMesh(Mesh mesh);
     GlutWrapper(const char* title, int width, int height);
+    GlutWrapper() = delete;
     virtual ~GlutWrapper();
 };
 #endif

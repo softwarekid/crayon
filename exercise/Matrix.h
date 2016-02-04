@@ -21,7 +21,7 @@ public:
     Vector4f Mul(const Vector4f& v);
     void SetIdentity();
     Matrix4f Invert();
-    void GetInnerValue(float * innerValue);
+    void GetInnerValue(float * innerValue) const;
     void Print();
     Matrix4f& operator = (const Matrix4f& m);
     float& operator() (int rowIndex, int colIndex);

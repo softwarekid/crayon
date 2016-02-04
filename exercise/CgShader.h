@@ -1,6 +1,7 @@
 #ifndef CgShader_h__
 #define CgShader_h__
 #include <Cg/cg.h>
+
 #include "CgShaderParametersBase.h"
 #include <string>
 
@@ -14,7 +15,6 @@ private:
 
 protected:
     CGprogram _program;
-    CgShaderParametersBase* _params;
 
     //virtual void _OnBindProgram() = 0;
     //virtual void _OnLoadProgram() = 0;
@@ -28,12 +28,12 @@ protected:
     void InitParams();
 public:
     void BindProgram();
+    void BindParams(CgShaderParametersBase* param);
     void LoadProgram();
     void UnloadProgram();
     void EnableProfile();
 
-    void UpdateParam();
-    CgShader(CGcontext context, CGprofile profile, const std::string& fileName, const std::string& entry, CgShaderParametersBase* params);
+    CgShader(CGcontext context, CGprofile profile, const std::string& fileName, const std::string& entry);
     virtual ~CgShader();
 };
 #endif
