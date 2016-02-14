@@ -32,6 +32,8 @@ void FragShaderParam::Init()
     _GetProgramParam(_shininess, "");
 }
 
-FragShaderParam::FragShaderParam(CGcontext context, CGprogram program): CgShaderParametersBase(context, program)
+FragShaderParam::FragShaderParam(const CgShader shader)
 {
+    _context = shader.GetContext();
+    _program = shader.GetProgram();
 }

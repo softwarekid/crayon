@@ -11,15 +11,20 @@ void CgShader::_GetProgramParam(CGparameter& param, const char * paramName)
     CgLog::Log(error, _context);
 }
 
+CGcontext CgShader::GetContext() const
+{
+    return _context;
+}
+
+CGprogram CgShader::GetProgram() const
+{
+    return _program;
+}
+
 void CgShader::BindProgram()
 {
     cgGLBindProgram(_program);
     CgLog::Log("binding program", _context);
-}
-
-void CgShader::BindParams(CgShaderParametersBase* param)
-{
-    param->Init(_context, _program);
 }
 
 void CgShader::LoadProgram()

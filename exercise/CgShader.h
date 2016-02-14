@@ -22,13 +22,15 @@ protected:
     //virtual void _OnUpdateParam();
 
     // seperate interface from implementation, anytime you can't
-    // decide whether you should _entry_entry_entryprovide a default implementation in
+    // decide whether you should provide a default implementation in
     // base class, you'd better not. Because the higher abstraction the
     // class has, the less detail it should contain.
     void InitParams();
 public:
+    
+    CGcontext GetContext() const ;
+    CGprogram GetProgram() const ;
     void BindProgram();
-    void BindParams(CgShaderParametersBase* param);
     void LoadProgram();
     void UnloadProgram();
     void EnableProfile();

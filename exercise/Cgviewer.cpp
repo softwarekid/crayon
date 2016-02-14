@@ -15,8 +15,8 @@ void CgViewer::InitVertShader()
     string fileName("");
     string entry("");
     _vertShader = new CgShader(_context, profileVertex, fileName, entry);
-    _vertParams = new VertShaderParam();
-    _vertShader->BindParams(_vertParams);
+    _vertParams = new VertShaderParam(*_vertShader);
+    _vertParams->Init();
     cgGLSetOptimalOptions(profileVertex);
 }
 
@@ -26,8 +26,8 @@ void CgViewer::InitFragShader()
     string fileName("");
     string entry("");
     _fragShader = new CgShader(_context, profileFrag, fileName, entry);
-    _fragParams = new FragShaderParam();
-    _fragShader->BindParams(_fragParams);
+    _fragParams = new FragShaderParam(*_fragShader);
+    _fragParams->Init();
     cgGLSetOptimalOptions(profileFrag);
 }
 
@@ -100,63 +100,54 @@ void CgViewer::_Display()
     _fragShader->BindProgram();
     _fragShader->EnableProfile();
 
-    
-    //cgGLBindProgram(programVertex);
-    //Log("binding vertex program");
+    cgGLBindProgram(programVertex);
+    Log("binding vertex program");
 
-    //cgGLEnableProfile(profileVertex);
-    //Log("enabling vertex profile");
+    cgGLEnableProfile(profileVertex);
+    Log("enabling vertex profile");
 
-    //cgGLBindProgram(programFragment);
-    //Log("binding fragment program");
+    cgGLBindProgram(programFragment);
+    Log("binding fragment program");
 
-    //cgGLEnableProfile(profileFragment);
-    //Log("enabling fragment profile");
+    cgGLEnableProfile(profileFragment);
+    Log("enabling fragment profile");
 
-    //setBrassMaterial();
-    //transform.SetTranslate(2, 0, 0);
-    //transform.SetArbitraryRotation(20, 1, 1, 1);
-    //Matrix4f modelMatrix;
-    //transform.GetModelMatrix(modelMatrix);
-    //Matrix4f invModelMatrix = modelMatrix.Invert();
-    //Vector4f objSpaceEyePosition = invModelMatrix.Mul(eyePosition);
-    //Vector4f objSpaceLightPosition = invModelMatrix.Mul(lightPosition);
-    //Matrix4f modelViewProjMatix;
-    //transform.GetMVPMatrix(modelViewProjMatix);
-    //CgSetParam(paramVertexmodelViewProj, modelViewProjMatix);
+    setBrassMaterial();
+    transform.SetTranslate(2, 0, 0);
+    transform.SetArbitraryRotation(20, 1, 1, 1);
+    Matrix4f modelMatrix;
+    transform.GetModelMatrix(modelMatrix);
+    Matrix4f invModelMatrix = modelMatrix.Invert();
+    Vector4f objSpaceEyePosition = invModelMatrix.Mul(eyePosition);
+    Vector4f objSpaceLightPosition = invModelMatrix.Mul(lightPosition);
+    Matrix4f modelViewProjMatix;
+    transform.GetMVPMatrix(modelViewProjMatix);
+    CgSetParam(paramVertexmodelViewProj, modelViewProjMatix);
 
-    ////CgSetParam(paramFragmentEyePosition, objSpaceEyePosition);
-    //CgSetParam(paramFragmentLightPosition, objSpaceLightPosition);
+    //CgSetParam(paramFragmentEyePosition, objSpaceEyePosition);
+    CgSetParam(paramFragmentLightPosition, objSpaceLightPosition);
 
-    //CgSetParam(paramVertexLightPosition, objSpaceLightPosition);
-    //CgSetParam(paramVertexEyePosition, objSpaceEyePosition);
+    CgSetParam(paramVertexLightPosition, objSpaceLightPosition);
+    CgSetParam(paramVertexEyePosition, objSpaceEyePosition);
 
-    //cgUpdateProgramParameters(programVertex);
-    //cgUpdateProgramParameters(programFragment);
-    //glutSolidSphere(2.0, 10, 10);
+    cgUpdateProgramParameters(programVertex);
+    cgUpdateProgramParameters(programFragment);
+    glutSolidSphere(2.0, 10, 10);
 
-    //cgGLDisableProfile(profileVertex);
-    //Log("disabling vertex profile");
+    cgGLDisableProfile(profileVertex);
+    Log("disabling vertex profile");
 
-    //cgGLDisableProfile(profileFragment);
-    //Log("disabling fragment profile");
+    cgGLDisableProfile(profileFragment);
+    Log("disabling fragment profile");
     glutSwapBuffers();
 }
 
 void CgViewer::SetMaterial()
 {
     // brass 
-    const float  = {0.0,  0.0,  0.0};
-    const float brassAmbient[3]  = {0.33, 0.22, 0.03};
-    const float brassDiffuse[3]  = {0.78, 0.57, 0.11};
-    const float brassSpecular[3] = {0.99, 0.91, 0.81};
-    const float brassShininess = 27.8;
-
-    
-    _fragParams->SetKaCoef(brassAmbient);
-    cgSetParameter3fv(paramFragmentKe, brassEmissive);
-    cgSetParameter3fv(paramFragmentKa, brassAmbient);
-    cgSetParameter3fv(paramFragmentKd, brassDiffuse);
-    cgSetParameter3fv(paramFragmentKs, brassSpecular);
-    cgSetParameter1f(paramFragmentShininess, brassShininess);
+    _fragParams->SetKaCoef(Vector3f(0.33, 0.22, 0.03));
+    _fragParams->SetKeCoef(Vector3f(0, 0, 0));
+    _fragParams->SetKdCoef(Vector3f(0.78, 0.57, 0.11));
+    _fragParams->SetKsCoef(Vector3f(0.99, 0.91, 0.81));
+    _fragParams->SetShinessCoef(27.8);
 }

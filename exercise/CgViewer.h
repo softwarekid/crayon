@@ -20,7 +20,6 @@ private:
     void _Display(void) override;
     void _Menu() override;
     void _Init();
-    
     void SetMaterial();
 
     CgShaderParametersBase* vertParam;

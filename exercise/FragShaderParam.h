@@ -1,6 +1,8 @@
 #ifndef frag_shader_param__
 #define frag_shader_param__
 #include "CgShaderParametersBase.h"
+#include "CgShader.h"
+
 class FragShaderParam : public CgShaderParametersBase
 {
 private:
@@ -20,6 +22,6 @@ public:
     void SetKsCoef(const Vector3f& value) override;
     void Init() override;
 
-    FragShaderParam(CGcontext context, CGprogram program);
+    explicit FragShaderParam(const CgShader shader);
 };
 #endif

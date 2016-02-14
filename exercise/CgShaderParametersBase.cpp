@@ -1,12 +1,12 @@
 #include "CgShaderParametersBase.h"
 #include "CgLog.h"
 
-void CgShaderParametersBase::_GetProgramParam(CGcontext context, CGprogram program, CGparameter& param, const char * name)
+void CgShaderParametersBase::_GetProgramParam(CGparameter& param, const char* name)
 {
-    param = cgGetNamedParameter(program, name);
-    std::string error("could not get param");
+    param = cgGetNamedParameter(_program, name);
+    string error("could not get param");
     error += name;
-    CgLog::Log(error, context);
+    CgLog::Log(error, _context);
 }
 
 void CgShaderParametersBase::_Set3fvParam(const CGparameter param, const Vector3f& value)
@@ -32,4 +32,3 @@ CgShaderParametersBase::CgShaderParametersBase(CGcontext context, CGprogram prog
     _context = context;
     _program = program;
 }
-

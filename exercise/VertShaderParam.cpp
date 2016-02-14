@@ -1,6 +1,11 @@
 #include "VertShaderParam.h"
 
-void VertShaderParam::BindProgram(CGcontext context, CGprogram program)
+void VertShaderParam::Init()
 {
-    
+}
+
+VertShaderParam::VertShaderParam(const CgShader& shader)
+{
+    _context = shader.GetContext();
+    _program = shader.GetProgram();
 }

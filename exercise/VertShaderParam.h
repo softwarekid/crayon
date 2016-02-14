@@ -1,6 +1,8 @@
 #ifndef vert_param__
 #define vert_param__
 #include "CgShaderParametersBase.h"
+#include "CgShader.h"
+
 
 class VertShaderParam:public CgShaderParametersBase
 {
@@ -9,7 +11,9 @@ private:
     
 
 public:
-    VertShaderParam();
-    void BindProgram(CGcontext context, CGprogram program) override;
+
+    void Init() override;
+
+    VertShaderParam(const CgShader& shader);
 };
 #endif
