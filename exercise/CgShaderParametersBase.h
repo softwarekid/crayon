@@ -28,6 +28,7 @@ public:
 
 public:
     CgShaderParametersBase(CGcontext context, CGprogram program);
+    CgShaderParametersBase(){};
 };
 
 #endif

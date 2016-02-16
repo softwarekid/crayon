@@ -97,7 +97,7 @@ void CgViewer::_Display()
     const Vector3f eyePosition(0, 0, 13);
     const Vector3f eyeCenter(0,0,0);
     const Vector3f eyeUp(0,1,0);
-    const Vector3f lightPosition(5 * sin(lightAngle), 1.5, 5 * cos(lightAngle));
+    const Vector3f lightPosition(5 * sin(_lightAngle), 1.5, 5 * cos(_lightAngle));
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     _vertShader->BindProgram();
     _vertShader->EnableProfile();
@@ -121,15 +121,13 @@ void CgViewer::_Display()
     _transform.GetMVPMatrix(modelViewProjMatix);
     _vertParams->SetMVPMatrix(modelViewProjMatix);
 
-    cgUpdateProgramParameters(programVertex);
-    cgUpdateProgramParameters(programFragment);
+    _vertShader->UpdateParams();
+    _fragShader->UpdateParams();
     glutSolidSphere(2.0, 10, 10);
 
-    cgGLDisableProfile(profileVertex);
-    Log("disabling vertex profile");
 
-    cgGLDisableProfile(profileFragment);
-    Log("disabling fragment profile");
+    _vertShader->DisableProfile();
+    _fragShader->DisableProfile();
     glutSwapBuffers();
 }
 

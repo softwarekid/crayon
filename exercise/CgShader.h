@@ -32,6 +32,7 @@ public:
     CGprogram GetProgram() const ;
     void BindProgram();
     void LoadProgram();
+    void UpdateParams();
     void UnloadProgram();
     void EnableProfile();
     void DisableProfile();

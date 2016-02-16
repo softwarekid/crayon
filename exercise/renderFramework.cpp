@@ -152,99 +152,99 @@ static void menu(int item)
     keyboard((unsigned char)item, 0, 0);
 }
 
-int main(int argc, char **argv)
-{
-    glutInitWindowSize(400,400);
-    glutInitDisplayMode(GLUT_RGB| GLUT_DOUBLE | GLUT_DEPTH | GLUT_MULTISAMPLE);
-    glutInit(&argc, argv);
-
-    glutCreateWindow(programName);
-    glutDisplayFunc(display);
-    glutKeyboardFunc(keyboard);
-    glutReshapeFunc(reshape);
-
-    if (glewInit() != GLEW_OK || !GLEW_VERSION_1_1)
-    {
-        fprintf(stderr, "%s: failed to initialize GLEW, OpenGL 1.1 required.\n", programName);
-        exit(1);
-    }
-
-    requestSynchronizedSwapBuffers();
-    glClearColor(0.1, 0.3, 0.6, 0.0);  /* Blue background */
-    //glClearColor(0.1,0.1,0.1,0);
-    glEnable(GL_DEPTH_TEST);
-
-    context = cgCreateContext();
-    Log("create content");
-    cgGLSetDebugMode(CG_TRUE);
-    cgSetParameterSettingMode(context,CG_DEFERRED_PARAMETER_SETTING);
-
-    profileVertex = cgGLGetLatestProfile(CG_GL_VERTEX);
-    cgGLSetOptimalOptions(profileVertex);
-    Log("selecting vertex profile");
-
-    programVertex = cgCreateProgramFromFile(
-        context,
-        CG_SOURCE,
-        vertexProgramFileName,
-        profileVertex,
-        vertexProgramEntry,
-        NULL
-        );
-    Log("creating vertex program from file");
-    cgGLLoadProgram(programVertex);
-    Log("loading vertex program");
-
-    GetProgramParam(programVertex, paramVertexmodelViewProj, "modelViewProj");
-    //GetProgramParam(programVertex, paramVertexGolbalAmbient, "globalAmbient");
-    //GetProgramParam(programVertex, paramVertexLightColor, "lightColor");
-    GetProgramParam(programVertex, paramVertexLightPosition, "lightPosition");
-    GetProgramParam(programVertex, paramVertexEyePosition, "eyePosition");
-    //GetProgramParam(programVertex, paramVertexKe, "Ke");
-    //GetProgramParam(programVertex, paramVertexKa, "Ka");
-    //GetProgramParam(programVertex, paramVertexKd, "Kd");
-
-    //cgSetParameter3fv(paramVertexGolbalAmbient, globalAmbient);
-    //Log("set vertex program global ambient ");
-    //cgSetParameter3fv(paramVertexLightColor, lightColor);
-
-    profileFragment = cgGLGetLatestProfile(CG_GL_FRAGMENT);
-    cgGLSetOptimalOptions(profileFragment);
-    Log("selecting fragment profile");
-
-    programFragment = cgCreateProgramFromFile(
-        context,
-        CG_SOURCE,
-        fragProgramFileName,
-        profileFragment,
-        fragProgramEntry,
-        NULL);
-    Log("creating fragment program from string");
-    cgGLLoadProgram(programFragment);
-    Log("loading fragment program");
-
-    GetProgramParam(programFragment, paramFragmentGolbalAmbient, "globalAmbient");
-    GetProgramParam(programFragment, paramFragmentLightColor, "lightColor");
-    GetProgramParam(programFragment, paramFragmentLightPosition, "lightPosition");
-    //GetProgramParam(programFragment, paramFragmentEyePosition, "eyePosition");
-    GetProgramParam(programFragment, paramFragmentKe, "Ke");
-    GetProgramParam(programFragment, paramFragmentKa, "Ka");
-    GetProgramParam(programFragment, paramFragmentKd, "Kd");
-    GetProgramParam(programFragment, paramFragmentKs, "Ks");
-    GetProgramParam(programFragment, paramFragmentShininess, "shininess");
-
-    CgSetParam(paramFragmentGolbalAmbient, globalAmbient);
-    Log("set vertex program global ambient ");
-    cgSetParameter3fv(paramFragmentLightColor, lightColor);
-    glutCreateMenu(menu);
-    glutAddMenuEntry("[ ] Animate", ' ');
-    glutAddMenuEntry("[ ] polygon", 'p');
-    glutAddMenuEntry("[ ] line", 'l');
-    glutAttachMenu(GLUT_RIGHT_BUTTON);
-    glutMainLoop();
-    return 0;
-}
-
+//int main(int argc, char **argv)
+//{
+//    glutInitWindowSize(400,400);
+//    glutInitDisplayMode(GLUT_RGB| GLUT_DOUBLE | GLUT_DEPTH | GLUT_MULTISAMPLE);
+//    glutInit(&argc, argv);
+//
+//    glutCreateWindow(programName);
+//    glutDisplayFunc(display);
+//    glutKeyboardFunc(keyboard);
+//    glutReshapeFunc(reshape);
+//
+//    if (glewInit() != GLEW_OK || !GLEW_VERSION_1_1)
+//    {
+//        fprintf(stderr, "%s: failed to initialize GLEW, OpenGL 1.1 required.\n", programName);
+//        exit(1);
+//    }
+//
+//    requestSynchronizedSwapBuffers();
+//    glClearColor(0.1, 0.3, 0.6, 0.0);  /* Blue background */
+//    //glClearColor(0.1,0.1,0.1,0);
+//    glEnable(GL_DEPTH_TEST);
+//
+//    context = cgCreateContext();
+//    Log("create content");
+//    cgGLSetDebugMode(CG_TRUE);
+//    cgSetParameterSettingMode(context,CG_DEFERRED_PARAMETER_SETTING);
+//
+//    profileVertex = cgGLGetLatestProfile(CG_GL_VERTEX);
+//    cgGLSetOptimalOptions(profileVertex);
+//    Log("selecting vertex profile");
+//
+//    programVertex = cgCreateProgramFromFile(
+//        context,
+//        CG_SOURCE,
+//        vertexProgramFileName,
+//        profileVertex,
+//        vertexProgramEntry,
+//        NULL
+//        );
+//    Log("creating vertex program from file");
+//    cgGLLoadProgram(programVertex);
+//    Log("loading vertex program");
+//
+//    GetProgramParam(programVertex, paramVertexmodelViewProj, "modelViewProj");
+//    //GetProgramParam(programVertex, paramVertexGolbalAmbient, "globalAmbient");
+//    //GetProgramParam(programVertex, paramVertexLightColor, "lightColor");
+//    GetProgramParam(programVertex, paramVertexLightPosition, "lightPosition");
+//    GetProgramParam(programVertex, paramVertexEyePosition, "eyePosition");
+//    //GetProgramParam(programVertex, paramVertexKe, "Ke");
+//    //GetProgramParam(programVertex, paramVertexKa, "Ka");
+//    //GetProgramParam(programVertex, paramVertexKd, "Kd");
+//
+//    //cgSetParameter3fv(paramVertexGolbalAmbient, globalAmbient);
+//    //Log("set vertex program global ambient ");
+//    //cgSetParameter3fv(paramVertexLightColor, lightColor);
+//
+//    profileFragment = cgGLGetLatestProfile(CG_GL_FRAGMENT);
+//    cgGLSetOptimalOptions(profileFragment);
+//    Log("selecting fragment profile");
+//
+//    programFragment = cgCreateProgramFromFile(
+//        context,
+//        CG_SOURCE,
+//        fragProgramFileName,
+//        profileFragment,
+//        fragProgramEntry,
+//        NULL);
+//    Log("creating fragment program from string");
+//    cgGLLoadProgram(programFragment);
+//    Log("loading fragment program");
+//
+//    GetProgramParam(programFragment, paramFragmentGolbalAmbient, "globalAmbient");
+//    GetProgramParam(programFragment, paramFragmentLightColor, "lightColor");
+//    GetProgramParam(programFragment, paramFragmentLightPosition, "lightPosition");
+//    //GetProgramParam(programFragment, paramFragmentEyePosition, "eyePosition");
+//    GetProgramParam(programFragment, paramFragmentKe, "Ke");
+//    GetProgramParam(programFragment, paramFragmentKa, "Ka");
+//    GetProgramParam(programFragment, paramFragmentKd, "Kd");
+//    GetProgramParam(programFragment, paramFragmentKs, "Ks");
+//    GetProgramParam(programFragment, paramFragmentShininess, "shininess");
+//
+//    CgSetParam(paramFragmentGolbalAmbient, globalAmbient);
+//    Log("set vertex program global ambient ");
+//    cgSetParameter3fv(paramFragmentLightColor, lightColor);
+//    glutCreateMenu(menu);
+//    glutAddMenuEntry("[ ] Animate", ' ');
+//    glutAddMenuEntry("[ ] polygon", 'p');
+//    glutAddMenuEntry("[ ] line", 'l');
+//    glutAttachMenu(GLUT_RIGHT_BUTTON);
+//    glutMainLoop();
+//    return 0;
+//}
+//
 
 static void reshape(int width, int height)
 {

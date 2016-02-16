@@ -33,6 +33,11 @@ void CgShader::LoadProgram()
     CgLog::Log("loading program", _context);
 }
 
+void CgShader::UpdateParams()
+{
+    cgUpdateProgramParameters(_program);
+}
+
 void CgShader::UnloadProgram()
 {
     cgGLUnloadProgram(_program);
@@ -41,6 +46,13 @@ void CgShader::UnloadProgram()
 void CgShader::EnableProfile()
 {
     cgGLEnableProfile(_profile);
+    CgLog::Log("enabling profile", _context);
+}
+
+void CgShader::DisableProfile()
+{
+    cgGLDisableProfile(_profile);
+    CgLog::Log("disable profile", _context);
 }
 
 CgShader::CgShader(CGcontext context, CGprofile profile, const std::string& fileName, const std::string& entry)
