@@ -34,6 +34,7 @@ public:
     void LoadProgram();
     void UnloadProgram();
     void EnableProfile();
+    void DisableProfile();
 
     CgShader(CGcontext context, CGprofile profile, const std::string& fileName, const std::string& entry);
     virtual ~CgShader();

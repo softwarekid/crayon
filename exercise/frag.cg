@@ -1,6 +1,6 @@
 void main_f(
             float3 position : TEXCOORD0,
-            float3 halfDirecction : TEXCOORD1,
+            float3 halfDirection : TEXCOORD1,
             float3 normal : TEXCOORD2,
             
             out float4 oColor : COLOR,
@@ -27,7 +27,7 @@ void main_f(
     float diffuseCoef = max(dot(N, L), 0);
     float3 diffuse = Kd * lightColor * diffuseCoef;
 
-    float3 H = halfDirecction;
+    float3 H = halfDirection;
     //float3 V = normalize(eyePosition - P);
     //float3 H = normalize(L + V);
     float specularCoef = pow(max(dot(H, N), 0), shininess);

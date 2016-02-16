@@ -20,6 +20,9 @@ public:
     void SetKaCoef(const Vector3f& value) override;
     void SetKdCoef(const Vector3f& value) override;
     void SetKsCoef(const Vector3f& value) override;
+    void SetShinessCoef(const float value) override;
+    void SetLightPosition(const Vector3f& value) override;
+    void SetEyePostion(const Vector3f& value) override;
     void Init() override;
 
     explicit FragShaderParam(const CgShader shader);

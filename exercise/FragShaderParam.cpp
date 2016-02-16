@@ -20,6 +20,16 @@ void FragShaderParam::SetKsCoef(const Vector3f& value)
     _Set3fvParam(_ksParam, value);
 }
 
+void FragShaderParam::SetShinessCoef(const float value)
+{
+    _Set1fParam(_shininess, value);
+}
+
+void FragShaderParam::SetLightPosition(const Vector3f& value)
+{
+    _Set3fvParam(_lightPosition, value);
+}
+
 void FragShaderParam::Init()
 {
     _GetProgramParam(_keParam, "");

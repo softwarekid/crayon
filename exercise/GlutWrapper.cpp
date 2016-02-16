@@ -87,7 +87,7 @@ void GlutWrapper::SetMesh(Mesh mesh)
 
 
 GlutWrapper::GlutWrapper(const char* title, int width, int height)
-    :_width(width), _height(height) 
+    :_width(width), _height(height)
 {
     glutInitDisplayMode(GLUT_RGB| GLUT_DOUBLE | GLUT_DEPTH | GLUT_MULTISAMPLE);
     glutInitWindowSize(width, height);

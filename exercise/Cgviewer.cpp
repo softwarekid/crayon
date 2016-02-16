@@ -94,41 +94,32 @@ void CgViewer::_Reshape(int width, int height)
 
 void CgViewer::_Display()
 {
+    const Vector3f eyePosition(0, 0, 13);
+    const Vector3f eyeCenter(0,0,0);
+    const Vector3f eyeUp(0,1,0);
+    const Vector3f lightPosition(5 * sin(lightAngle), 1.5, 5 * cos(lightAngle));
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     _vertShader->BindProgram();
     _vertShader->EnableProfile();
     _fragShader->BindProgram();
     _fragShader->EnableProfile();
 
-    cgGLBindProgram(programVertex);
-    Log("binding vertex program");
-
-    cgGLEnableProfile(profileVertex);
-    Log("enabling vertex profile");
-
-    cgGLBindProgram(programFragment);
-    Log("binding fragment program");
-
-    cgGLEnableProfile(profileFragment);
-    Log("enabling fragment profile");
-
-    setBrassMaterial();
-    transform.SetTranslate(2, 0, 0);
-    transform.SetArbitraryRotation(20, 1, 1, 1);
+    SetMaterial();
+    _transform.SetTranslate(2, 0, 0);
+    _transform.SetArbitraryRotation(20, 1, 1, 1);
     Matrix4f modelMatrix;
-    transform.GetModelMatrix(modelMatrix);
+    _transform.GetModelMatrix(modelMatrix);
     Matrix4f invModelMatrix = modelMatrix.Invert();
     Vector4f objSpaceEyePosition = invModelMatrix.Mul(eyePosition);
     Vector4f objSpaceLightPosition = invModelMatrix.Mul(lightPosition);
+    objSpaceEyePosition.ReduceTo3DSpace();
+    objSpaceLightPosition.ReduceTo3DSpace();
+    _fragParams->SetLightPosition(Vector3f(objSpaceLightPosition[1], objSpaceLightPosition[2], objSpaceLightPosition[3]));
+    _vertParams->SetLightPosition(Vector3f(objSpaceLightPosition[1], objSpaceLightPosition[2], objSpaceLightPosition[3]));
+    _vertParams->SetEyePostion(Vector3f(objSpaceEyePosition[1], objSpaceEyePosition[2], objSpaceEyePosition[3]));
     Matrix4f modelViewProjMatix;
-    transform.GetMVPMatrix(modelViewProjMatix);
-    CgSetParam(paramVertexmodelViewProj, modelViewProjMatix);
-
-    //CgSetParam(paramFragmentEyePosition, objSpaceEyePosition);
-    CgSetParam(paramFragmentLightPosition, objSpaceLightPosition);
-
-    CgSetParam(paramVertexLightPosition, objSpaceLightPosition);
-    CgSetParam(paramVertexEyePosition, objSpaceEyePosition);
+    _transform.GetMVPMatrix(modelViewProjMatix);
+    _vertParams->SetMVPMatrix(modelViewProjMatix);
 
     cgUpdateProgramParameters(programVertex);
     cgUpdateProgramParameters(programFragment);
