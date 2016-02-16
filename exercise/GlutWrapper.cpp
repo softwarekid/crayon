@@ -5,7 +5,7 @@
 #include <iostream>
 #include "CgShader.h"
 
-std::map<int, GlutWrapper*> _windows;
+std::map<int, GlutWrapper*> GlutWrapper::_windows;
 
 void GlutWrapper::__Keyboard(unsigned char c, int x, int y)
 {

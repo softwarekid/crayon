@@ -131,6 +131,10 @@ void CgViewer::_Display()
     glutSwapBuffers();
 }
 
+void CgViewer::_Menu()
+{
+}
+
 void CgViewer::SetMaterial()
 {
     // brass 

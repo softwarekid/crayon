@@ -1,5 +1,8 @@
 #ifndef VectorGtest_h__
 #define  VectorGtest_h__
+#include "Vector4f.h"
+#include "GtestBase.h"
+
 class VectorGtest: public GtestBase
 {
 protected:

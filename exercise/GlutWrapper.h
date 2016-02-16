@@ -21,11 +21,11 @@ private:
     static std::map<int, GlutWrapper*> _windows;
 
 protected:
-    virtual void _Keyboard(int c, int x, int y);
-    virtual void _Idle(void);
-    virtual void _Reshape(int width, int height);
+    virtual void _Keyboard(int c, int x, int y) {};
+    virtual void _Idle(void) {};
+    virtual void _Reshape(int width, int height) {};
     virtual void _Display(void) = 0;
-    virtual void _Menu();
+    virtual void _Menu(){};
     virtual void _Exit();
     virtual void InitVertShader() = 0;
     virtual void InitFragShader() = 0;

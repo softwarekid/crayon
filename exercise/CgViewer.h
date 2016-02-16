@@ -19,7 +19,7 @@ private:
     void _Reshape(int width, int height) override;
     void _Display(void) override;
     void _Menu() override;
-    void _Init();
+    void _Init() {};
     void SetMaterial();
 
     CgShaderParametersBase* vertParam;

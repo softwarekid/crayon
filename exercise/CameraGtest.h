@@ -2,6 +2,7 @@
 #define CameraGtest_h__
 //#include "GtestBase.h"
 #include "Camera.h"
+#include "GtestBase.h"
 
 class CameraGtest: public GtestBase
 {

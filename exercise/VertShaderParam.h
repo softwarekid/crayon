@@ -8,10 +8,10 @@ class VertShaderParam:public CgShaderParametersBase
 {
 private:
     CGparameter MVP;
-    
 
 public:
 
+    void SetMVPMatrix(const Matrix4f& value) override;
     void Init() override;
 
     VertShaderParam(const CgShader& shader);

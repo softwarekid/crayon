@@ -1,6 +1,7 @@
 #ifndef TransformGtest_h__
 #define TransformGtest_h__
 #include "Transform.h"
+#include "GtestBase.h"
 
 class TransformGTest:public GtestBase
 {
@@ -41,7 +42,7 @@ TEST_F(TransformGTest, ProjMatrix)
 {
     t.GetProjMatrix(projTrans);
     result = projTrans.Mul(Vector4f(1,2,1,1));
-    result.reduceTo3DSpace();
+    result.ReduceTo3DSpace();
     IsVectorEQ(result, Vector4f(-1.73205078f,-3.46410155f,1.60078025f,1));
 }
 
@@ -57,7 +58,7 @@ TEST_F(TransformGTest, MVPMatrix)
 {
     t.GetMVPMatrix(MVPTrans);
     result = MVPTrans.Mul(Vector4f(1,2,1,1));
-    result.reduceTo3DSpace();
+    result.ReduceTo3DSpace();
     IsVectorEQ(result, Vector4f(-0.4286787f, 0.101040505f, 0.951085746f, 1));
 }
 #endif

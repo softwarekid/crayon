@@ -30,6 +30,7 @@ void FragShaderParam::SetLightPosition(const Vector3f& value)
     _Set3fvParam(_lightPosition, value);
 }
 
+
 void FragShaderParam::Init()
 {
     _GetProgramParam(_keParam, "");
