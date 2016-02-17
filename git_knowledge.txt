@@ -1,13 +1,13 @@
-ï»¿1. git merge --abort : Â³Â·ÃÃºmerge
-2. git fetch origin --pruneÂ£ÂºÂ½Â«Ã”Â¶Â³ÃŒÃƒÂ»Ã“ÃÂµÃ„Ã‰Â¾Â³Ã½
-3. git checkout [<commit>] [--] <path>: Ã•Ã¢Ã–Ã–Ã“ÃƒÂ·Â¨ÃŠÃ‡Â½Â«commitÃ–ÃÂµÃ„ÃÃ„Â¼Ã¾Ã‡Â£Â³Ã¶Ã€Â´Â¸Â²Â¸Ã‡ÂµÂ±Ã‡Â°ÃÃ„Â¼Ã¾Â£Â¬ÃˆÃ§Â¹Ã»commitÃŠÂ¡Ã‚Ã”Â¾ÃÃÃ ÂµÂ±Ã“ÃšÂ´Ã“stageÃ‡Ã¸Ã–ÃÃ‡Â£Â³Ã¶ÃÃ„Â¼Ã¾ [--]ÂµÃ„Ã—Ã·Ã“ÃƒÃŠÃ‡ÂµÂ±ÃÃ„Â¼Ã¾ÂºÃcommitÃ–Ã˜ÃƒÃ»ÂµÃ„ÃŠÂ±ÂºÃ²Â£Â¬Ã“ÃƒÃ€Â´Â±ÃªÃŠÂ¶ÃŠÃ‡ÃÃ„Â¼Ã¾
+1. git merge --abort : ³·Ïúmerge
+2. git fetch origin --prune£º½«Ô¶³ÌÃ»ÓĞµÄÉ¾³ı
+3. git checkout [<commit>] [--] <path>: ÕâÖÖÓÃ·¨ÊÇ½«commitÖĞµÄÎÄ¼şÇ£³öÀ´¸²¸Çµ±Ç°ÎÄ¼ş£¬Èç¹ûcommitÊ¡ÂÔ¾ÍÏàµ±ÓÚ´ÓstageÇøÖĞÇ£³öÎÄ¼ş [--]µÄ×÷ÓÃÊÇµ±ÎÄ¼şºÍcommitÖØÃûµÄÊ±ºò£¬ÓÃÀ´±êÊ¶ÊÇÎÄ¼ş
 
 
 
-stage ÃŠÃ‡Ã–Â¸git addÃ–Â´ÃÃÂºÃ³ÂµÃ„Ã—Â´ÃŒÂ¬
-origin ÃŠÃ‡Ã–Â¸Ã”Â¶Â¶Ã‹
-HEADÂ¿Ã‰Ã’Ã”Ã€Ã­Â½Ã¢ÃÂªÂµÂ±Ã‡Â°branchÃƒÃ»Ã—Ã–ÂµÃ„symbolic name
-helpÃ–Ãstart pointÃ–Â¸ÂµÃ„Â¾ÃÃŠÃ‡commit
+stage ÊÇÖ¸git addÖ´ĞĞºóµÄ×´Ì¬
+origin ÊÇÖ¸Ô¶¶Ë
+HEAD¿ÉÒÔÀí½âÎªµ±Ç°branchÃû×ÖµÄsymbolic name
+helpÖĞstart pointÖ¸µÄ¾ÍÊÇcommit
 rm -rf  lua/FF/GeneratedCode/Enum/CmdID.lua.orig
 git cherry-pick e02b9f423987a0acb740e7af7f70b0656e4a64c3
 gitk --all&
