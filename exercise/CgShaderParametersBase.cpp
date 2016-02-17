@@ -4,7 +4,7 @@
 void CgShaderParametersBase::_GetProgramParam(CGparameter& param, const char* name)
 {
     param = cgGetNamedParameter(_program, name);
-    string error("could not get param");
+    string error("could not get param ");
     error += name;
     CgLog::Log(error, _context);
 }

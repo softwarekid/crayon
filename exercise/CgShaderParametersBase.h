@@ -5,9 +5,10 @@
 
 class CgShaderParametersBase
 {
-protected:
+private:
     CGcontext _context;
     CGprogram _program;
+protected:
 
     void _GetProgramParam(CGparameter& param, const char * name);
     void _Set3fvParam(const CGparameter param, const Vector3f& value);

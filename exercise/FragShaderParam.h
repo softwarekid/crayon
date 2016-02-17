@@ -6,10 +6,10 @@
 class FragShaderParam : public CgShaderParametersBase
 {
 private:
-    CGparameter _keParam;
-    CGparameter _kaParam;
-    CGparameter _kdParam;
-    CGparameter _ksParam;
+    CGparameter _ke;
+    CGparameter _ka;
+    CGparameter _kd;
+    CGparameter _ks;
     CGparameter _globleAmbient;
     CGparameter _lightColor;
     CGparameter _lightPosition;
@@ -25,6 +25,6 @@ public:
     //void SetEyePostion(const Vector3f& value) override;
     void Init() override;
 
-    explicit FragShaderParam(const CgShader shader);
+    explicit FragShaderParam(const CgShader& shader);
 };
 #endif

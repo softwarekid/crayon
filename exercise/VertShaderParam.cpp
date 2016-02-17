@@ -7,10 +7,11 @@ void VertShaderParam::SetMVPMatrix(const Matrix4f& value)
 
 void VertShaderParam::Init()
 {
+    _GetProgramParam(MVP, "modelViewProj");
+    _GetProgramParam(lightPosition, "lightPosition");
+    _GetProgramParam(eyePosition, "eyePosition");
 }
 
-VertShaderParam::VertShaderParam(const CgShader& shader)
+VertShaderParam::VertShaderParam(const CgShader& shader) : CgShaderParametersBase(shader.GetContext(), shader.GetProgram())
 {
-    _context = shader.GetContext();
-    _program = shader.GetProgram();
 }

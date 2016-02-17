@@ -59,10 +59,10 @@ CgShader::CgShader(CGcontext context, CGprofile profile, const std::string& file
 {
     this->_context = context;
     this->_profile = profile;
-    _program = cgCreateProgram(context, CG_SOURCE, fileName.c_str(), profile, entry.c_str(), nullptr);
-    CgLog::Log("Creating vertex program", context);
+    _program = cgCreateProgramFromFile(context, CG_SOURCE, fileName.c_str(), profile, entry.c_str(), nullptr);
+    CgLog::Log("Creating shader program", context);
     cgGLLoadProgram(_program);
-    CgLog::Log("Loading vertex program", context);
+    CgLog::Log("Loading shader program", context);
 }
 
 CgShader::~CgShader()

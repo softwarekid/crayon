@@ -12,8 +12,8 @@ using namespace std;
 void CgViewer::InitVertShader()
 {
     auto profileVertex = cgGLGetLatestProfile(CG_GL_VERTEX);
-    string fileName("");
-    string entry("");
+    string fileName("vert.cg");
+    string entry("main_v");
     _vertShader = new CgShader(_context, profileVertex, fileName, entry);
     _vertParams = new VertShaderParam(*_vertShader);
     _vertParams->Init();
@@ -23,8 +23,8 @@ void CgViewer::InitVertShader()
 void CgViewer::InitFragShader()
 {
     auto profileFrag = cgGLGetLatestProfile(CG_GL_FRAGMENT);
-    string fileName("");
-    string entry("");
+    string fileName("frag.cg");
+    string entry("main_f");
     _fragShader = new CgShader(_context, profileFrag, fileName, entry);
     _fragParams = new FragShaderParam(*_fragShader);
     _fragParams->Init();
