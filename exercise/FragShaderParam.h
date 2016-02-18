@@ -22,9 +22,11 @@ public:
     void SetKsCoef(const Vector3f& value) override;
     void SetShinessCoef(const float value) override;
     void SetLightPosition(const Vector3f& value) override;
+    void SetLightColor(const Vector3f& value) override;
     //void SetEyePostion(const Vector3f& value) override;
     void Init() override;
 
+    FragShaderParam(const CGcontext context, const CGprogram program);
     explicit FragShaderParam(const CgShader& shader);
 };
 #endif

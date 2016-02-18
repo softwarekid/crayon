@@ -38,6 +38,8 @@ void CgViewer::StartRendering()
     // this "indirect layer" to do the start.
     InitVertShader();
     InitFragShader();
+    SetMaterial();
+    SetLightColor();
     glutMainLoop();
 }
 
@@ -104,7 +106,8 @@ void CgViewer::_Display()
     _fragShader->BindProgram();
     _fragShader->EnableProfile();
 
-    SetMaterial();
+    Camera camera(eyePosition, eyeCenter, eyeUp);
+    _transform.SetCamera(camera);
     _transform.SetTranslate(2, 0, 0);
     _transform.SetArbitraryRotation(20, 1, 1, 1);
     Matrix4f modelMatrix;
@@ -143,4 +146,9 @@ void CgViewer::SetMaterial()
     _fragParams->SetKdCoef(Vector3f(0.78, 0.57, 0.11));
     _fragParams->SetKsCoef(Vector3f(0.99, 0.91, 0.81));
     _fragParams->SetShinessCoef(27.8);
+}
+
+void CgViewer::SetLightColor()
+{
+    _fragParams->SetLightColor(Vector3f(0.95f, 0.95f, 0.95f));
 }

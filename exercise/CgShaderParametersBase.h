@@ -23,6 +23,7 @@ public:
     virtual void SetKsCoef(const Vector3f& value) {};
     virtual void SetShinessCoef(const float value) {};
     virtual void SetLightPosition(const Vector3f& value) {};
+    virtual void SetLightColor(const Vector3f& value) {};
     virtual void SetEyePostion(const Vector3f& value) {};
 
     virtual void Init() = 0;

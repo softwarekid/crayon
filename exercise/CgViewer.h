@@ -21,6 +21,7 @@ private:
     void _Menu() override;
     void _Init() {};
     void SetMaterial();
+    void SetLightColor();
 
     CgShaderParametersBase* vertParam;
     CgShaderParametersBase* fragParam;

@@ -30,6 +30,10 @@ void FragShaderParam::SetLightPosition(const Vector3f& value)
     _Set3fvParam(_lightPosition, value);
 }
 
+void FragShaderParam::SetLightColor(const Vector3f& value)
+{
+    _Set3fvParam(_lightColor, value);
+}
 
 void FragShaderParam::Init()
 {
@@ -41,6 +45,11 @@ void FragShaderParam::Init()
     _GetProgramParam(_kd, "Kd");
     _GetProgramParam(_ks, "Ks");
     _GetProgramParam(_shininess, "shininess");
+}
+
+FragShaderParam::FragShaderParam(const CGcontext context, const CGprogram program) : CgShaderParametersBase(context,program)
+{
+
 }
 
 FragShaderParam::FragShaderParam(const CgShader& shader) : CgShaderParametersBase(shader.GetContext(), shader.GetProgram())
