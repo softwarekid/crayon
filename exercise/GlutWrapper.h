@@ -21,19 +21,22 @@ private:
     static std::map<int, GlutWrapper*> _windows;
 
 protected:
-    virtual void _Keyboard(int c, int x, int y) {};
+    virtual void _Keyboard(int c, int x, int y);
     virtual void _Idle(void) {};
     virtual void _Reshape(int width, int height) {};
     virtual void _Display(void) = 0;
     virtual void _Menu(){};
     virtual void _Exit();
-    virtual void InitVertShader() = 0;
-    virtual void InitFragShader() = 0;
+    virtual void _InitVertShader() = 0;
+    virtual void _InitFragShader() = 0;
 
     Transform _transform;
     Mesh _mesh;
+    CGcontext _context;
     CgShader* _vertShader;
     CgShader* _fragShader;
+    CgShaderParametersBase* _vertParams;
+    CgShaderParametersBase* _fragParams;
 private:
     void _RequestSynchronizedSwapBuffers();
 
@@ -41,7 +44,6 @@ private:
     int _width;
     int _height;
 
-    CGcontext _context;
 public:
     void SetTranslate(float x, float y, float z);
     void SetRotation(float angle, float axis_x, float axis_y, float axis_z);

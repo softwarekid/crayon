@@ -1,10 +1,10 @@
-#ifndef vert_param__
-#define vert_param__
+#ifndef half_vector_vs_params__
+#define half_vector_vs_params__
 #include "CgShaderParametersBase.h"
 #include "CgShader.h"
 
 
-class VertShaderParam:public CgShaderParametersBase
+class HalfVectorVsParam:public CgShaderParametersBase
 {
 private:
     CGparameter MVP;
@@ -16,6 +16,6 @@ public:
     void SetMVPMatrix(const Matrix4f& value) override;
     void Init() override;
 
-    explicit VertShaderParam(const CgShader& shader);
+    explicit HalfVectorVsParam(const CgShader& shader);
 };
 #endif

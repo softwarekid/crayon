@@ -49,6 +49,26 @@ GlutWrapper* GlutWrapper::__CurrentWindow()
     return _windows[glutGetWindow()];
 }
 
+void GlutWrapper::_Keyboard(int c, int x, int y)
+{
+    switch (c)
+    {
+    case 'p':
+        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+        glutPostRedisplay();
+        break;
+    case 'l':
+        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+        glutPostRedisplay();
+        break;
+    case 27:  /* Esc key */
+        /* Demonstrate proper deallocation of Cg runtime data structures.
+        Not strictly necessary if we are simply going to exit. */
+        _Exit();
+        break;
+    }
+}
+
 void GlutWrapper::_Exit()
 {
     cgDestroyContext(_context);

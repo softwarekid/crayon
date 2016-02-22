@@ -3,7 +3,7 @@
 #include "CgShaderParametersBase.h"
 #include "CgShader.h"
 
-class FragShaderParam : public CgShaderParametersBase
+class HalfVectorFsParam : public CgShaderParametersBase
 {
 private:
     CGparameter _ke;
@@ -26,7 +26,7 @@ public:
     //void SetEyePostion(const Vector3f& value) override;
     void Init() override;
 
-    FragShaderParam(const CGcontext context, const CGprogram program);
-    explicit FragShaderParam(const CgShader& shader);
+    HalfVectorFsParam(const CGcontext context, const CGprogram program);
+    explicit HalfVectorFsParam(const CgShader& shader);
 };
 #endif

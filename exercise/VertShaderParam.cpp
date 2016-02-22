@@ -1,17 +1,17 @@
-#include "VertShaderParam.h"
+#include "HalfVectorVsParam.h"
 
-void VertShaderParam::SetMVPMatrix(const Matrix4f& value)
+void HalfVectorVsParam::SetMVPMatrix(const Matrix4f& value)
 {
     _setMatrix4fParam(MVP, value);
 }
 
-void VertShaderParam::Init()
+void HalfVectorVsParam::Init()
 {
     _GetProgramParam(MVP, "modelViewProj");
     _GetProgramParam(lightPosition, "lightPosition");
     _GetProgramParam(eyePosition, "eyePosition");
 }
 
-VertShaderParam::VertShaderParam(const CgShader& shader) : CgShaderParametersBase(shader.GetContext(), shader.GetProgram())
+HalfVectorVsParam::HalfVectorVsParam(const CgShader& shader) : CgShaderParametersBase(shader.GetContext(), shader.GetProgram())
 {
 }

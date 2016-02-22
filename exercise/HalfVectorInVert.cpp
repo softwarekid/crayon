@@ -1,49 +1,48 @@
-#include "CgViewer.h"
+#include "HalfVectorInVert.h"
 #include <GL/glew.h>
 #include <GL/glut.h>
 #include "Constants.h"
 #include <CG/cgGL.h>
 #include "CgLog.h"
-#include "VertShaderParam.h"
-#include "FragShaderParam.h"
+#include "HalfVectorVsParam.h"
+#include "HalfVectorFsParam.h"
 using namespace std;
 
 
-void CgViewer::InitVertShader()
+void HalfVectorInVert::_InitVertShader()
 {
     auto profileVertex = cgGLGetLatestProfile(CG_GL_VERTEX);
     string fileName("vert.cg");
     string entry("main_v");
     _vertShader = new CgShader(_context, profileVertex, fileName, entry);
-    _vertParams = new VertShaderParam(*_vertShader);
+    _vertParams = new HalfVectorVsParam(*_vertShader);
     _vertParams->Init();
     cgGLSetOptimalOptions(profileVertex);
 }
 
-void CgViewer::InitFragShader()
+void HalfVectorInVert::_InitFragShader()
 {
     auto profileFrag = cgGLGetLatestProfile(CG_GL_FRAGMENT);
     string fileName("frag.cg");
     string entry("main_f");
     _fragShader = new CgShader(_context, profileFrag, fileName, entry);
-    _fragParams = new FragShaderParam(*_fragShader);
+    _fragParams = new HalfVectorFsParam(*_fragShader);
     _fragParams->Init();
     cgGLSetOptimalOptions(profileFrag);
 }
 
-void CgViewer::StartRendering()
+void HalfVectorInVert::StartRendering()
 {
     // At the beginning I plan to initialize the two shaders in the ctor, but as 
     // virtual functions they are not allowed to appear in the ctor, so I add 
     // this "indirect layer" to do the start.
-    InitVertShader();
-    InitFragShader();
-    SetMaterial();
-    SetLightColor();
+    _InitVertShader();
+    _InitFragShader();
+    _InitShaderParams();
     glutMainLoop();
 }
 
-CgViewer::CgViewer(const char* title, int width, int height, float lightAngle):
+HalfVectorInVert::HalfVectorInVert(const char* title, int width, int height, float lightAngle):
          GlutWrapper(title, width, height)
 {
     _lightAngle = lightAngle;
@@ -56,27 +55,7 @@ CgViewer::CgViewer(const char* title, int width, int height, float lightAngle):
     CgLog::Log("selecting vertex profile", _context);
 }
 
-void CgViewer::_Keyboard(int c, int x, int y)
-{
-    switch (c)
-    {
-    case 'p':
-        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-        glutPostRedisplay();
-        break;
-    case 'l':
-        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-        glutPostRedisplay();
-        break;
-    case 27:  /* Esc key */
-        /* Demonstrate proper deallocation of Cg runtime data structures.
-        Not strictly necessary if we are simply going to exit. */
-        _Exit();
-        break;
-    }
-}
-
-void CgViewer::_Idle()
+void HalfVectorInVert::_Idle()
 {
     _lightAngle += 0.008;
     if(_lightAngle > 2 * Constants::Math::PI)
@@ -86,7 +65,7 @@ void CgViewer::_Idle()
     glutPostRedisplay();
 }
 
-void CgViewer::_Reshape(int width, int height)
+void HalfVectorInVert::_Reshape(int width, int height)
 {
     float aspectRatio = (float)width / (float) height;
     float fov = 40.0f;
@@ -94,18 +73,17 @@ void CgViewer::_Reshape(int width, int height)
     glViewport(0, 0, width, height);
 }
 
-void CgViewer::_Display()
+void HalfVectorInVert::_Display()
 {
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     const Vector3f eyePosition(0, 0, 13);
     const Vector3f eyeCenter(0,0,0);
     const Vector3f eyeUp(0,1,0);
     const Vector3f lightPosition(5 * sin(_lightAngle), 1.5, 5 * cos(_lightAngle));
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     _vertShader->BindProgram();
     _vertShader->EnableProfile();
     _fragShader->BindProgram();
     _fragShader->EnableProfile();
-
     Camera camera(eyePosition, eyeCenter, eyeUp);
     _transform.SetCamera(camera);
     _transform.SetTranslate(2, 0, 0);
@@ -132,21 +110,16 @@ void CgViewer::_Display()
     glutSwapBuffers();
 }
 
-void CgViewer::_Menu()
+void HalfVectorInVert::_InitShaderParams()
 {
-}
-
-void CgViewer::SetMaterial()
-{
-    // brass 
+    // brass material
     _fragParams->SetKaCoef(Vector3f(0.33, 0.22, 0.03));
     _fragParams->SetKeCoef(Vector3f(0, 0, 0));
     _fragParams->SetKdCoef(Vector3f(0.78, 0.57, 0.11));
     _fragParams->SetKsCoef(Vector3f(0.99, 0.91, 0.81));
     _fragParams->SetShinessCoef(27.8);
-}
 
-void CgViewer::SetLightColor()
-{
+
+    // light color
     _fragParams->SetLightColor(Vector3f(0.95f, 0.95f, 0.95f));
 }

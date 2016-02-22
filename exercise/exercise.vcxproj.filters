@@ -24,6 +24,15 @@
     <Filter Include="Source Files\CgProgram">
       <UniqueIdentifier>{11bb0aea-134c-4394-bc37-0288397f9f30}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\example">
+      <UniqueIdentifier>{956bb4c9-7dad-489f-bfba-993317ae6ac6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\example">
+      <UniqueIdentifier>{e42c59b0-da71-4b1f-be6b-d227681c6fc2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\example\HalfVectorInVert">
+      <UniqueIdentifier>{538fbe49-a138-4837-95e1-d658e7cab857}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Vector4f.cpp">
@@ -53,9 +62,6 @@
     <ClCompile Include="GlutWrapper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Cgviewer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="CgLog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -76,6 +82,12 @@
     </ClCompile>
     <ClCompile Include="Mesh.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HalfVectorInVert.cpp">
+      <Filter>Source Files\example</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureSampling.cpp">
+      <Filter>Source Files\example</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -99,9 +111,6 @@
     </ClInclude>
     <ClInclude Include="CgLog.h">
       <Filter>Header Files\cgProgram</Filter>
-    </ClInclude>
-    <ClInclude Include="CgViewer.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Vector4f.h">
       <Filter>Header Files\transform</Filter>
@@ -133,14 +142,20 @@
     <ClInclude Include="CgShaderParametersBase.h">
       <Filter>Header Files\cgProgram</Filter>
     </ClInclude>
-    <ClInclude Include="VertShaderParam.h">
-      <Filter>Header Files\cgProgram</Filter>
-    </ClInclude>
     <ClInclude Include="CgShader.h">
       <Filter>Header Files\cgProgram</Filter>
     </ClInclude>
-    <ClInclude Include="FragShaderParam.h">
-      <Filter>Header Files\cgProgram</Filter>
+    <ClInclude Include="TextureSampling.h">
+      <Filter>Header Files\example</Filter>
+    </ClInclude>
+    <ClInclude Include="HalfVectorFsParam.h">
+      <Filter>Header Files\example\HalfVectorInVert</Filter>
+    </ClInclude>
+    <ClInclude Include="HalfVectorInVert.h">
+      <Filter>Header Files\example\HalfVectorInVert</Filter>
+    </ClInclude>
+    <ClInclude Include="HalfVectorVsParam.h">
+      <Filter>Header Files\example\HalfVectorInVert</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

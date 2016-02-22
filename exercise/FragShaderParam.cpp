@@ -1,41 +1,41 @@
-#include "FragShaderParam.h"
+#include "HalfVectorFsParam.h"
 
-void FragShaderParam::SetKeCoef(const Vector3f& value)
+void HalfVectorFsParam::SetKeCoef(const Vector3f& value)
 {
     _Set3fvParam(_ke, value);
 }
 
-void FragShaderParam::SetKaCoef(const Vector3f& value)
+void HalfVectorFsParam::SetKaCoef(const Vector3f& value)
 {
     _Set3fvParam(_ka, value);
 }
 
-void FragShaderParam::SetKdCoef(const Vector3f& value)
+void HalfVectorFsParam::SetKdCoef(const Vector3f& value)
 {
     _Set3fvParam(_kd, value);
 }
 
-void FragShaderParam::SetKsCoef(const Vector3f& value)
+void HalfVectorFsParam::SetKsCoef(const Vector3f& value)
 {
     _Set3fvParam(_ks, value);
 }
 
-void FragShaderParam::SetShinessCoef(const float value)
+void HalfVectorFsParam::SetShinessCoef(const float value)
 {
     _Set1fParam(_shininess, value);
 }
 
-void FragShaderParam::SetLightPosition(const Vector3f& value)
+void HalfVectorFsParam::SetLightPosition(const Vector3f& value)
 {
     _Set3fvParam(_lightPosition, value);
 }
 
-void FragShaderParam::SetLightColor(const Vector3f& value)
+void HalfVectorFsParam::SetLightColor(const Vector3f& value)
 {
     _Set3fvParam(_lightColor, value);
 }
 
-void FragShaderParam::Init()
+void HalfVectorFsParam::Init()
 {
     _GetProgramParam(_globleAmbient, "globalAmbient");
     _GetProgramParam(_lightColor, "lightColor");
@@ -47,11 +47,11 @@ void FragShaderParam::Init()
     _GetProgramParam(_shininess, "shininess");
 }
 
-FragShaderParam::FragShaderParam(const CGcontext context, const CGprogram program) : CgShaderParametersBase(context,program)
+HalfVectorFsParam::HalfVectorFsParam(const CGcontext context, const CGprogram program) : CgShaderParametersBase(context,program)
 {
 
 }
 
-FragShaderParam::FragShaderParam(const CgShader& shader) : CgShaderParametersBase(shader.GetContext(), shader.GetProgram())
+HalfVectorFsParam::HalfVectorFsParam(const CgShader& shader) : CgShaderParametersBase(shader.GetContext(), shader.GetProgram())
 {
 }
