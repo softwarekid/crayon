@@ -126,10 +126,8 @@ void CgViewer::_Display()
 
     _vertShader->UpdateParams();
     _fragShader->UpdateParams();
-    glutSolidSphere(2.0, 10, 10);
+    _mesh.Render();
 
-
-    _vertShader->DisableProfile();
     _fragShader->DisableProfile();
     glutSwapBuffers();
 }

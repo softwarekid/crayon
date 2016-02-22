@@ -31,6 +31,7 @@ protected:
     virtual void InitFragShader() = 0;
 
     Transform _transform;
+    Mesh _mesh;
     CgShader* _vertShader;
     CgShader* _fragShader;
 private:
@@ -41,7 +42,6 @@ private:
     int _height;
 
     CGcontext _context;
-    Mesh _mesh;
 public:
     void SetTranslate(float x, float y, float z);
     void SetRotation(float angle, float axis_x, float axis_y, float axis_z);

@@ -10,6 +10,7 @@ public:
     }
 
     inline int GetVertexCount(){return vertexCount;}
-
+    virtual void Render();
 };
+
 #endif

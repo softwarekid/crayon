@@ -74,6 +74,9 @@
     <ClCompile Include="CgShaderParametersBase.cpp">
       <Filter>Source Files\CgProgram</Filter>
     </ClCompile>
+    <ClCompile Include="Mesh.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Constants.h">
