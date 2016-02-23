@@ -101,6 +101,12 @@
     <ClCompile Include="src\renderFramework.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\example\TextureSampling\TextureSamplingFsParam.cpp">
+      <Filter>Source Files\example\TextureSampling</Filter>
+    </ClCompile>
+    <ClCompile Include="src\example\TextureSampling\TextureSamplingVsParam.cpp">
+      <Filter>Source Files\example\TextureSampling</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\cgWrapper\CgLog.h">
@@ -166,6 +172,15 @@
     <ClInclude Include="src\unitTest\MatrixGtest.h">
       <Filter>Header Files\UnitTest</Filter>
     </ClInclude>
+    <ClInclude Include="src\example\TextureSampling\TextureSamplingVsParam.h">
+      <Filter>Header Files\example\TextureSampling</Filter>
+    </ClInclude>
+    <ClInclude Include="src\example\TextureSampling\TextureSamplingFsParam.h">
+      <Filter>Header Files\example\TextureSampling</Filter>
+    </ClInclude>
+    <ClInclude Include="src\demon_image.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\example\HalfVectorInVert\HalfVectorInVert_F.cg">
@@ -173,6 +188,12 @@
     </None>
     <None Include="src\example\HalfVectorInVert\HalfVectorInVert_V.cg">
       <Filter>Source Files\example\HalfVectorInVert</Filter>
+    </None>
+    <None Include="src\example\TextureSampling\TextureSampling_F.cg">
+      <Filter>Source Files\example\TextureSampling</Filter>
+    </None>
+    <None Include="src\example\TextureSampling\TextureSampling_V.cg">
+      <Filter>Source Files\example\TextureSampling</Filter>
     </None>
   </ItemGroup>
 </Project>

@@ -105,6 +105,13 @@ void GlutWrapper::SetMesh(Mesh mesh)
     _mesh = mesh;
 }
 
+void GlutWrapper::StartRendering()
+{
+    _InitVertShader();
+    _InitFragShader();
+    _InitShaderParams();
+    glutMainLoop();
+}
 
 GlutWrapper::GlutWrapper(const char* title, int width, int height)
     :_width(width), _height(height)
@@ -125,6 +132,7 @@ GlutWrapper::GlutWrapper(const char* title, int width, int height)
     }
 
     _RequestSynchronizedSwapBuffers();
+    glClearColor(0.1, 0.3, 0.6, 0.0);  /* Blue background */
 }
 
 GlutWrapper::~GlutWrapper()

@@ -97,6 +97,8 @@
     <ClCompile Include="src\example\HalfVectorInVert\HalfVectorInVert.cpp" />
     <ClCompile Include="src\example\HalfVectorInVert\HalfVectorVsParam.cpp" />
     <ClCompile Include="src\example\TextureSampling\TextureSampling.cpp" />
+    <ClCompile Include="src\example\TextureSampling\TextureSamplingFsParam.cpp" />
+    <ClCompile Include="src\example\TextureSampling\TextureSamplingVsParam.cpp" />
     <ClCompile Include="src\GlutWrapper.cpp" />
     <ClCompile Include="src\renderFramework.cpp" />
     <ClCompile Include="src\unitTest\unitTest.cpp" />
@@ -113,10 +115,13 @@
     <ClInclude Include="src\coreUtil\Transform.h" />
     <ClInclude Include="src\coreUtil\Vector3f.h" />
     <ClInclude Include="src\coreUtil\Vector4f.h" />
+    <ClInclude Include="src\demon_image.h" />
     <ClInclude Include="src\example\HalfVectorInVert\HalfVectorFsParam.h" />
     <ClInclude Include="src\example\HalfVectorInVert\HalfVectorInVert.h" />
     <ClInclude Include="src\example\HalfVectorInVert\HalfVectorVsParam.h" />
     <ClInclude Include="src\example\TextureSampling\TextureSampling.h" />
+    <ClInclude Include="src\example\TextureSampling\TextureSamplingFsParam.h" />
+    <ClInclude Include="src\example\TextureSampling\TextureSamplingVsParam.h" />
     <ClInclude Include="src\GlutWrapper.h" />
     <ClInclude Include="src\unitTest\CameraGtest.h" />
     <ClInclude Include="src\unitTest\GtestBase.h" />
@@ -127,6 +132,8 @@
   <ItemGroup>
     <None Include="src\example\HalfVectorInVert\HalfVectorInVert_F.cg" />
     <None Include="src\example\HalfVectorInVert\HalfVectorInVert_V.cg" />
+    <None Include="src\example\TextureSampling\TextureSampling_F.cg" />
+    <None Include="src\example\TextureSampling\TextureSampling_V.cg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

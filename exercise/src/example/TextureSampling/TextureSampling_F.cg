@@ -1,0 +1,12 @@
+struct Output
+{
+    float4 color : COLOR;
+};
+
+Output main_f(float2 texCoord :TEXCOORD0,
+        uniform sampler2D decal : TEX0)
+{
+    Output OUT;
+    OUT.color = tex2D(decal, texCoord);
+    return OUT;
+}

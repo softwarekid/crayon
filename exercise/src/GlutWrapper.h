@@ -30,6 +30,7 @@ protected:
     virtual void _Exit();
     virtual void _InitVertShader() = 0;
     virtual void _InitFragShader() = 0;
+    virtual void _InitShaderParams() = 0;
 
     Transform _transform;
     Mesh _mesh;
@@ -50,6 +51,7 @@ public:
     void SetRotation(float angle, float axis_x, float axis_y, float axis_z);
     void SetCamera(Camera camera);
     void SetMesh(Mesh mesh);
+    virtual void StartRendering();
     GlutWrapper(const char* title, int width, int height);
     GlutWrapper() = delete;
     virtual ~GlutWrapper();

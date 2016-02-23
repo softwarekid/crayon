@@ -35,7 +35,7 @@ void HalfVectorFsParam::SetLightColor(const Vector3f& value)
     _Set3fvParam(_lightColor, value);
 }
 
-void HalfVectorFsParam::Init()
+void HalfVectorFsParam::ExtractParams()
 {
     _GetProgramParam(_globleAmbient, "globalAmbient");
     _GetProgramParam(_lightColor, "lightColor");
@@ -52,6 +52,7 @@ HalfVectorFsParam::HalfVectorFsParam(const CGcontext context, const CGprogram pr
 
 }
 
-HalfVectorFsParam::HalfVectorFsParam(const CgShader& shader) : CgShaderParametersBase(shader.GetContext(), shader.GetProgram())
+//HalfVectorFsParam::HalfVectorFsParam(const CgShader& shader) : CgShaderParametersBase(shader.GetContext(), shader.GetProgram())
+HalfVectorFsParam::HalfVectorFsParam(const CgShader& shader) : CgShaderParametersBase(shader)
 {
 }

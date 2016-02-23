@@ -14,7 +14,7 @@ private:
 public:
 
     void SetMVPMatrix(const Matrix4f& value) override;
-    void Init() override;
+    void ExtractParams() override;
 
     explicit HalfVectorVsParam(const CgShader& shader);
 };

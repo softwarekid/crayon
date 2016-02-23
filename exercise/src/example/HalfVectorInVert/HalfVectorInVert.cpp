@@ -16,7 +16,7 @@ void HalfVectorInVert::_InitVertShader()
     string entry("main_v");
     _vertShader = new CgShader(_context, profileVertex, fileName, entry);
     _vertParams = new HalfVectorVsParam(*_vertShader);
-    _vertParams->Init();
+    _vertParams->ExtractParams();
     cgGLSetOptimalOptions(profileVertex);
 }
 
@@ -27,26 +27,25 @@ void HalfVectorInVert::_InitFragShader()
     string entry("main_f");
     _fragShader = new CgShader(_context, profileFrag, fileName, entry);
     _fragParams = new HalfVectorFsParam(*_fragShader);
-    _fragParams->Init();
+    _fragParams->ExtractParams();
     cgGLSetOptimalOptions(profileFrag);
 }
 
-void HalfVectorInVert::StartRendering()
-{
-    // At the beginning I plan to initialize the two shaders in the ctor, but as 
-    // virtual functions they are not allowed to appear in the ctor, so I add 
-    // this "indirect layer" to do the start.
-    _InitVertShader();
-    _InitFragShader();
-    _InitShaderParams();
-    glutMainLoop();
-}
+//void HalfVectorInVert::StartRendering()
+//{
+//    // At the beginning I plan to initialize the two shaders in the ctor, but as 
+//    // virtual functions they are not allowed to appear in the ctor, so I add 
+//    // this "indirect layer" to do the start.
+//    _InitVertShader();
+//    _InitFragShader();
+//    _InitShaderParams();
+//    glutMainLoop();
+//}
 
 HalfVectorInVert::HalfVectorInVert(const char* title, int width, int height, float lightAngle):
          GlutWrapper(title, width, height)
 {
     _lightAngle = lightAngle;
-    glClearColor(0.1, 0.3, 0.6, 0.0);  /* Blue background */
     glEnable(GL_DEPTH_TEST);
     _context = cgCreateContext();
     CgLog::Log("create content", _context);

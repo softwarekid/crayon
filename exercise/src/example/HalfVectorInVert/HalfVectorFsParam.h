@@ -24,7 +24,7 @@ public:
     void SetLightPosition(const Vector3f& value) override;
     void SetLightColor(const Vector3f& value) override;
     //void SetEyePostion(const Vector3f& value) override;
-    void Init() override;
+    void ExtractParams() override;
 
     HalfVectorFsParam(const CGcontext context, const CGprogram program);
     explicit HalfVectorFsParam(const CgShader& shader);

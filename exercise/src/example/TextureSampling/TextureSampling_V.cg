@@ -1,0 +1,17 @@
+struct Output
+{
+    float4 postion : POSITION
+    float3 color : COLOR
+    float2 texCoord : TEXCOORD0
+};
+
+Output main_v(float2 position : POSITION,
+       float3 color : COLOR,
+       float2 texCoord :TEXCOORD0)
+{
+   Output OUT;
+   OUT.position = float4(position, 0 ,1);
+   OUT.color = color;
+   OUT.texCoord = texCoord;
+   return OUT;
+}

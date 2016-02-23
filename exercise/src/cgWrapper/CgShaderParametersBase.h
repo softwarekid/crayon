@@ -2,6 +2,8 @@
 #define cgparamters_base__
 #include <Cg/cg.h>
 #include <Matrix.h>
+#include <GL/glew.h>
+#include "CgShader.h"
 
 class CgShaderParametersBase
 {
@@ -13,6 +15,7 @@ protected:
     void _GetProgramParam(CGparameter& param, const char * name);
     void _Set3fvParam(const CGparameter param, const Vector3f& value);
     void _Set1fParam(const CGparameter param, const float value);
+    void _SetTextureParam(const CGparameter paaram, const GLuint name);
     void _setMatrix4fParam(const CGparameter param, const Matrix4f & value);
 public:
     // all the functions should have implementaion, except for pure virtual function
@@ -25,11 +28,12 @@ public:
     virtual void SetLightPosition(const Vector3f& value) {};
     virtual void SetLightColor(const Vector3f& value) {};
     virtual void SetEyePostion(const Vector3f& value) {};
-
-    virtual void Init() = 0;
+    virtual void SetTexture(GLuint name){};
+    virtual void ExtractParams() {};
     virtual ~CgShaderParametersBase(){};
 
 public:
+    explicit CgShaderParametersBase(const CgShader& shader);
     CgShaderParametersBase(CGcontext context, CGprogram program);
     CgShaderParametersBase(){};
 };
