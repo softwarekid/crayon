@@ -1,7 +1,7 @@
 #ifndef frag_shader_param__
 #define frag_shader_param__
-#include "CgShaderParametersBase.h"
-#include "CgShader.h"
+#include <CgShaderParametersBase.h>
+#include <CgShader.h>
 
 class HalfVectorFsParam : public CgShaderParametersBase
 {

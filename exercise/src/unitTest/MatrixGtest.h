@@ -1,6 +1,7 @@
 #ifndef MatrixGest_h__
 #define MatrixGest_h__
 #include "GtestBase.h"
+
 class MatrixGtest : public GtestBase
 {
 protected:

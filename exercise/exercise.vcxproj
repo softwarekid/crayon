@@ -53,7 +53,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(CG_INC_PATH);..\thirdparty\glew\include;..\thirdparty\gtest\include;c:\Program Files\NVIDIA Corporation\Cg\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(CG_INC_PATH);..\thirdparty\glew\include;..\thirdparty\gtest\include;c:\Program Files\NVIDIA Corporation\Cg\include;src\coreUtil;src\cgWrapper;src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
@@ -82,52 +82,51 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CgShader.cpp" />
-    <ClCompile Include="Camera.cpp" />
-    <ClCompile Include="CgLog.cpp" />
-    <ClCompile Include="CgShaderParametersBase.cpp" />
-    <ClCompile Include="Constants.cpp" />
-    <ClCompile Include="Crayon.cpp" />
-    <ClCompile Include="FragShaderParam.cpp" />
-    <ClCompile Include="GlutWrapper.cpp" />
-    <ClCompile Include="HalfVectorInVert.cpp" />
-    <ClCompile Include="Matrix.cpp" />
-    <ClCompile Include="Mesh.cpp" />
-    <ClCompile Include="renderFramework.cpp" />
-    <ClCompile Include="TextureSampling.cpp" />
-    <ClCompile Include="Transform.cpp" />
-    <ClCompile Include="unitTest.cpp" />
-    <ClCompile Include="Vector3f.cpp" />
-    <ClCompile Include="Vector4f.cpp" />
-    <ClCompile Include="VertShaderParam.cpp" />
+    <ClCompile Include="src\cgWrapper\CgLog.cpp" />
+    <ClCompile Include="src\cgWrapper\CgShader.cpp" />
+    <ClCompile Include="src\cgWrapper\CgShaderParametersBase.cpp" />
+    <ClCompile Include="src\coreUtil\Camera.cpp" />
+    <ClCompile Include="src\coreUtil\Constants.cpp" />
+    <ClCompile Include="src\coreUtil\Matrix.cpp" />
+    <ClCompile Include="src\coreUtil\Mesh.cpp" />
+    <ClCompile Include="src\coreUtil\Transform.cpp" />
+    <ClCompile Include="src\coreUtil\Vector3f.cpp" />
+    <ClCompile Include="src\coreUtil\Vector4f.cpp" />
+    <ClCompile Include="src\Crayon.cpp" />
+    <ClCompile Include="src\example\HalfVectorInVert\HalfVectorFsParam.cpp" />
+    <ClCompile Include="src\example\HalfVectorInVert\HalfVectorInVert.cpp" />
+    <ClCompile Include="src\example\HalfVectorInVert\HalfVectorVsParam.cpp" />
+    <ClCompile Include="src\example\TextureSampling\TextureSampling.cpp" />
+    <ClCompile Include="src\GlutWrapper.cpp" />
+    <ClCompile Include="src\renderFramework.cpp" />
+    <ClCompile Include="src\unitTest\unitTest.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CgShader.h" />
-    <ClInclude Include="Camera.h" />
-    <ClInclude Include="CameraGtest.h" />
-    <ClInclude Include="CgLog.h" />
-    <ClInclude Include="CgShaderParametersBase.h" />
-    <ClInclude Include="CgUtil.h" />
-    <ClInclude Include="Constants.h" />
-    <ClInclude Include="HalfVectorFsParam.h" />
-    <ClInclude Include="GlutWrapper.h" />
-    <ClInclude Include="GtestBase.h" />
-    <ClInclude Include="HalfVectorInVert.h" />
-    <ClInclude Include="MathUtil.h" />
-    <ClInclude Include="Matrix.h" />
-    <ClInclude Include="MatrixGtest.h" />
-    <ClInclude Include="Mesh.h" />
-    <ClInclude Include="TextureSampling.h" />
-    <ClInclude Include="Transform.h" />
-    <ClInclude Include="TransformGtest.h" />
-    <ClInclude Include="Vector3f.h" />
-    <ClInclude Include="VectorGtest.h" />
-    <ClInclude Include="Vector4f.h" />
-    <ClInclude Include="HalfVectorVsParam.h" />
+    <ClInclude Include="src\cgWrapper\CgLog.h" />
+    <ClInclude Include="src\cgWrapper\CgShader.h" />
+    <ClInclude Include="src\cgWrapper\CgShaderParametersBase.h" />
+    <ClInclude Include="src\coreUtil\Camera.h" />
+    <ClInclude Include="src\coreUtil\Constants.h" />
+    <ClInclude Include="src\coreUtil\MathUtil.h" />
+    <ClInclude Include="src\coreUtil\Matrix.h" />
+    <ClInclude Include="src\coreUtil\Mesh.h" />
+    <ClInclude Include="src\coreUtil\Transform.h" />
+    <ClInclude Include="src\coreUtil\Vector3f.h" />
+    <ClInclude Include="src\coreUtil\Vector4f.h" />
+    <ClInclude Include="src\example\HalfVectorInVert\HalfVectorFsParam.h" />
+    <ClInclude Include="src\example\HalfVectorInVert\HalfVectorInVert.h" />
+    <ClInclude Include="src\example\HalfVectorInVert\HalfVectorVsParam.h" />
+    <ClInclude Include="src\example\TextureSampling\TextureSampling.h" />
+    <ClInclude Include="src\GlutWrapper.h" />
+    <ClInclude Include="src\unitTest\CameraGtest.h" />
+    <ClInclude Include="src\unitTest\GtestBase.h" />
+    <ClInclude Include="src\unitTest\MatrixGtest.h" />
+    <ClInclude Include="src\unitTest\TransformGtest.h" />
+    <ClInclude Include="src\unitTest\VectorGtest.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="frag.cg" />
-    <None Include="vert.cg" />
+    <None Include="src\example\HalfVectorInVert\HalfVectorInVert_F.cg" />
+    <None Include="src\example\HalfVectorInVert\HalfVectorInVert_V.cg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,7 +1,7 @@
 #ifndef cgparamters_base__
 #define cgparamters_base__
 #include <Cg/cg.h>
-#include "Matrix.h"
+#include <Matrix.h>
 
 class CgShaderParametersBase
 {

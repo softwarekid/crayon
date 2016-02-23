@@ -9,17 +9,8 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
-    <Filter Include="Source Files\unitTest">
-      <UniqueIdentifier>{ba4882e1-3b1e-48af-b844-3f154a9feca0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\gtest">
-      <UniqueIdentifier>{300a73c4-af4f-405a-af94-17a9c7535e7f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\cgProgram">
       <UniqueIdentifier>{8305bd6c-b4cd-495b-8d16-9670dbe6ea23}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\transform">
-      <UniqueIdentifier>{5cc0f669-6440-45f8-9c0f-2f9c968faa0f}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\CgProgram">
       <UniqueIdentifier>{11bb0aea-134c-4394-bc37-0288397f9f30}</UniqueIdentifier>
@@ -33,133 +24,155 @@
     <Filter Include="Header Files\example\HalfVectorInVert">
       <UniqueIdentifier>{538fbe49-a138-4837-95e1-d658e7cab857}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\example\HalfVectorInVert">
+      <UniqueIdentifier>{2b838ffb-33ee-4348-be9a-739201d96122}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\example\TextureSampling">
+      <UniqueIdentifier>{3501e5c5-1af8-4fce-9f01-3dd964f536dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\example\TextureSampling">
+      <UniqueIdentifier>{85aa803f-56bf-435b-96c6-0a076a97fdb9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\CoreUtil">
+      <UniqueIdentifier>{a5bdd92d-9354-469b-ad4d-cfaca9824f30}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\CoreUtil">
+      <UniqueIdentifier>{a3410668-63b5-4f58-9eaa-d38e737cb4f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\UnitTest">
+      <UniqueIdentifier>{9f3f6142-69cf-4aa0-aa8f-c732208d7a04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\UnitTest">
+      <UniqueIdentifier>{71912b60-2b4c-4866-b51b-25b34f6a7171}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Vector4f.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Camera.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Matrix.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="renderFramework.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Transform.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="unitTest.cpp">
-      <Filter>Source Files\unitTest</Filter>
-    </ClCompile>
-    <ClCompile Include="Constants.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Vector3f.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GlutWrapper.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CgLog.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="VertShaderParam.cpp">
+    <ClCompile Include="src\cgWrapper\CgLog.cpp">
       <Filter>Source Files\CgProgram</Filter>
     </ClCompile>
-    <ClCompile Include="CgShader.cpp">
+    <ClCompile Include="src\cgWrapper\CgShader.cpp">
       <Filter>Source Files\CgProgram</Filter>
     </ClCompile>
-    <ClCompile Include="FragShaderParam.cpp">
+    <ClCompile Include="src\cgWrapper\CgShaderParametersBase.cpp">
       <Filter>Source Files\CgProgram</Filter>
     </ClCompile>
-    <ClCompile Include="Crayon.cpp">
+    <ClCompile Include="src\example\HalfVectorInVert\HalfVectorFsParam.cpp">
+      <Filter>Source Files\example\HalfVectorInVert</Filter>
+    </ClCompile>
+    <ClCompile Include="src\example\HalfVectorInVert\HalfVectorInVert.cpp">
+      <Filter>Source Files\example\HalfVectorInVert</Filter>
+    </ClCompile>
+    <ClCompile Include="src\example\HalfVectorInVert\HalfVectorVsParam.cpp">
+      <Filter>Source Files\example\HalfVectorInVert</Filter>
+    </ClCompile>
+    <ClCompile Include="src\example\TextureSampling\TextureSampling.cpp">
+      <Filter>Source Files\example\TextureSampling</Filter>
+    </ClCompile>
+    <ClCompile Include="src\coreUtil\Camera.cpp">
+      <Filter>Source Files\CoreUtil</Filter>
+    </ClCompile>
+    <ClCompile Include="src\coreUtil\Constants.cpp">
+      <Filter>Source Files\CoreUtil</Filter>
+    </ClCompile>
+    <ClCompile Include="src\coreUtil\Matrix.cpp">
+      <Filter>Source Files\CoreUtil</Filter>
+    </ClCompile>
+    <ClCompile Include="src\coreUtil\Mesh.cpp">
+      <Filter>Source Files\CoreUtil</Filter>
+    </ClCompile>
+    <ClCompile Include="src\coreUtil\Transform.cpp">
+      <Filter>Source Files\CoreUtil</Filter>
+    </ClCompile>
+    <ClCompile Include="src\coreUtil\Vector3f.cpp">
+      <Filter>Source Files\CoreUtil</Filter>
+    </ClCompile>
+    <ClCompile Include="src\coreUtil\Vector4f.cpp">
+      <Filter>Source Files\CoreUtil</Filter>
+    </ClCompile>
+    <ClCompile Include="src\unitTest\unitTest.cpp">
+      <Filter>Source Files\UnitTest</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Crayon.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CgShaderParametersBase.cpp">
-      <Filter>Source Files\CgProgram</Filter>
-    </ClCompile>
-    <ClCompile Include="Mesh.cpp">
+    <ClCompile Include="src\GlutWrapper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="HalfVectorInVert.cpp">
-      <Filter>Source Files\example</Filter>
-    </ClCompile>
-    <ClCompile Include="TextureSampling.cpp">
-      <Filter>Source Files\example</Filter>
+    <ClCompile Include="src\renderFramework.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Constants.h">
+    <ClInclude Include="src\cgWrapper\CgLog.h">
+      <Filter>Header Files\cgProgram</Filter>
+    </ClInclude>
+    <ClInclude Include="src\cgWrapper\CgShader.h">
+      <Filter>Header Files\cgProgram</Filter>
+    </ClInclude>
+    <ClInclude Include="src\cgWrapper\CgShaderParametersBase.h">
+      <Filter>Header Files\cgProgram</Filter>
+    </ClInclude>
+    <ClInclude Include="src\example\HalfVectorInVert\HalfVectorFsParam.h">
+      <Filter>Header Files\example\HalfVectorInVert</Filter>
+    </ClInclude>
+    <ClInclude Include="src\example\HalfVectorInVert\HalfVectorInVert.h">
+      <Filter>Header Files\example\HalfVectorInVert</Filter>
+    </ClInclude>
+    <ClInclude Include="src\example\HalfVectorInVert\HalfVectorVsParam.h">
+      <Filter>Header Files\example\HalfVectorInVert</Filter>
+    </ClInclude>
+    <ClInclude Include="src\example\TextureSampling\TextureSampling.h">
+      <Filter>Header Files\example\TextureSampling</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GlutWrapper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MatrixGtest.h">
-      <Filter>Header Files\gtest</Filter>
+    <ClInclude Include="src\coreUtil\Camera.h">
+      <Filter>Header Files\CoreUtil</Filter>
     </ClInclude>
-    <ClInclude Include="VectorGtest.h">
-      <Filter>Header Files\gtest</Filter>
+    <ClInclude Include="src\coreUtil\Constants.h">
+      <Filter>Header Files\CoreUtil</Filter>
     </ClInclude>
-    <ClInclude Include="CameraGtest.h">
-      <Filter>Header Files\gtest</Filter>
+    <ClInclude Include="src\coreUtil\MathUtil.h">
+      <Filter>Header Files\CoreUtil</Filter>
     </ClInclude>
-    <ClInclude Include="GtestBase.h">
-      <Filter>Header Files\gtest</Filter>
+    <ClInclude Include="src\coreUtil\Matrix.h">
+      <Filter>Header Files\CoreUtil</Filter>
     </ClInclude>
-    <ClInclude Include="TransformGtest.h">
-      <Filter>Header Files\gtest</Filter>
+    <ClInclude Include="src\coreUtil\Mesh.h">
+      <Filter>Header Files\CoreUtil</Filter>
     </ClInclude>
-    <ClInclude Include="CgLog.h">
-      <Filter>Header Files\cgProgram</Filter>
+    <ClInclude Include="src\coreUtil\Transform.h">
+      <Filter>Header Files\CoreUtil</Filter>
     </ClInclude>
-    <ClInclude Include="Vector4f.h">
-      <Filter>Header Files\transform</Filter>
+    <ClInclude Include="src\coreUtil\Vector3f.h">
+      <Filter>Header Files\CoreUtil</Filter>
     </ClInclude>
-    <ClInclude Include="Vector3f.h">
-      <Filter>Header Files\transform</Filter>
+    <ClInclude Include="src\coreUtil\Vector4f.h">
+      <Filter>Header Files\CoreUtil</Filter>
     </ClInclude>
-    <ClInclude Include="Transform.h">
-      <Filter>Header Files\transform</Filter>
+    <ClInclude Include="src\unitTest\CameraGtest.h">
+      <Filter>Header Files\UnitTest</Filter>
     </ClInclude>
-    <ClInclude Include="Mesh.h">
-      <Filter>Header Files\transform</Filter>
+    <ClInclude Include="src\unitTest\GtestBase.h">
+      <Filter>Header Files\UnitTest</Filter>
     </ClInclude>
-    <ClInclude Include="Matrix.h">
-      <Filter>Header Files\transform</Filter>
+    <ClInclude Include="src\unitTest\TransformGtest.h">
+      <Filter>Header Files\UnitTest</Filter>
     </ClInclude>
-    <ClInclude Include="MathUtil.h">
-      <Filter>Header Files\transform</Filter>
+    <ClInclude Include="src\unitTest\VectorGtest.h">
+      <Filter>Header Files\UnitTest</Filter>
     </ClInclude>
-    <ClInclude Include="Camera.h">
-      <Filter>Header Files\transform</Filter>
-    </ClInclude>
-    <ClInclude Include="CgUtil.h">
-      <Filter>Header Files\cgProgram</Filter>
-    </ClInclude>
-    <ClInclude Include="GlutWrapper.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CgShaderParametersBase.h">
-      <Filter>Header Files\cgProgram</Filter>
-    </ClInclude>
-    <ClInclude Include="CgShader.h">
-      <Filter>Header Files\cgProgram</Filter>
-    </ClInclude>
-    <ClInclude Include="TextureSampling.h">
-      <Filter>Header Files\example</Filter>
-    </ClInclude>
-    <ClInclude Include="HalfVectorFsParam.h">
-      <Filter>Header Files\example\HalfVectorInVert</Filter>
-    </ClInclude>
-    <ClInclude Include="HalfVectorInVert.h">
-      <Filter>Header Files\example\HalfVectorInVert</Filter>
-    </ClInclude>
-    <ClInclude Include="HalfVectorVsParam.h">
-      <Filter>Header Files\example\HalfVectorInVert</Filter>
+    <ClInclude Include="src\unitTest\MatrixGtest.h">
+      <Filter>Header Files\UnitTest</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="frag.cg" />
-    <None Include="vert.cg" />
+    <None Include="src\example\HalfVectorInVert\HalfVectorInVert_F.cg">
+      <Filter>Source Files\example\HalfVectorInVert</Filter>
+    </None>
+    <None Include="src\example\HalfVectorInVert\HalfVectorInVert_V.cg">
+      <Filter>Source Files\example\HalfVectorInVert</Filter>
+    </None>
   </ItemGroup>
 </Project>

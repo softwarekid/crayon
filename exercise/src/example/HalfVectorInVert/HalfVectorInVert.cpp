@@ -12,7 +12,7 @@ using namespace std;
 void HalfVectorInVert::_InitVertShader()
 {
     auto profileVertex = cgGLGetLatestProfile(CG_GL_VERTEX);
-    string fileName("vert.cg");
+    string fileName(R"(src\example\HalfVectorInVert\HalfVectorInVert_V.cg)");
     string entry("main_v");
     _vertShader = new CgShader(_context, profileVertex, fileName, entry);
     _vertParams = new HalfVectorVsParam(*_vertShader);
@@ -23,7 +23,7 @@ void HalfVectorInVert::_InitVertShader()
 void HalfVectorInVert::_InitFragShader()
 {
     auto profileFrag = cgGLGetLatestProfile(CG_GL_FRAGMENT);
-    string fileName("frag.cg");
+    string fileName(R"(src\example\HalfVectorInVert\HalfVectorInVert_F.cg)");
     string entry("main_f");
     _fragShader = new CgShader(_context, profileFrag, fileName, entry);
     _fragParams = new HalfVectorFsParam(*_fragShader);
@@ -118,7 +118,6 @@ void HalfVectorInVert::_InitShaderParams()
     _fragParams->SetKdCoef(Vector3f(0.78, 0.57, 0.11));
     _fragParams->SetKsCoef(Vector3f(0.99, 0.91, 0.81));
     _fragParams->SetShinessCoef(27.8);
-
 
     // light color
     _fragParams->SetLightColor(Vector3f(0.95f, 0.95f, 0.95f));

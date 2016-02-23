@@ -1,7 +1,7 @@
 #ifndef half_vector_vs_params__
 #define half_vector_vs_params__
-#include "CgShaderParametersBase.h"
-#include "CgShader.h"
+#include <CgShaderParametersBase.h>
+#include <CgShader.h>
 
 
 class HalfVectorVsParam:public CgShaderParametersBase

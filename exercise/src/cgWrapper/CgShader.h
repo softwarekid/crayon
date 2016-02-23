@@ -2,7 +2,6 @@
 #define CgShader_h__
 #include <Cg/cg.h>
 
-#include "CgShaderParametersBase.h"
 #include <string>
 
 class CgShader

@@ -6,6 +6,7 @@
 #include <map>
 #include <Cg/cg.h>
 #include "CgShader.h"
+#include <CgShaderParametersBase.h>
 
 class GlutWrapper
 {
