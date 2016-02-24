@@ -1,8 +1,8 @@
 struct Output
 {
-    float4 postion : POSITION
-    float3 color : COLOR
-    float2 texCoord : TEXCOORD0
+    float4 position : POSITION;
+    float3 color : COLOR;
+    float2 texCoord : TEXCOORD0;
 };
 
 Output main_v(float2 position : POSITION,

@@ -6,6 +6,6 @@
 class TextureSamplingVsParam : public CgShaderParametersBase
 {
 public:
-    explicit TextureSamplingVsParam(const CgShader shader);
+    explicit TextureSamplingVsParam(const CgShader& shader);
 };
 #endif

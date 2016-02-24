@@ -105,6 +105,7 @@ void HalfVectorInVert::_Display()
     _fragShader->UpdateParams();
     _mesh.Render();
 
+    _vertShader->DisableProfile();
     _fragShader->DisableProfile();
     glutSwapBuffers();
 }

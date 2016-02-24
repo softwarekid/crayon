@@ -29,6 +29,9 @@ public:
     virtual void SetLightColor(const Vector3f& value) {};
     virtual void SetEyePostion(const Vector3f& value) {};
     virtual void SetTexture(GLuint name){};
+
+    virtual void EnableTexture(){};
+    virtual void DisableTexture(){};
     virtual void ExtractParams() {};
     virtual ~CgShaderParametersBase(){};
 

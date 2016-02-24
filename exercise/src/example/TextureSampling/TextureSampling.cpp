@@ -3,6 +3,7 @@
 #include "TextureSamplingFsParam.h"
 #include <CG/cgGL.h>
 #include <CgLog.h>
+#include <GL/glut.h>
 using namespace std;
 void TextureSampling::_Reshape(int width, int height)
 {
@@ -14,6 +15,28 @@ void TextureSampling::_Reshape(int width, int height)
 
 void TextureSampling::_Display()
 {
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    _vertShader->BindProgram();
+    _vertShader->EnableProfile();
+    _fragShader->BindProgram();
+    _fragShader->EnableProfile();
+    _fragParams->EnableTexture();
+
+    glBegin(GL_TRIANGLES);
+    glTexCoord2f(0, 0);
+    glVertex2f(-0.8, 0.8);
+
+    glTexCoord2f(1, 0);
+    glVertex2f(0.8, 0.8);
+
+    glTexCoord2f(0.5, 1);
+    glVertex2f(0.0, -0.8);
+    glEnd();
+
+    _fragParams->DisableTexture();
+    _vertShader->DisableProfile();
+    _fragShader->DisableProfile();
+    glutSwapBuffers();
 }
 
 void TextureSampling::_InitShaderParams()
@@ -33,7 +56,7 @@ void TextureSampling::_InitShaderParams()
 void TextureSampling::_InitVertShader()
 {
     auto profileVertex = cgGLGetLatestProfile(CG_GL_VERTEX);
-    string fileName(R"(src\example\HalfVectorInVert\TextureSampling_V.cg)");
+    string fileName(R"(src\example\TextureSampling\TextureSampling_V.cg)");
     string entry("main_v");
     _vertShader = new CgShader(_context, profileVertex, fileName, entry);
     _vertParams = new TextureSamplingVsParam(*_vertShader);
@@ -44,7 +67,7 @@ void TextureSampling::_InitVertShader()
 void TextureSampling::_InitFragShader()
 {
     auto profileFrag = cgGLGetLatestProfile(CG_GL_FRAGMENT);
-    string fileName(R"(src\example\HalfVectorInVert\TextureSampling_F.cg)");
+    string fileName(R"(src\example\TextureSampling\TextureSampling_F.cg)");
     string entry("main_f");
     _fragShader = new CgShader(_context, profileFrag, fileName, entry);
     _fragParams = new TextureSamplingFsParam(*_fragShader);

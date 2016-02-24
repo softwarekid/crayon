@@ -1,4 +1,15 @@
 #include "TextureSamplingFsParam.h"
+#include <CG/cgGL.h>
+
+void TextureSamplingFsParam::EnableTexture()
+{
+    cgGLEnableTextureParameter(decal);
+}
+
+void TextureSamplingFsParam::DisableTexture()
+{
+    cgGLDisableTextureParameter(decal);
+}
 
 void TextureSamplingFsParam::SetTexture(GLuint name)
 {
