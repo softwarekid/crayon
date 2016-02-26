@@ -12,7 +12,7 @@ public:
     void EnableTexture();
     void DisableTexture();
     void SetTexture(GLuint name);
-    void ExtractParams() ;
+    void ExtractParams() override;
     explicit TextureSamplingFsParam(const CgShader& shader);
 };
 

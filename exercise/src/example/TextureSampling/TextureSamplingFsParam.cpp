@@ -23,4 +23,5 @@ void TextureSamplingFsParam::ExtractParams()
 
 TextureSamplingFsParam::TextureSamplingFsParam(const CgShader& shader) : CgShaderParametersBase(shader)
 {
+
 }

@@ -1,0 +1,14 @@
+void main_v(float2 position : POSITION,
+            float2 texCoord : TEXCOORD0,
+            out float4 oPosition: POSITION,
+            out float2 leftTexCoord:TEXCOORD0,
+            out float2 rightTexCoord: TEXCOORD1,
+
+            uniform float2 leftSeperation,
+            uniform float2 rightSeperation
+            )
+{
+    oPosition = float4(position, 0, 1);
+    leftTexCoord = texCoord + leftSeperation;
+    rightTexCoord = texCoord + rightSeperation;
+}

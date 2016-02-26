@@ -1,0 +1,10 @@
+void main_f(float2 leftTexCoord:TEXCOORD0,
+            float2 rightTexCoord: TEXCOORD1,
+            out float4 color : COLOR,
+            uniform sampler2D decal
+            )
+{
+    float4 leftColor = tex2D(decal, leftTexCoord);
+    float4 rightColor = tex2D(decal, rightTexCoord);
+    color = lerp(leftColor, rightColor, 0.5);
+}

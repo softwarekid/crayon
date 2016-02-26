@@ -1,6 +1,7 @@
 #ifndef two_texture_access_fs_param__
 #define two_texture_access_fs_param__
 #include <CgShaderParametersBase.h>
+#include <CgShader.h>
 
 class TwoTextureAccessFsParam : public CgShaderParametersBase
 {

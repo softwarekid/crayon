@@ -7,6 +7,9 @@
 class TwoTextureAccess :public GlutWrapper
 {
 private:
+    float seperation = 0.1f;
+    float seperationVelocity = 0.005f;
+    void _Idle() override;
     void _Display(void) override;
     void _InitShaderParams() override;
     const GLubyte* _texture;

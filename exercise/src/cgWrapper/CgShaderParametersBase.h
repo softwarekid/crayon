@@ -13,8 +13,9 @@ private:
 protected:
 
     void _GetProgramParam(CGparameter& param, const char * name);
-    void _Set3fvParam(const CGparameter param, const Vector3f& value);
     void _Set1fParam(const CGparameter param, const float value);
+    void _Set2fParam(const CGparameter param, float value1, const float value2);
+    void _Set3fvParam(const CGparameter param, const Vector3f& value);
     void _SetTextureParam(const CGparameter paaram, const GLuint name);
     void _setMatrix4fParam(const CGparameter param, const Matrix4f & value);
 public:
