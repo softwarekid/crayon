@@ -31,16 +31,6 @@ void HalfVectorInVert::_InitFragShader()
     cgGLSetOptimalOptions(profileFrag);
 }
 
-//void HalfVectorInVert::StartRendering()
-//{
-//    // At the beginning I plan to initialize the two shaders in the ctor, but as 
-//    // virtual functions they are not allowed to appear in the ctor, so I add 
-//    // this "indirect layer" to do the start.
-//    _InitVertShader();
-//    _InitFragShader();
-//    _InitShaderParams();
-//    glutMainLoop();
-//}
 
 HalfVectorInVert::HalfVectorInVert(const char* title, int width, int height, float lightAngle):
          GlutWrapper(title, width, height)

@@ -69,6 +69,14 @@ void GlutWrapper::_Keyboard(int c, int x, int y)
     }
 }
 
+void GlutWrapper::_Reshape(int width, int height)
+{
+    float aspectRatio = (float)width / (float) height;
+    float fov = 40.0f;
+    _transform.SetProjection(fov,aspectRatio,1.0, 20.0);
+    glViewport(0, 0, width, height);
+}
+
 void GlutWrapper::_Exit()
 {
     cgDestroyContext(_context);

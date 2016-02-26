@@ -45,6 +45,12 @@
     <Filter Include="Header Files\UnitTest">
       <UniqueIdentifier>{71912b60-2b4c-4866-b51b-25b34f6a7171}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\example\TwoTextureAccess">
+      <UniqueIdentifier>{0609b0a8-377e-46c5-9f6f-04455ec28c14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\example\TwoTextureAccess">
+      <UniqueIdentifier>{ee20dd7e-99a2-4979-b4ed-e577978a6a41}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\cgWrapper\CgLog.cpp">
@@ -106,6 +112,9 @@
     </ClCompile>
     <ClCompile Include="src\example\TextureSampling\TextureSamplingVsParam.cpp">
       <Filter>Source Files\example\TextureSampling</Filter>
+    </ClCompile>
+    <ClCompile Include="src\example\TwoTextureAccess\TwoTextureAccess.cpp">
+      <Filter>Source Files\example\TwoTextureAccess</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -180,6 +189,15 @@
     </ClInclude>
     <ClInclude Include="src\demon_image.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\example\TwoTextureAccess\TwoTextureAccess.h">
+      <Filter>Header Files\example\TwoTextureAccess</Filter>
+    </ClInclude>
+    <ClInclude Include="src\example\TwoTextureAccess\TwoTextureAccessFsParam.h">
+      <Filter>Header Files\example\TwoTextureAccess</Filter>
+    </ClInclude>
+    <ClInclude Include="src\example\TwoTextureAccess\TwoTextureAccessVsParam.h">
+      <Filter>Header Files\example\TwoTextureAccess</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
