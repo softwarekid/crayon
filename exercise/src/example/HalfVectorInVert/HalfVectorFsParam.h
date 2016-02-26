@@ -16,15 +16,15 @@ private:
     CGparameter _shininess;
 
 public:
-    void SetKeCoef(const Vector3f& value) override;
-    void SetKaCoef(const Vector3f& value) override;
-    void SetKdCoef(const Vector3f& value) override;
-    void SetKsCoef(const Vector3f& value) override;
-    void SetShinessCoef(const float value) override;
-    void SetLightPosition(const Vector3f& value) override;
-    void SetLightColor(const Vector3f& value) override;
+    void SetKeCoef(const Vector3f& value) ;
+    void SetKaCoef(const Vector3f& value) ;
+    void SetKdCoef(const Vector3f& value) ;
+    void SetKsCoef(const Vector3f& value) ;
+    void SetShinessCoef(const float value);
+    void SetLightPosition(const Vector3f& value);
+    void SetLightColor(const Vector3f& value) ;
     //void SetEyePostion(const Vector3f& value) override;
-    void ExtractParams() override;
+    void ExtractParams() ;
 
     HalfVectorFsParam(const CGcontext context, const CGprogram program);
     explicit HalfVectorFsParam(const CgShader& shader);

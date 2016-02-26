@@ -8,9 +8,9 @@ private:
     CGparameter decal;
 
 public:
-    void EnableTexture() override;
-    void DisableTexture() override;
-    void SetTexture(GLuint name) override;
+    void EnableTexture();
+    void DisableTexture();
+    void SetTexture(GLuint name);
     void ExtractParams() override;
     explicit TwoTextureAccessFsParam(const CgShader& shader);
 };

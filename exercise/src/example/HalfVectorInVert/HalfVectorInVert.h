@@ -2,11 +2,15 @@
 #define half_vector_in_vert
 #include "GlutWrapper.h"
 #include "CgShaderParametersBase.h"
+#include "HalfVectorFsParam.h"
+#include "HalfVectorVsParam.h"
 
 class HalfVectorInVert : public GlutWrapper
 {
 private:
     float _lightAngle;
+    HalfVectorVsParam* _vertParams;
+    HalfVectorFsParam* _fragParams;
 private:
     void _Idle(void) override;
     void _Reshape(int width, int height) override;

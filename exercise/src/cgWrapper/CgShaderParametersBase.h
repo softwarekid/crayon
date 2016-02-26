@@ -18,20 +18,6 @@ protected:
     void _SetTextureParam(const CGparameter paaram, const GLuint name);
     void _setMatrix4fParam(const CGparameter param, const Matrix4f & value);
 public:
-    // all the functions should have implementaion, except for pure virtual function
-    virtual void SetMVPMatrix(const Matrix4f& value){};
-    virtual void SetKeCoef(const Vector3f& value) {};
-    virtual void SetKaCoef(const Vector3f& value) {};
-    virtual void SetKdCoef(const Vector3f& value) {};
-    virtual void SetKsCoef(const Vector3f& value) {};
-    virtual void SetShinessCoef(const float value) {};
-    virtual void SetLightPosition(const Vector3f& value) {};
-    virtual void SetLightColor(const Vector3f& value) {};
-    virtual void SetEyePostion(const Vector3f& value) {};
-    virtual void SetTexture(GLuint name){};
-
-    virtual void EnableTexture(){};
-    virtual void DisableTexture(){};
     virtual void ExtractParams() {};
     virtual ~CgShaderParametersBase(){};
 

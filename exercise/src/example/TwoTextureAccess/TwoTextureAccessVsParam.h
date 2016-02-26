@@ -12,7 +12,7 @@ public:
     void SetLeftSeperation(const Vector3f& value);
     void SetRightSeperation(const Vector3f& value);
 
-    explicit TwoTextureAccessVsParam(const shader)
+    explicit TwoTextureAccessVsParam(const CgShader& shader);
 
 };
 

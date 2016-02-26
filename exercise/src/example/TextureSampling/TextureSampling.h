@@ -1,6 +1,8 @@
 #ifndef texture_sampling
 #define texture_sampling
 #include "GlutWrapper.h"
+#include "TextureSamplingFsParam.h"
+#include "TextureSamplingVsParam.h"
 class TextureSampling : public GlutWrapper
 {
 private:
@@ -8,6 +10,8 @@ private:
     void _Display(void) override;
     void _InitShaderParams() override;
     const GLubyte* _texture;
+    TextureSamplingFsParam* _fragParams;
+    TextureSamplingVsParam*_vertParams;
 protected:
     void _InitVertShader() override;
     void _InitFragShader() override;

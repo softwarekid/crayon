@@ -116,6 +116,12 @@
     <ClCompile Include="src\example\TwoTextureAccess\TwoTextureAccess.cpp">
       <Filter>Source Files\example\TwoTextureAccess</Filter>
     </ClCompile>
+    <ClCompile Include="src\example\TwoTextureAccess\TwoTextureAccessFsParam.cpp">
+      <Filter>Source Files\example\TwoTextureAccess</Filter>
+    </ClCompile>
+    <ClCompile Include="src\example\TwoTextureAccess\TwoTextureAccessVsParam.cpp">
+      <Filter>Source Files\example\TwoTextureAccess</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\cgWrapper\CgLog.h">
@@ -212,6 +218,9 @@
     </None>
     <None Include="src\example\TextureSampling\TextureSampling_V.cg">
       <Filter>Source Files\example\TextureSampling</Filter>
+    </None>
+    <None Include="src\example\TwoTextureAccess\TwoTextureAccess_V.cg">
+      <Filter>Source Files\example\TwoTextureAccess</Filter>
     </None>
   </ItemGroup>
 </Project>

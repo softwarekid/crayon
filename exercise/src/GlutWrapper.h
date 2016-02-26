@@ -37,8 +37,6 @@ protected:
     CGcontext _context;
     CgShader* _vertShader;
     CgShader* _fragShader;
-    CgShaderParametersBase* _vertParams;
-    CgShaderParametersBase* _fragParams;
 private:
     void _RequestSynchronizedSwapBuffers();
 

@@ -9,10 +9,10 @@ private:
     CGparameter decal;
 
 public:
-    void EnableTexture() override;
-    void DisableTexture() override;
-    void SetTexture(GLuint name) override;
-    void ExtractParams() override;
+    void EnableTexture();
+    void DisableTexture();
+    void SetTexture(GLuint name);
+    void ExtractParams() ;
     explicit TextureSamplingFsParam(const CgShader& shader);
 };
 

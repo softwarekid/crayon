@@ -13,8 +13,11 @@ private:
 
 public:
 
-    void SetMVPMatrix(const Matrix4f& value) override;
-    void ExtractParams() override;
+    void SetMVPMatrix(const Matrix4f& value);
+    void SetLightPosition(const Vector3f& value);
+    void SetEyePostion(const Vector3f& value);
+    void ExtractParams();
+
 
     explicit HalfVectorVsParam(const CgShader& shader);
 };

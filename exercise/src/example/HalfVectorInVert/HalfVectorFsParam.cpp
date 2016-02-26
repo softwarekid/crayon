@@ -1,4 +1,5 @@
 #include "HalfVectorFsParam.h"
+using namespace std;
 
 void HalfVectorFsParam::SetKeCoef(const Vector3f& value)
 {
@@ -49,10 +50,8 @@ void HalfVectorFsParam::ExtractParams()
 
 HalfVectorFsParam::HalfVectorFsParam(const CGcontext context, const CGprogram program) : CgShaderParametersBase(context,program)
 {
-
 }
 
-//HalfVectorFsParam::HalfVectorFsParam(const CgShader& shader) : CgShaderParametersBase(shader.GetContext(), shader.GetProgram())
 HalfVectorFsParam::HalfVectorFsParam(const CgShader& shader) : CgShaderParametersBase(shader)
 {
 }
