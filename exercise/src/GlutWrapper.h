@@ -20,7 +20,6 @@ private:
     static void __Menu();
     static GlutWrapper* __CurrentWindow();
     static std::map<int, GlutWrapper*> _windows;
-
 protected:
     virtual void _Keyboard(int c, int x, int y);
     virtual void _Idle(void) {};

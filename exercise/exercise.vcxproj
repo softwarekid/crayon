@@ -99,6 +99,9 @@
     <ClCompile Include="src\example\TextureSampling\TextureSampling.cpp" />
     <ClCompile Include="src\example\TextureSampling\TextureSamplingFsParam.cpp" />
     <ClCompile Include="src\example\TextureSampling\TextureSamplingVsParam.cpp" />
+    <ClCompile Include="src\example\TwoLightsWithStruct\TextureSamplingFsParam.cpp" />
+    <ClCompile Include="src\example\TwoLightsWithStruct\TextureSamplingVsParam.cpp" />
+    <ClCompile Include="src\example\TwoLightsWithStruct\TwoLightsWithStruct.cpp" />
     <ClCompile Include="src\example\TwoTextureAccess\TwoTextureAccess.cpp" />
     <ClCompile Include="src\example\TwoTextureAccess\TwoTextureAccessFsParam.cpp" />
     <ClCompile Include="src\example\TwoTextureAccess\TwoTextureAccessVsParam.cpp" />
@@ -125,6 +128,8 @@
     <ClInclude Include="src\example\TextureSampling\TextureSampling.h" />
     <ClInclude Include="src\example\TextureSampling\TextureSamplingFsParam.h" />
     <ClInclude Include="src\example\TextureSampling\TextureSamplingVsParam.h" />
+    <ClInclude Include="src\example\TwoLightsWithStruct\TwoLightsWithStruct.h" />
+    <ClInclude Include="src\example\TwoLightsWithStruct\TwoLightsWithStructVsParam.h" />
     <ClInclude Include="src\example\TwoTextureAccess\TwoTextureAccess.h" />
     <ClInclude Include="src\example\TwoTextureAccess\TwoTextureAccessFsParam.h" />
     <ClInclude Include="src\example\TwoTextureAccess\TwoTextureAccessVsParam.h" />

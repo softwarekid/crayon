@@ -51,6 +51,12 @@
     <Filter Include="Header Files\example\TwoTextureAccess">
       <UniqueIdentifier>{ee20dd7e-99a2-4979-b4ed-e577978a6a41}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\example\TwoLightsWithStruct">
+      <UniqueIdentifier>{a12da696-0bfe-4fd9-94f3-b58d199ebaf9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\example\TwoLightsWithStruct">
+      <UniqueIdentifier>{9b359ac6-75ea-420f-8fae-fb61c1e20a2e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\cgWrapper\CgLog.cpp">
@@ -121,6 +127,15 @@
     </ClCompile>
     <ClCompile Include="src\example\TwoTextureAccess\TwoTextureAccessVsParam.cpp">
       <Filter>Source Files\example\TwoTextureAccess</Filter>
+    </ClCompile>
+    <ClCompile Include="src\example\TwoLightsWithStruct\TwoLightsWithStruct.cpp">
+      <Filter>Source Files\example\TwoLightsWithStruct</Filter>
+    </ClCompile>
+    <ClCompile Include="src\example\TwoLightsWithStruct\TextureSamplingFsParam.cpp">
+      <Filter>Source Files\example\TwoLightsWithStruct</Filter>
+    </ClCompile>
+    <ClCompile Include="src\example\TwoLightsWithStruct\TextureSamplingVsParam.cpp">
+      <Filter>Source Files\example\TwoLightsWithStruct</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -204,6 +219,12 @@
     </ClInclude>
     <ClInclude Include="src\example\TwoTextureAccess\TwoTextureAccessVsParam.h">
       <Filter>Header Files\example\TwoTextureAccess</Filter>
+    </ClInclude>
+    <ClInclude Include="src\example\TwoLightsWithStruct\TwoLightsWithStruct.h">
+      <Filter>Header Files\example\TwoLightsWithStruct</Filter>
+    </ClInclude>
+    <ClInclude Include="src\example\TwoLightsWithStruct\TwoLightsWithStructVsParam.h">
+      <Filter>Header Files\example\TwoLightsWithStruct</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

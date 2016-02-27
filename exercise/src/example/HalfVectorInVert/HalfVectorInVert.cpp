@@ -31,7 +31,6 @@ void HalfVectorInVert::_InitFragShader()
     cgGLSetOptimalOptions(profileFrag);
 }
 
-
 HalfVectorInVert::HalfVectorInVert(const char* title, int width, int height, float lightAngle):
          GlutWrapper(title, width, height)
 {

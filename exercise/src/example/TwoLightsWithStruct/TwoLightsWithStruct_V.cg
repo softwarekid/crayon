@@ -1,0 +1,26 @@
+struct Material
+{
+	float3 Ke;
+	float3 Ka;
+	float3 Kd;
+	float3 Ks;
+	float shininess;
+};
+
+struct Light
+{
+	float3 position;
+	float3 color;
+};
+
+void main_v(float4 position : POSITION,
+			float3 normal : NORMAL,
+
+			out float4 oPosition:POSITION,
+			out float4 color : COLOR,
+			uniform float4x4 modelViewProj,
+			uniform float3 eyePosition,
+			uniform float3 globalAmbient,
+
+
+	)

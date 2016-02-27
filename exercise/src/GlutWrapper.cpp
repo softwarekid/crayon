@@ -4,6 +4,7 @@
 #include <GL/glut.h>
 #include <iostream>
 #include "CgShader.h"
+#include <CG/cgGL.h>
 
 std::map<int, GlutWrapper*> GlutWrapper::_windows;
 
