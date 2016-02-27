@@ -99,9 +99,9 @@
     <ClCompile Include="src\example\TextureSampling\TextureSampling.cpp" />
     <ClCompile Include="src\example\TextureSampling\TextureSamplingFsParam.cpp" />
     <ClCompile Include="src\example\TextureSampling\TextureSamplingVsParam.cpp" />
-    <ClCompile Include="src\example\TwoLightsWithStruct\TextureSamplingFsParam.cpp" />
-    <ClCompile Include="src\example\TwoLightsWithStruct\TextureSamplingVsParam.cpp" />
     <ClCompile Include="src\example\TwoLightsWithStruct\TwoLightsWithStruct.cpp" />
+    <ClCompile Include="src\example\TwoLightsWithStruct\TwoLightsWithStructFsParamcpp.cpp" />
+    <ClCompile Include="src\example\TwoLightsWithStruct\TwoLightsWithStructVsParam.cpp" />
     <ClCompile Include="src\example\TwoTextureAccess\TwoTextureAccess.cpp" />
     <ClCompile Include="src\example\TwoTextureAccess\TwoTextureAccessFsParam.cpp" />
     <ClCompile Include="src\example\TwoTextureAccess\TwoTextureAccessVsParam.cpp" />
@@ -129,6 +129,7 @@
     <ClInclude Include="src\example\TextureSampling\TextureSamplingFsParam.h" />
     <ClInclude Include="src\example\TextureSampling\TextureSamplingVsParam.h" />
     <ClInclude Include="src\example\TwoLightsWithStruct\TwoLightsWithStruct.h" />
+    <ClInclude Include="src\example\TwoLightsWithStruct\TwoLightsWithStructFsParam.h" />
     <ClInclude Include="src\example\TwoLightsWithStruct\TwoLightsWithStructVsParam.h" />
     <ClInclude Include="src\example\TwoTextureAccess\TwoTextureAccess.h" />
     <ClInclude Include="src\example\TwoTextureAccess\TwoTextureAccessFsParam.h" />
@@ -145,6 +146,7 @@
     <None Include="src\example\HalfVectorInVert\HalfVectorInVert_V.cg" />
     <None Include="src\example\TextureSampling\TextureSampling_F.cg" />
     <None Include="src\example\TextureSampling\TextureSampling_V.cg" />
+    <None Include="src\example\TwoLightsWithStruct\TwoLightsWithStruct_V.cg" />
     <None Include="src\example\TwoTextureAccess\TwoTextureAccess_F.cg" />
     <None Include="src\example\TwoTextureAccess\TwoTextureAccess_V.cg" />
   </ItemGroup>

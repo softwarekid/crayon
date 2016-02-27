@@ -131,10 +131,10 @@
     <ClCompile Include="src\example\TwoLightsWithStruct\TwoLightsWithStruct.cpp">
       <Filter>Source Files\example\TwoLightsWithStruct</Filter>
     </ClCompile>
-    <ClCompile Include="src\example\TwoLightsWithStruct\TextureSamplingFsParam.cpp">
+    <ClCompile Include="src\example\TwoLightsWithStruct\TwoLightsWithStructVsParam.cpp">
       <Filter>Source Files\example\TwoLightsWithStruct</Filter>
     </ClCompile>
-    <ClCompile Include="src\example\TwoLightsWithStruct\TextureSamplingVsParam.cpp">
+    <ClCompile Include="src\example\TwoLightsWithStruct\TwoLightsWithStructFsParamcpp.cpp">
       <Filter>Source Files\example\TwoLightsWithStruct</Filter>
     </ClCompile>
   </ItemGroup>
@@ -226,6 +226,9 @@
     <ClInclude Include="src\example\TwoLightsWithStruct\TwoLightsWithStructVsParam.h">
       <Filter>Header Files\example\TwoLightsWithStruct</Filter>
     </ClInclude>
+    <ClInclude Include="src\example\TwoLightsWithStruct\TwoLightsWithStructFsParam.h">
+      <Filter>Header Files\example\TwoLightsWithStruct</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\example\HalfVectorInVert\HalfVectorInVert_F.cg">
@@ -245,6 +248,9 @@
     </None>
     <None Include="src\example\TwoTextureAccess\TwoTextureAccess_F.cg">
       <Filter>Source Files\example\TwoTextureAccess</Filter>
+    </None>
+    <None Include="src\example\TwoLightsWithStruct\TwoLightsWithStruct_V.cg">
+      <Filter>Source Files\example\TwoLightsWithStruct</Filter>
     </None>
   </ItemGroup>
 </Project>

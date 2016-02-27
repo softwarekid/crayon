@@ -30,6 +30,9 @@ public:
     void SetMaterialKs(const float ks);
     void SetMaterialShininess(const float shininess);
 
+    void ExtractParams() override;
+
+
     TwoLightsWithStructVsParam(const CgShader& shader);
 };
 #endif
