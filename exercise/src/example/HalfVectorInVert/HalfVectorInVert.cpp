@@ -64,6 +64,9 @@ void HalfVectorInVert::_Reshape(int width, int height)
 void HalfVectorInVert::_Display()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+    _InitShaderParams();
+
     const Vector3f eyePosition(0, 0, 13);
     const Vector3f eyeCenter(0,0,0);
     const Vector3f eyeUp(0,1,0);

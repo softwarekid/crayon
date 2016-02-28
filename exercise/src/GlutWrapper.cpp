@@ -118,7 +118,6 @@ void GlutWrapper::StartRendering()
 {
     _InitVertShader();
     _InitFragShader();
-    _InitShaderParams();
     glutMainLoop();
 }
 

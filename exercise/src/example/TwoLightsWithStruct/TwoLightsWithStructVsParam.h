@@ -17,6 +17,7 @@ private:
 
 public:
 
+    // the parameters will affect a draw call, so usually they are put in the display function 
     void SetMVPMatrix(const Matrix4f& matrix);
     void SetEyePosition(const Vector3f& eyePos);
     void SetGlobalAmbient(const Vector3f& ga);
@@ -24,10 +25,10 @@ public:
     void SetLightPos2(const Vector3f& lightPos2);
     void SetLightColor1(const Vector3f& lightColor1);
     void SetLightColor2(const Vector3f& lightColor2);
-    void SetMaterialKe(const float ke);
-    void SetMaterialKa(const float ka);
-    void SetMaterialKd(const float kd);
-    void SetMaterialKs(const float ks);
+    void SetMaterialKe(const Vector3f& ke);
+    void SetMaterialKa(const Vector3f& ka);
+    void SetMaterialKd(const Vector3f& kd);
+    void SetMaterialKs(const Vector3f& ks);
     void SetMaterialShininess(const float shininess);
 
     void ExtractParams() override;

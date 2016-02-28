@@ -16,9 +16,8 @@ public:
     void SetMVPMatrix(const Matrix4f& value);
     void SetLightPosition(const Vector3f& value);
     void SetEyePostion(const Vector3f& value);
-    void ExtractParams();
-
-
+    void ExtractParams() override;
+    
     explicit HalfVectorVsParam(const CgShader& shader);
 };
 #endif

@@ -1,0 +1,4 @@
+float4 main_f(float4 color : COLOR) : COLOR
+{
+    return color;
+}

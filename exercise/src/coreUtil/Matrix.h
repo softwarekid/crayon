@@ -16,6 +16,7 @@ public:
     int static const DIM;
     explicit Matrix4f();
     Matrix4f(const Matrix4f& m);
+    //Matrix4f(const Matrix4f&& m);
     void SetZero();
     Matrix4f Mul(const Matrix4f& m);
     Vector4f Mul(const Vector4f& v);
@@ -24,6 +25,7 @@ public:
     void GetInnerValue(float * innerValue) const;
     void Print();
     Matrix4f& operator = (const Matrix4f& m);
+    //Matrix4f& operator = (const Matrix4f&& m);
     float& operator() (int rowIndex, int colIndex);
     ~Matrix4f();
 private:

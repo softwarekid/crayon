@@ -22,6 +22,11 @@ Matrix4f::Matrix4f(const Matrix4f& m)
     }
 }
 
+//Matrix4f::Matrix4f(const Matrix4f&& m)
+//{
+//    _pInnerValues = m._pInnerValues;
+//}
+
 Matrix4f& Matrix4f::operator = (const Matrix4f& m)
 {
     for (int i = 0; i < DIM * DIM; i++)
@@ -30,6 +35,11 @@ Matrix4f& Matrix4f::operator = (const Matrix4f& m)
     }
     return *this;
 }
+
+//Matrix4f& Matrix4f::operator=(const Matrix4f&& m)
+//{
+//        
+//}
 
 void Matrix4f::SetZero()
 {

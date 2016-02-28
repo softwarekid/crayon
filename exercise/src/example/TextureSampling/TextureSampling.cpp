@@ -16,6 +16,7 @@ void TextureSampling::_Reshape(int width, int height)
 void TextureSampling::_Display()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    _InitShaderParams();
     _vertShader->BindProgram();
     _vertShader->EnableProfile();
     _fragShader->BindProgram();

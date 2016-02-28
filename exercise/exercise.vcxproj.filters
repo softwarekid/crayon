@@ -252,5 +252,8 @@
     <None Include="src\example\TwoLightsWithStruct\TwoLightsWithStruct_V.cg">
       <Filter>Source Files\example\TwoLightsWithStruct</Filter>
     </None>
+    <None Include="src\example\TwoLightsWithStruct\TwoLightsWithStruct_F.cg">
+      <Filter>Source Files\example\TwoLightsWithStruct</Filter>
+    </None>
   </ItemGroup>
 </Project>

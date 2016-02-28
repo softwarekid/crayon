@@ -22,6 +22,7 @@ void TwoTextureAccess::_Idle()
 void TwoTextureAccess::_Display()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    _InitShaderParams();
     _fragShader->BindProgram();
     _fragShader->EnableProfile();
     _vertShader->BindProgram();

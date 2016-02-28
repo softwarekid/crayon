@@ -11,7 +11,7 @@ private:
     float seperationVelocity = 0.005f;
     void _Idle() override;
     void _Display(void) override;
-    void _InitShaderParams() override;
+    void _InitShaderParams();
     const GLubyte* _texture;
     TwoTextureAccessVsParam* _vertParams;
     TwoTextureAccessFsParam* _fragParams;

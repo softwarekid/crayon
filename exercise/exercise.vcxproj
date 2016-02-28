@@ -146,6 +146,7 @@
     <None Include="src\example\HalfVectorInVert\HalfVectorInVert_V.cg" />
     <None Include="src\example\TextureSampling\TextureSampling_F.cg" />
     <None Include="src\example\TextureSampling\TextureSampling_V.cg" />
+    <None Include="src\example\TwoLightsWithStruct\TwoLightsWithStruct_F.cg" />
     <None Include="src\example\TwoLightsWithStruct\TwoLightsWithStruct_V.cg" />
     <None Include="src\example\TwoTextureAccess\TwoTextureAccess_F.cg" />
     <None Include="src\example\TwoTextureAccess\TwoTextureAccess_V.cg" />

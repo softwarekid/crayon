@@ -8,7 +8,7 @@ class TextureSampling : public GlutWrapper
 private:
     void _Reshape(int width, int height) override;
     void _Display(void) override;
-    void _InitShaderParams() override;
+    void _InitShaderParams() ;
     const GLubyte* _texture;
     TextureSamplingFsParam* _fragParams;
     TextureSamplingVsParam*_vertParams;

@@ -13,6 +13,23 @@ struct Light
 	float3 color;
 };
 
+
+void ComputeBRDFLighting(Light light, float3 P, float3 N, float3 eyePosition, float shininess, out float3 difResult, out float3  specularResult)
+{
+	float3 L = normalize(light.position - P);
+	float difCoef = max(dot(N, L), 0);
+	difResult = difCoef * light.color; 
+
+	float3 V = eyePositio - P;
+	float3 H = normalize(V + L);
+	float specularCoef = pow(max(dot(H,N), 0), shininess);
+	if(specularCoef <= 0)
+	{
+		specularCoef = 0;
+	}
+	specularResult = light.color * specularCoef;
+}
+
 void main_v(float4 position : POSITION,
 			float3 normal : NORMAL,
 
@@ -21,6 +38,28 @@ void main_v(float4 position : POSITION,
 			uniform float4x4 modelViewProj,
 			uniform float3 eyePosition,
 			uniform float3 globalAmbient,
+			uniform Light lights[2],
+			uniform Material material)
+{
+	oPosition = mul(modelViewProj, position);
+	float3 emissive = material.Ke;
+	float3 ambient = material.Ka * globalAmbient;
 
+	float3 difLighting = 0;
+	float3 specLighting = 0;
+	float3 tempDifLighting;
+	float3 tempSpecLighting;
 
-	)
+	for(int i = 0; i < 2; i++)
+	{
+		ComputeBRDFLighting(lights[i], position, normal, eyePosition, material.shininess, tempDifLighting, specLighting);
+		difLighting += tempDifLighting;
+		specLighting += tempSpecLighting;	
+	}
+
+	float3 diffuse = difLighting * material.Kd;
+	float3 specular = specLighting * material.Ks;
+
+	color.xyz = emissive + ambient + diffuse + specular;
+	color.w = 1;
+}	

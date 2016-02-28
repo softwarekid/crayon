@@ -29,7 +29,6 @@ protected:
     virtual void _Exit();
     virtual void _InitVertShader() = 0;
     virtual void _InitFragShader() = 0;
-    virtual void _InitShaderParams() = 0;
 
     Transform _transform;
     Mesh _mesh;

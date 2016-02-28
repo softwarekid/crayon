@@ -4,6 +4,7 @@
 #include "CgShaderParametersBase.h"
 #include "HalfVectorFsParam.h"
 #include "HalfVectorVsParam.h"
+#include <CG/cgGL.h>
 
 class HalfVectorInVert : public GlutWrapper
 {
@@ -15,7 +16,7 @@ private:
     void _Idle(void) override;
     void _Reshape(int width, int height) override;
     void _Display(void) override;
-    void _InitShaderParams() override;
+    void _InitShaderParams();
 
 protected:
     void _InitVertShader() override;

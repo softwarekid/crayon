@@ -35,24 +35,24 @@ void TwoLightsWithStructVsParam::SetLightColor2(const Vector3f& lightColor2)
     _Set3fvParam(lightColor[1], lightColor2);
 }
 
-void TwoLightsWithStructVsParam::SetMaterialKe(const float ke)
+void TwoLightsWithStructVsParam::SetMaterialKe(const Vector3f& ke)
 {
-    _Set1fParam(materialKe, ke);
+    _Set3fvParam(materialKe, ke);
 }
 
-void TwoLightsWithStructVsParam::SetMaterialKa(const float ka)
+void TwoLightsWithStructVsParam::SetMaterialKa(const Vector3f& ka)
 {
-    _Set1fParam(materialKa, ka);
+    _Set3fvParam(materialKa, ka);
 }
 
-void TwoLightsWithStructVsParam::SetMaterialKd(const float kd)
+void TwoLightsWithStructVsParam::SetMaterialKd(const Vector3f& kd)
 {
-    _Set1fParam(materialKd, kd);
+    _Set3fvParam(materialKd, kd);
 }
 
-void TwoLightsWithStructVsParam::SetMaterialKs(const float ks)
+void TwoLightsWithStructVsParam::SetMaterialKs(const Vector3f& ks)
 {
-    _Set1fParam(materialKs, ks);
+    _Set3fvParam(materialKs, ks);
 }
 
 void TwoLightsWithStructVsParam::SetMaterialShininess(const float shininess)
@@ -62,18 +62,18 @@ void TwoLightsWithStructVsParam::SetMaterialShininess(const float shininess)
 
 void TwoLightsWithStructVsParam::ExtractParams()
 {
-    cgGetNamedParameter(modelViewProj, );
-    cgGetNamedParameter(eyePosition, );
-    cgGetNamedParameter(globalAmbient, );
-    cgGetNamedParameter(lightPosition[0], );
-    cgGetNamedParameter(lightPosition[1], );
-    cgGetNamedParameter(lightColor[0], );
-    cgGetNamedParameter(lightColor[1], );
-    cgGetNamedParameter(materialKe, );
-    cgGetNamedParameter(materialKa, );
-    cgGetNamedParameter(materialKd, );
-    cgGetNamedParameter(materialKs, );
-    cgGetNamedParameter(materialShininess, );
+    _GetProgramParam(modelViewProj, "modelViewProj");
+    _GetProgramParam(eyePosition, "eyePosition");
+    _GetProgramParam(globalAmbient, "globalAmbient");
+    _GetProgramParam(lightPosition[0], "lights[0].position");
+    _GetProgramParam(lightPosition[1], "lights[1].position");
+    _GetProgramParam(lightColor[0], "lights[0].color");
+    _GetProgramParam(lightColor[1], "lights[1].color");
+    _GetProgramParam(materialKe, "material.Ke");
+    _GetProgramParam(materialKa, "material.Ka");
+    _GetProgramParam(materialKd, "material.Kd");
+    _GetProgramParam(materialKs, "material.Ks");
+    _GetProgramParam(materialShininess, "material.shininess");
 }
 
 TwoLightsWithStructVsParam::TwoLightsWithStructVsParam(const CgShader& shader) : CgShaderParametersBase(shader)
