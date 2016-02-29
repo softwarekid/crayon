@@ -20,7 +20,12 @@ private:
     static void __Menu();
     static GlutWrapper* __CurrentWindow();
     static std::map<int, GlutWrapper*> _windows;
+
+
 protected:
+    // helper function
+    Vector3f _MatVecMulReduced(const Matrix4f& matrix, const Vector4f& vector);
+
     virtual void _Keyboard(int c, int x, int y);
     virtual void _Idle(void) {};
     virtual void _Reshape(int width, int height);

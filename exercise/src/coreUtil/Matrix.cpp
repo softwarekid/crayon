@@ -57,32 +57,22 @@ void Matrix4f::SetIdentity()
 
 Matrix4f Matrix4f::Mul(const Matrix4f& m)
 {
-    Matrix4f result;
-    for (int i = 1; i <= DIM ; i++)
-    {
-        for (int j = 1; j <= DIM; j++)
-        {
-            for (int k = 1; k <= DIM; k++)
-            {
-                result(i, j) += operator()(i, k) * m(k, j);
-            }
-        }
-    }
-    return result;
+    return _DoMultiply(m);
+}
+
+Matrix4f Matrix4f::Mul(const Matrix4f& m) const
+{
+    return _DoMultiply(m);
 }
 
 Vector4f Matrix4f::Mul(const Vector4f& v)
 {
-    Vector4f result;
-    Matrix4f m(*this);
-    for (int i = 1; i <= DIM; i++)
-    {
-        for(int j = 1; j <= DIM; j++)
-        {
-            result[i] += v[j] * m(i,j);
-        }
-    }
-    return result;
+    return _DoMultiply(v);
+}
+
+Vector4f Matrix4f::Mul(const Vector4f& v) const
+{
+    return _DoMultiply(v);
 }
 
 void Matrix4f::_SwapRow(double* a, double* b)
@@ -238,6 +228,36 @@ float Matrix4f::operator()(int row, int col) const
 Matrix4f::~Matrix4f()
 {
     delete[] _pInnerValues;
+}
+
+Matrix4f Matrix4f::_DoMultiply(const Matrix4f& m) const
+{
+    Matrix4f result;
+    for (int i = 1; i <= DIM ; i++)
+    {
+        for (int j = 1; j <= DIM; j++)
+        {
+            for (int k = 1; k <= DIM; k++)
+            {
+                result(i, j) += operator()(i, k) * m(k, j);
+            }
+        }
+    }
+    return result;
+}
+
+Vector4f Matrix4f::_DoMultiply(const Vector4f& v) const
+{
+    Vector4f result;
+    Matrix4f m(*this);
+    for (int i = 1; i <= DIM; i++)
+    {
+        for(int j = 1; j <= DIM; j++)
+        {
+            result[i] += v[j] * m(i,j);
+        }
+    }
+    return result;
 }
 
 void Matrix4f::Print()

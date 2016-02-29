@@ -8,8 +8,8 @@ class TwoLightsWithStruct : public GlutWrapper
 private:
     TwoLightsWithStructVsParam* _vertParams;
     TwoLightsWithStructFsParam* _fragParams;
-    float _lightAngles[2] = { -0.4, -0.1 };
-    Vector3f _lightColors[2] = { Vector3f(0.95, 0.95, 0.95), Vector3f(0.5, 0.5, 0.2) };
+    float _lightAngles[2];
+    Vector3f _lightColors[2];
     void _SetBrassMaterial();
     void _SetPlasticMaterial();
     void _SetEmissiveOnly(int lightIndex);

@@ -10,9 +10,9 @@ myDemonTextureImage[3 * (128 * 128)] =
 
 int main()
 {
-    //HalfVectorInVert cgViewer("crayon", 400, 400, 0.0);
+    HalfVectorInVert cgViewer("crayon", 400, 400, 0.0);
     //TextureSampling cgViewer("crayon", 400, 400, myDemonTextureImage);
-    TwoTextureAccess cgViewer("crayon", 400, 400, myDemonTextureImage);
+    //TwoTextureAccess cgViewer("crayon", 400, 400, myDemonTextureImage);
     cgViewer.StartRendering();
     return 0;
 }

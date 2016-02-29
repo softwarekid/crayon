@@ -50,6 +50,13 @@ GlutWrapper* GlutWrapper::__CurrentWindow()
     return _windows[glutGetWindow()];
 }
 
+Vector3f GlutWrapper::_MatVecMulReduced(const Matrix4f& matrix, const Vector4f& vector)
+{
+    auto result = matrix.Mul(vector);
+    result.ReduceTo3DSpace();
+    return Vector3f(result[1], result[2], result[3]);
+}
+
 void GlutWrapper::_Keyboard(int c, int x, int y)
 {
     switch (c)

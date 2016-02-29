@@ -82,13 +82,11 @@ void HalfVectorInVert::_Display()
     Matrix4f modelMatrix;
     _transform.GetModelMatrix(modelMatrix);
     Matrix4f invModelMatrix = modelMatrix.Invert();
-    Vector4f objSpaceEyePosition = invModelMatrix.Mul(eyePosition);
-    Vector4f objSpaceLightPosition = invModelMatrix.Mul(lightPosition);
-    objSpaceEyePosition.ReduceTo3DSpace();
-    objSpaceLightPosition.ReduceTo3DSpace();
-    _fragParams->SetLightPosition(Vector3f(objSpaceLightPosition[1], objSpaceLightPosition[2], objSpaceLightPosition[3]));
-    _vertParams->SetLightPosition(Vector3f(objSpaceLightPosition[1], objSpaceLightPosition[2], objSpaceLightPosition[3]));
-    _vertParams->SetEyePostion(Vector3f(objSpaceEyePosition[1], objSpaceEyePosition[2], objSpaceEyePosition[3]));
+    Vector3f objSpaceEyePosition = _MatVecMulReduced(invModelMatrix, eyePosition);
+    Vector3f objSpaceLightPosition = _MatVecMulReduced(invModelMatrix, lightPosition);
+    _fragParams->SetLightPosition(objSpaceLightPosition);
+    _vertParams->SetLightPosition(objSpaceLightPosition);
+    _vertParams->SetEyePostion(objSpaceEyePosition);
     Matrix4f modelViewProjMatix;
     _transform.GetMVPMatrix(modelViewProjMatix);
     _vertParams->SetMVPMatrix(modelViewProjMatix);

@@ -64,27 +64,29 @@ void TwoLightsWithStruct::_Display()
 
     //TODO can I use rvalue-reference here?
     Matrix4f invModelMatrix = modelMatrix.Invert();
-    Vector4f&& objSpaceEyePosition = invModelMatrix.Mul(eyePosition);
-    Vector4f objSpaceLightPosition = invModelMatrix.Mul(lightPosition);
 
-    /* Transform world-space eye and light positions to sphere's object-space. */
-    transform(objSpaceEyePosition, invModelMatrix, eyePosition);
-    cgSetParameter3fv(myCgVertexParam_eyePosition, objSpaceEyePosition);
-    for (i = 0; i<2; i++) {
-        transform(objSpaceLightPosition, invModelMatrix, lightPosition[i]);
-        cgSetParameter3fv(myCgVertexParam_lightPosition[i], objSpaceLightPosition);
-    }
+    Vector3f objSpaceEyePosition = _MatVecMulReduced(invModelMatrix, eyePosition);
+    _vertParams->SetEyePosition(objSpaceEyePosition);
+    //Vector4f objSpaceLightPosition = invModelMatrix.Mul(lightPosition);
 
-    /* modelViewMatrix = viewMatrix * modelMatrix */
-    multMatrix(modelViewMatrix, viewMatrix, modelMatrix);
+    ///* Transform world-space eye and light positions to sphere's object-space. */
+    //transform(objSpaceEyePosition, invModelMatrix, eyePosition);
+    //cgSetParameter3fv(myCgVertexParam_eyePosition, objSpaceEyePosition);
+    //for (i = 0; i<2; i++) {
+    //    transform(objSpaceLightPosition, invModelMatrix, lightPosition[i]);
+    //    cgSetParameter3fv(myCgVertexParam_lightPosition[i], objSpaceLightPosition);
+    //}
 
-    /* modelViewProj = projectionMatrix * modelViewMatrix */
-    multMatrix(modelViewProjMatrix, myProjectionMatrix, modelViewMatrix);
+    ///* modelViewMatrix = viewMatrix * modelMatrix */
+    //multMatrix(modelViewMatrix, viewMatrix, modelMatrix);
 
-    /* Set matrix parameter with row-major matrix. */
-    cgSetMatrixParameterfr(myCgVertexParam_modelViewProj, modelViewProjMatrix);
-    cgUpdateProgramParameters(myCgVertexProgram);
-    glutSolidSphere(2.0, 40, 40);
+    ///* modelViewProj = projectionMatrix * modelViewMatrix */
+    //multMatrix(modelViewProjMatrix, myProjectionMatrix, modelViewMatrix);
+
+    ///* Set matrix parameter with row-major matrix. */
+    //cgSetMatrixParameterfr(myCgVertexParam_modelViewProj, modelViewProjMatrix);
+    //cgUpdateProgramParameters(myCgVertexProgram);
+    //glutSolidSphere(2.0, 40, 40);
 
 
 }
@@ -113,5 +115,9 @@ void TwoLightsWithStruct::_InitFragShader()
 
 TwoLightsWithStruct::TwoLightsWithStruct(const char* title, int width, int height) : GlutWrapper(title, width, height)
 {
+    _lightAngles[0] = -0.4;
+    _lightAngles[1] = -0.1;
 
+    _lightColors[0] = Vector3f(0.95, 0.95, 0.95);
+    _lightColors[1] = Vector3f(0.5, 0.5, 0.2);
 }
