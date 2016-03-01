@@ -3,6 +3,8 @@
 #include "GlutWrapper.h"
 #include "TwoLightsWithStructVsParam.h"
 #include "TwoLightsWithStructFsParam.h"
+#include <array>
+
 class TwoLightsWithStruct : public GlutWrapper
 {
 private:
@@ -18,6 +20,7 @@ protected:
     void _Display(void) override;
     void _InitVertShader() override;
     void _InitFragShader() override;
+    void _InitLightColor();
 public:
     TwoLightsWithStruct(const char* title, int width, int height);
 };

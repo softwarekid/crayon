@@ -2,6 +2,8 @@
 #include "TwoLightsWithStruct.h"
 #include <CG/cgGL.h>
 #include <vector>
+#include <GL/glut.h>
+#include <CgLog.h>
 using namespace std;
 
 void TwoLightsWithStruct::_SetBrassMaterial()
@@ -52,6 +54,7 @@ void TwoLightsWithStruct::_Display()
     _fragShader->BindProgram();
     _fragShader->EnableProfile();
 
+    _InitLightColor();
     Camera camera(eyePosition, eyeCenter, eyeUp);
     _transform.SetCamera(camera);
     
@@ -61,34 +64,21 @@ void TwoLightsWithStruct::_Display()
     _transform.SetTranslate(2, 0, 0);
     Matrix4f modelMatrix;
     _transform.GetModelMatrix(modelMatrix);
-
     //TODO can I use rvalue-reference here?
     Matrix4f invModelMatrix = modelMatrix.Invert();
 
     Vector3f objSpaceEyePosition = _MatVecMulReduced(invModelMatrix, eyePosition);
     _vertParams->SetEyePosition(objSpaceEyePosition);
-    //Vector4f objSpaceLightPosition = invModelMatrix.Mul(lightPosition);
-
-    ///* Transform world-space eye and light positions to sphere's object-space. */
-    //transform(objSpaceEyePosition, invModelMatrix, eyePosition);
-    //cgSetParameter3fv(myCgVertexParam_eyePosition, objSpaceEyePosition);
-    //for (i = 0; i<2; i++) {
-    //    transform(objSpaceLightPosition, invModelMatrix, lightPosition[i]);
-    //    cgSetParameter3fv(myCgVertexParam_lightPosition[i], objSpaceLightPosition);
-    //}
-
-    ///* modelViewMatrix = viewMatrix * modelMatrix */
-    //multMatrix(modelViewMatrix, viewMatrix, modelMatrix);
-
-    ///* modelViewProj = projectionMatrix * modelViewMatrix */
-    //multMatrix(modelViewProjMatrix, myProjectionMatrix, modelViewMatrix);
-
-    ///* Set matrix parameter with row-major matrix. */
-    //cgSetMatrixParameterfr(myCgVertexParam_modelViewProj, modelViewProjMatrix);
-    //cgUpdateProgramParameters(myCgVertexProgram);
-    //glutSolidSphere(2.0, 40, 40);
-
-
+    for (int i = 0; i < 2; i++)
+    {
+        Vector3f objSpaceLightPosition = _MatVecMulReduced(invModelMatrix, lightPositions[i]);
+        _vertParams->SetLightColor(i, objSpaceLightPosition);
+    }
+    Matrix4f modelViewProjMatix;
+    _transform.GetMVPMatrix(modelViewProjMatix);
+    _vertParams->SetMVPMatrix(modelViewProjMatix);
+    _vertShader->UpdateParams();
+    glutSolidSphere(2.0, 40, 40);
 }
 
 void TwoLightsWithStruct::_InitVertShader()
@@ -113,11 +103,24 @@ void TwoLightsWithStruct::_InitFragShader()
     cgGLSetOptimalOptions(profileFrag);
 }
 
+void TwoLightsWithStruct::_InitLightColor()
+{
+    for (int i = 0; i < 2; i++)
+    {
+        _vertParams->SetLightColor(i, _lightColors[i]);
+    }
+    _vertParams->SetGlobalAmbient(Vector3f(0.1, 0.1, 0.1));
+}
+
 TwoLightsWithStruct::TwoLightsWithStruct(const char* title, int width, int height) : GlutWrapper(title, width, height)
 {
     _lightAngles[0] = -0.4;
     _lightAngles[1] = -0.1;
-
     _lightColors[0] = Vector3f(0.95, 0.95, 0.95);
     _lightColors[1] = Vector3f(0.5, 0.5, 0.2);
+    _context = cgCreateContext();
+    CgLog::Log("create content", _context);
+    cgGLSetDebugMode(CG_TRUE);
+    cgSetParameterSettingMode(_context,CG_DEFERRED_PARAMETER_SETTING);
+    CgLog::Log("selecting vertex profile", _context);
 }

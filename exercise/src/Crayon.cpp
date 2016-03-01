@@ -1,6 +1,7 @@
 #include "example/TextureSampling/TextureSampling.h"
 #include "example/HalfVectorInVert/HalfVectorInVert.h"
 #include "example/TwoTextureAccess/TwoTextureAccess.h"
+#include "example/TwoLightsWithStruct/TwoLightsWithStruct.h"
 static const GLubyte
 myDemonTextureImage[3 * (128 * 128)] = 
 {
@@ -10,9 +11,10 @@ myDemonTextureImage[3 * (128 * 128)] =
 
 int main()
 {
-    HalfVectorInVert cgViewer("crayon", 400, 400, 0.0);
+    //HalfVectorInVert cgViewer("crayon", 400, 400, 0.0);
     //TextureSampling cgViewer("crayon", 400, 400, myDemonTextureImage);
     //TwoTextureAccess cgViewer("crayon", 400, 400, myDemonTextureImage);
+    TwoLightsWithStruct cgViewer("crayon", 400, 400);
     cgViewer.StartRendering();
     return 0;
 }

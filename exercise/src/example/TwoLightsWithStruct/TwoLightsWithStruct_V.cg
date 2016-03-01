@@ -18,9 +18,10 @@ void ComputeBRDFLighting(Light light, float3 P, float3 N, float3 eyePosition, fl
 {
 	float3 L = normalize(light.position - P);
 	float difCoef = max(dot(N, L), 0);
+	// is it possible to put the scalar in front of the vector?
 	difResult = difCoef * light.color; 
 
-	float3 V = eyePositio - P;
+	float3 V = eyePosition - P;
 	float3 H = normalize(V + L);
 	float specularCoef = pow(max(dot(H,N), 0), shininess);
 	if(specularCoef <= 0)
@@ -50,12 +51,12 @@ void main_v(float4 position : POSITION,
 	float3 tempDifLighting;
 	float3 tempSpecLighting;
 
-	for(int i = 0; i < 2; i++)
-	{
-		ComputeBRDFLighting(lights[i], position, normal, eyePosition, material.shininess, tempDifLighting, specLighting);
+	//for(int i = 0; i < 2; i++)
+	//{
+		ComputeBRDFLighting(lights[0], position.xyz, normal, eyePosition, material.shininess, tempDifLighting, specLighting);
 		difLighting += tempDifLighting;
 		specLighting += tempSpecLighting;	
-	}
+	//}
 
 	float3 diffuse = difLighting * material.Kd;
 	float3 specular = specLighting * material.Ks;

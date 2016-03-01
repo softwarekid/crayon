@@ -78,7 +78,7 @@ void HalfVectorInVert::_Display()
     Camera camera(eyePosition, eyeCenter, eyeUp);
     _transform.SetCamera(camera);
     _transform.SetTranslate(2, 0, 0);
-    _transform.SetArbitraryRotation(20, 1, 1, 1);
+    _transform.SetArbitraryRotation(70, 1, 1, 1);
     Matrix4f modelMatrix;
     _transform.GetModelMatrix(modelMatrix);
     Matrix4f invModelMatrix = modelMatrix.Invert();
