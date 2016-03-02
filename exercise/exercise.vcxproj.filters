@@ -229,6 +229,9 @@
     <ClInclude Include="src\example\TwoLightsWithStruct\TwoLightsWithStructFsParam.h">
       <Filter>Header Files\example\TwoLightsWithStruct</Filter>
     </ClInclude>
+    <ClInclude Include="src\coreUtil\Material.h">
+      <Filter>Header Files\CoreUtil</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\example\HalfVectorInVert\HalfVectorInVert_F.cg">

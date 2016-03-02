@@ -31,8 +31,7 @@ void HalfVectorInVert::_InitFragShader()
     cgGLSetOptimalOptions(profileFrag);
 }
 
-HalfVectorInVert::HalfVectorInVert(const char* title, int width, int height, float lightAngle):
-         GlutWrapper(title, width, height)
+HalfVectorInVert::HalfVectorInVert(const char* title, int width, int height, float lightAngle):GlutWrapper(title, width, height)
 {
     _lightAngle = lightAngle;
     glEnable(GL_DEPTH_TEST);
@@ -41,6 +40,12 @@ HalfVectorInVert::HalfVectorInVert(const char* title, int width, int height, flo
     cgGLSetDebugMode(CG_TRUE);
     cgSetParameterSettingMode(_context,CG_DEFERRED_PARAMETER_SETTING);
     CgLog::Log("selecting vertex profile", _context);
+
+    material.ka = { 0.33f, 0.22f, 0.03f };
+    material.ke = { 0, 0, 0 };
+    material.kd = { 0.78f, 0.57f, 0.11f };
+    material.ks = { 0.99f, 0.91f, 0.81f };
+    material.shininess  = 27.8f;
 }
 
 void HalfVectorInVert::_Idle()
@@ -65,7 +70,7 @@ void HalfVectorInVert::_Display()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    _InitShaderParams();
+    _SetMaterialAndLightColor();
 
     const Vector3f eyePosition(0, 0, 13);
     const Vector3f eyeCenter(0,0,0);
@@ -100,14 +105,14 @@ void HalfVectorInVert::_Display()
     glutSwapBuffers();
 }
 
-void HalfVectorInVert::_InitShaderParams()
+void HalfVectorInVert::_SetMaterialAndLightColor()
 {
     // brass material
-    _fragParams->SetKaCoef(Vector3f(0.33, 0.22, 0.03));
-    _fragParams->SetKeCoef(Vector3f(0, 0, 0));
-    _fragParams->SetKdCoef(Vector3f(0.78, 0.57, 0.11));
-    _fragParams->SetKsCoef(Vector3f(0.99, 0.91, 0.81));
-    _fragParams->SetShinessCoef(27.8);
+    _fragParams->SetKaCoef(material.ka);
+    _fragParams->SetKeCoef(material.ke);
+    _fragParams->SetKdCoef(material.kd);
+    _fragParams->SetKsCoef(material.ks);
+    _fragParams->SetShinessCoef(material.shininess);
 
     // light color
     _fragParams->SetLightColor(Vector3f(0.95f, 0.95f, 0.95f));

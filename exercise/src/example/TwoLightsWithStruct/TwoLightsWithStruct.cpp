@@ -4,40 +4,104 @@
 #include <vector>
 #include <GL/glut.h>
 #include <CgLog.h>
+#include <Constants.h>
 using namespace std;
 
 void TwoLightsWithStruct::_SetBrassMaterial()
 {
-    _vertParams->SetMaterialKe(Vector3f(0.0, 0.0, 0.0));
-    _vertParams->SetMaterialKa(Vector3f(0.33, 0.22, 0.03));
-    _vertParams->SetMaterialKd(Vector3f(0.78, 0.57, 0.11));
-    _vertParams->SetMaterialKs(Vector3f(0.99, 0.91, 0.81));
-    _vertParams->SetMaterialShininess(27.8);
 }
 
-void TwoLightsWithStruct::_SetPlasticMaterial()
+void TwoLightsWithStruct::_SetRedPlasticMaterial()
 {
-    _vertParams->SetMaterialKe(Vector3f(0.0, 0.0, 0.0));
-    _vertParams->SetMaterialKa(Vector3f(0.0, 0.0, 0.0));
-    _vertParams->SetMaterialKd(Vector3f(0.5, 0.0, 0.0));
-    _vertParams->SetMaterialKs(Vector3f(0.7, 0.6, 0.6));
-    _vertParams->SetMaterialShininess(32.0);
 }
 
 void TwoLightsWithStruct::_SetEmissiveOnly(int lightIndex)
 {
     assert(lightIndex >= 0 && lightIndex <= 1);
-    Vector3f zero(0, 0, 0);
-    _vertParams->SetMaterialKe(_lightColors[lightIndex]);
-    _vertParams->SetMaterialKa(zero);
-    _vertParams->SetMaterialKd(zero);
-    _vertParams->SetMaterialKs(zero);
-    _vertParams->SetMaterialShininess(0);
+}
+
+void TwoLightsWithStruct::_InitMaterial()
+{
+    // brass material
+    brassMaterial.ke = { 0.0f, 0.0f, 0.0f };
+    brassMaterial.ka = { 0.33f, 0.22f, 0.03f };
+    brassMaterial.kd = { 0.78f, 0.57f, 0.11f };
+    brassMaterial.ks = { 0.99f, 0.91f, 0.81f };
+    brassMaterial.shininess = 27.8;
+
+    // red plastic 
+    redPlasticMaterial.ke = { 0.0f, 0.0f, 0.0f };
+    redPlasticMaterial.ka = { 0.0f, 0.0f, 0.0f };
+    redPlasticMaterial.kd = { 0.5f, 0.0f, 0.0f };
+    redPlasticMaterial.ks = { 0.7f, 0.6f, 0.6f };
+    redPlasticMaterial.shininess = 32.0f;
+
+    // only emissive
+    for (int i = 0; i < 2; i++)
+    {
+        emissiveMaterial[i].ke = Vector3f( _lightColors[i].x, _lightColors[i].y, _lightColors[i].z );
+        emissiveMaterial[i].ka = { 0.0f, 0.0f, 0.0f };
+        emissiveMaterial[i].kd = { 0.0f, 0.0f, 0.0f };
+        emissiveMaterial[i].ks = { 0.0f, 0.0f, 0.0f };
+        emissiveMaterial->shininess = 0.0f;
+    }
+}
+
+void TwoLightsWithStruct::_SetMaterial(const Material& m)
+{
+    _vertParams->SetMaterialKe(m.ke);
+    _vertParams->SetMaterialKa(m.ka);
+    _vertParams->SetMaterialKd(m.kd);
+    _vertParams->SetMaterialKs(m.ks);
+    _vertParams->SetMaterialShininess(m.shininess);
+}
+
+void TwoLightsWithStruct::_Draw(const Vector4f& rotation, const Vector3f& translate,const Vector3f& eyePos, const vector<Vector3f>& lightPositions, const Material& m, RenderObject obj )
+{
+    _SetMaterial(m);
+    _transform.SetArbitraryRotation(rotation[1], rotation[2], rotation[3], rotation[4]);
+    _transform.SetTranslate(translate.x, translate.y, translate.z);
+    Matrix4f modelMatrix;
+    _transform.GetModelMatrix(modelMatrix);
+    //TODO can I use rvalue-reference here?
+    Matrix4f invModelMatrix = modelMatrix.Invert();
+
+    Vector3f objSpaceEyePosition = _MatVecMulReduced(invModelMatrix, eyePos);
+    _vertParams->SetEyePosition(objSpaceEyePosition);
+    for (int i = 0; i < lightPositions.size(); i++)
+    {
+        Vector3f objSpaceLightPosition = _MatVecMulReduced(invModelMatrix, lightPositions[i]);
+        _vertParams->SetLightPos(i, objSpaceLightPosition);
+    }
+    Matrix4f modelViewProjMatix;
+    _transform.GetMVPMatrix(modelViewProjMatix);
+    _vertParams->SetMVPMatrix(modelViewProjMatix);
+    // deferred params are updated, aka, perform a draw call
+    _vertShader->UpdateParams();
+    switch (obj)
+    {
+    case RenderObject::Sphere:
+        glutSolidSphere(2.0, 40, 40);
+        break;
+    case RenderObject::Cone:
+        glutSolidCone(1.5, 3.5, 30, 30);
+        break;
+    }
 }
 
 void TwoLightsWithStruct::_Idle()
 {
-
+    _lightAngles[0] += 0.008;  /* Add a small angle (in radians). */
+    if (_lightAngles[0] > 2 * Constants::Math::PI)
+    {
+        _lightAngles[0] -= 2 * Constants::Math::PI;
+    }
+    _lightAngles[1] -= 0.005;  /* Add a small angle (in radians). */
+    if (_lightAngles[1] < 2 * Constants::Math::PI) 
+    {
+        _lightAngles[1] += 2 * Constants::Math::PI;
+    }
+    glutPostRedisplay();
 }
 
 void TwoLightsWithStruct::_Display()
@@ -55,30 +119,18 @@ void TwoLightsWithStruct::_Display()
     _fragShader->EnableProfile();
 
     _InitLightColor();
-    _SetBrassMaterial();
     Camera camera(eyePosition, eyeCenter, eyeUp);
     _transform.SetCamera(camera);
-    _transform.SetArbitraryRotation(70, 1, 1, 1);
-    _transform.SetTranslate(2, 0, 0);
-    Matrix4f modelMatrix;
-    _transform.GetModelMatrix(modelMatrix);
-    //TODO can I use rvalue-reference here?
-    Matrix4f invModelMatrix = modelMatrix.Invert();
+    Vector3f translation;
+    Vector4f rotation;
 
-    Vector3f objSpaceEyePosition = _MatVecMulReduced(invModelMatrix, eyePosition);
-    _vertParams->SetEyePosition(objSpaceEyePosition);
-    for (int i = 0; i < 2; i++)
-    {
-        Vector3f objSpaceLightPosition = _MatVecMulReduced(invModelMatrix, lightPositions[1]);
-        _vertParams->SetLightPos(0, objSpaceLightPosition);
-    }
-    Matrix4f modelViewProjMatix;
-    _transform.GetMVPMatrix(modelViewProjMatix);
-    _vertParams->SetMVPMatrix(modelViewProjMatix);
-    _vertShader->UpdateParams();
-    glutSolidSphere(2.0, 40, 40);
+    translation = Vector3f(2, 0, 0);
+    rotation = Vector4f(-70, 1, 1, 1);
+    _Draw(rotation, translation, eyePosition, lightPositions, brassMaterial, RenderObject::Sphere);
 
-
+    translation = Vector3f(-2.0f, -1.5f, 0);
+    rotation = Vector4f(-90, 1, 0, 0);
+    _Draw(rotation, translation, eyePosition, lightPositions, redPlasticMaterial, RenderObject::Cone);
 
     glutSwapBuffers();
 }
@@ -126,4 +178,5 @@ TwoLightsWithStruct::TwoLightsWithStruct(const char* title, int width, int heigh
     cgGLSetDebugMode(CG_TRUE);
     cgSetParameterSettingMode(_context,CG_DEFERRED_PARAMETER_SETTING);
     CgLog::Log("selecting vertex profile", _context);
+    _InitMaterial();
 }

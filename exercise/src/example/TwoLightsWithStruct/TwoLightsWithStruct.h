@@ -3,7 +3,8 @@
 #include "GlutWrapper.h"
 #include "TwoLightsWithStructVsParam.h"
 #include "TwoLightsWithStructFsParam.h"
-#include <array>
+#include "Material.h"
+#include <vector>
 
 class TwoLightsWithStruct : public GlutWrapper
 {
@@ -12,9 +13,16 @@ private:
     TwoLightsWithStructFsParam* _fragParams;
     float _lightAngles[2];
     Vector3f _lightColors[2];
+    Material brassMaterial;
+    Material redPlasticMaterial;
+    Material emissiveMaterial[2];
+
     void _SetBrassMaterial();
-    void _SetPlasticMaterial();
+    void _SetRedPlasticMaterial();
     void _SetEmissiveOnly(int lightIndex);
+    void _InitMaterial();
+    void _SetMaterial(const Material& m);
+    void _Draw(const Vector4f& rotation, const Vector3f& translate,const Vector3f& eyePos, const std::vector<Vector3f>& lightPostions, const Material& m, RenderObject obj );
 protected:
     void _Idle() override;
     void _Display(void) override;

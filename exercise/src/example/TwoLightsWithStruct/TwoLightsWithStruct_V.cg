@@ -21,7 +21,7 @@ void ComputeBRDFLighting(Light light, float3 P, float3 N, float3 eyePosition, fl
 	// is it possible to put the scalar in front of the vector?
 	difResult = difCoef * light.color; 
 
-	float3 V = eyePosition - P;
+	float3 V = normalize(eyePosition - P);
 	float3 H = normalize(V + L);
 	float specularCoef = pow(max(dot(H,N), 0), shininess);
 	if(specularCoef <= 0)

@@ -10,6 +10,7 @@
 
 class GlutWrapper
 {
+    
 private:
     // only static member function can be used as callback, because it 
     // doesn't have the implicit "this" parameter
@@ -21,8 +22,15 @@ private:
     static GlutWrapper* __CurrentWindow();
     static std::map<int, GlutWrapper*> _windows;
 
-
 protected:
+
+    enum RenderObject
+    {
+        Sphere,
+        Cone
+    };
+
+
     // helper function
     Vector3f _MatVecMulReduced(const Matrix4f& matrix, const Vector4f& vector);
 

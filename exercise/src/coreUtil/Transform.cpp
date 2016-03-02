@@ -21,6 +21,7 @@ Transform::Transform(): _transRotTranDirty(true),
 void Transform::SetTranslate(float x, float y, float z)
 {
     _transRotTranDirty = true;
+    _translateMatrix.SetIdentity();
     _translateMatrix(1, 4) = x;
     _translateMatrix(2, 4) = y;
     _translateMatrix(3, 4) = z;
@@ -29,6 +30,7 @@ void Transform::SetTranslate(float x, float y, float z)
 void Transform::SetArbitraryRotation(float angle, float axisX, float axisY, float axisZ)
 {
     _transRotTranDirty = true;
+    _rotateMatrix.SetIdentity();
     float radians, sine, cosine;
     Vector3f r(axisX, axisY, axisZ);
     r.Normalized();

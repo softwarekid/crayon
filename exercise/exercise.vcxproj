@@ -115,6 +115,7 @@
     <ClInclude Include="src\cgWrapper\CgShaderParametersBase.h" />
     <ClInclude Include="src\coreUtil\Camera.h" />
     <ClInclude Include="src\coreUtil\Constants.h" />
+    <ClInclude Include="src\coreUtil\Material.h" />
     <ClInclude Include="src\coreUtil\MathUtil.h" />
     <ClInclude Include="src\coreUtil\Matrix.h" />
     <ClInclude Include="src\coreUtil\Mesh.h" />
