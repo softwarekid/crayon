@@ -51,16 +51,14 @@ void main_v(float4 position : POSITION,
 	float3 tempDifLighting;
 	float3 tempSpecLighting;
 
-	//for(int i = 0; i < 2; i++)
-	//{
-		ComputeBRDFLighting(lights[0], position.xyz, normal, eyePosition, material.shininess, tempDifLighting, specLighting);
+	for(int i = 0; i < 2; i++)
+	{
+		ComputeBRDFLighting(lights[i], position.xyz, normal, eyePosition, material.shininess, tempDifLighting, tempSpecLighting);
 		difLighting += tempDifLighting;
 		specLighting += tempSpecLighting;	
-	//}
-
+	}
 	float3 diffuse = difLighting * material.Kd;
-	float3 specular = specLighting * material.Ks;
-
+	float3 specular = specLighting * material.Ks;	
 	color.xyz = emissive + ambient + diffuse + specular;
 	color.w = 1;
 }	

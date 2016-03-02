@@ -55,11 +55,9 @@ void TwoLightsWithStruct::_Display()
     _fragShader->EnableProfile();
 
     _InitLightColor();
+    _SetBrassMaterial();
     Camera camera(eyePosition, eyeCenter, eyeUp);
     _transform.SetCamera(camera);
-    
-    _SetBrassMaterial();
-
     _transform.SetArbitraryRotation(70, 1, 1, 1);
     _transform.SetTranslate(2, 0, 0);
     Matrix4f modelMatrix;
@@ -71,14 +69,18 @@ void TwoLightsWithStruct::_Display()
     _vertParams->SetEyePosition(objSpaceEyePosition);
     for (int i = 0; i < 2; i++)
     {
-        Vector3f objSpaceLightPosition = _MatVecMulReduced(invModelMatrix, lightPositions[i]);
-        _vertParams->SetLightColor(i, objSpaceLightPosition);
+        Vector3f objSpaceLightPosition = _MatVecMulReduced(invModelMatrix, lightPositions[1]);
+        _vertParams->SetLightPos(0, objSpaceLightPosition);
     }
     Matrix4f modelViewProjMatix;
     _transform.GetMVPMatrix(modelViewProjMatix);
     _vertParams->SetMVPMatrix(modelViewProjMatix);
     _vertShader->UpdateParams();
     glutSolidSphere(2.0, 40, 40);
+
+
+
+    glutSwapBuffers();
 }
 
 void TwoLightsWithStruct::_InitVertShader()
@@ -114,6 +116,7 @@ void TwoLightsWithStruct::_InitLightColor()
 
 TwoLightsWithStruct::TwoLightsWithStruct(const char* title, int width, int height) : GlutWrapper(title, width, height)
 {
+    glEnable(GL_DEPTH_TEST);
     _lightAngles[0] = -0.4;
     _lightAngles[1] = -0.1;
     _lightColors[0] = Vector3f(0.95, 0.95, 0.95);

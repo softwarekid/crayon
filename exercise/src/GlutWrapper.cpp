@@ -148,7 +148,6 @@ GlutWrapper::GlutWrapper(const char* title, int width, int height)
 
     _RequestSynchronizedSwapBuffers();
     glClearColor(0.1, 0.3, 0.6, 0.0);  /* Blue background */
-    glEnable(GL_DEPTH_TEST);
 }
 
 GlutWrapper::~GlutWrapper()
