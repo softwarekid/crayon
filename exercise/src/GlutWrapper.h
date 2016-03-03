@@ -27,7 +27,8 @@ protected:
     enum RenderObject
     {
         Sphere,
-        Cone
+        Cone,
+        SmallSphere,
     };
 
 

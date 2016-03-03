@@ -57,6 +57,9 @@
     <Filter Include="Header Files\example\TwoLightsWithStruct">
       <UniqueIdentifier>{9b359ac6-75ea-420f-8fae-fb61c1e20a2e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\example\atte">
+      <UniqueIdentifier>{3da14e08-eb53-48a7-a2c5-a899af006649}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\cgWrapper\CgLog.cpp">

@@ -21,6 +21,8 @@ Transform::Transform(): _transRotTranDirty(true),
 void Transform::SetTranslate(float x, float y, float z)
 {
     _transRotTranDirty = true;
+    _MVDirty = true;
+    _MVPDirty = true;
     _translateMatrix.SetIdentity();
     _translateMatrix(1, 4) = x;
     _translateMatrix(2, 4) = y;
@@ -30,6 +32,8 @@ void Transform::SetTranslate(float x, float y, float z)
 void Transform::SetArbitraryRotation(float angle, float axisX, float axisY, float axisZ)
 {
     _transRotTranDirty = true;
+    _MVPDirty = true;
+    _MVDirty = true;
     _rotateMatrix.SetIdentity();
     float radians, sine, cosine;
     Vector3f r(axisX, axisY, axisZ);
@@ -70,6 +74,8 @@ void Transform::SetAxisAngles(float xDegree, float yDegree, float zDegree)
 
 void Transform::SetProjection(float fov, float aspectRatio, float zNear, float zFar)
 {
+    _projDirty = true;
+    _MVPDirty = true;
     float radians = fov * Math::PI / 360.0f;
     float sine = sin(radians);
 
@@ -87,7 +93,6 @@ void Transform::SetProjection(float fov, float aspectRatio, float zNear, float z
     _projectionMatrix(3, 4) = -2 * zNear * zFar / deltaZ;
 
     _projectionMatrix(4, 3) = -1;
-    _projDirty = true;
 }
 
 int Transform::GetModelMatrix(Matrix4f& result)
@@ -108,6 +113,8 @@ void Transform::SetCamera(const Camera camera)
     _camera = camera;
     _camera.GetViewMatrix(_viewMatrix);
     _viewDirty = true;
+    _MVDirty = true;
+    _MVPDirty = true;
 }
 
 int Transform::GetViewMatrix(Matrix4f& viewMatrix)
@@ -141,6 +148,7 @@ int Transform::GetMVMatrix(Matrix4f& modelViewMatrix)
     }
     _modelViewMatrix = _viewMatrix.Mul(_modelMatrix);
     modelViewMatrix = _modelViewMatrix;
+    _MVDirty = false;
     return ErrorCode::SUCCESS;
 }
 
@@ -156,6 +164,7 @@ int Transform::GetMVPMatrix(Matrix4f& MVPMatrix)
     GetProjMatrix(_projectionMatrix);
     _modelViewProjMatrix = _projectionMatrix.Mul(_modelViewMatrix);
     MVPMatrix = _modelViewProjMatrix;
+    _MVPDirty = false;
     return ErrorCode::SUCCESS;
 }
 
@@ -176,10 +185,12 @@ bool Transform::_CanProjMatrixRead()
 
 bool Transform::_CanMVMatrixRead()
 {
-    return _CanModelMatrixRead() && _CanViewMatrixRead();
+    //return _CanModelMatrixRead() && _CanViewMatrixRead();
+    return !_MVDirty;
 }
 
 bool Transform::_CanMVPMatrixRead()
 {
-    return  _CanModelMatrixRead() && _CanViewMatrixRead() && _CanProjMatrixRead();
+    //return  _CanModelMatrixRead() && _CanViewMatrixRead() && _CanProjMatrixRead();
+    return !_MVPDirty;
 }

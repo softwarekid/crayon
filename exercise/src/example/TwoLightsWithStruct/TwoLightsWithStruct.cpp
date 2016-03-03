@@ -86,6 +86,8 @@ void TwoLightsWithStruct::_Draw(const Vector4f& rotation, const Vector3f& transl
     case RenderObject::Cone:
         glutSolidCone(1.5, 3.5, 30, 30);
         break;
+    case RenderObject::SmallSphere:
+        glutSolidSphere(0.2, 12, 12);
     }
 }
 
@@ -132,6 +134,14 @@ void TwoLightsWithStruct::_Display()
     rotation = Vector4f(-90, 1, 0, 0);
     _Draw(rotation, translation, eyePosition, lightPositions, redPlasticMaterial, RenderObject::Cone);
 
+    for (int i = 0; i < 2; i++)
+    {
+        rotation = Vector4f(0, 1, 0, 0);
+        _Draw(rotation, lightPositions[i], eyePosition, lightPositions, emissiveMaterial[i], RenderObject::SmallSphere);
+    }
+
+    _vertShader->DisableProfile();
+    _fragShader->DisableProfile();
     glutSwapBuffers();
 }
 
