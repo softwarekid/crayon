@@ -1,0 +1,47 @@
+struct Material
+{
+	float3 Ke;
+	float3 Ka;
+	float3 Kd;
+	float3 Ks;
+	float shininess;
+};
+
+struct Light
+{
+	float3 position;
+	float3 color;
+	float kc, kl , kq; // constant linear, quadric
+};
+
+void ComputeBRDFLighting(Light light, float3 P, float3 N, float3 eyePosition, float shininess,
+	 out float3 difResult, out float3  specularResult)
+{
+	float d = distance(P, light.position);
+	float attenuation = 1 / (light.kc + light.kl * d + light.kq * d * d);
+
+
+	float3 L = normalize(light.position - P);
+	float difCoef = max(dot(N, L), 0);
+	// is it possible to put the scalar in front of the vector?
+	difResult = attenuation * difCoef * light.color; 
+
+	float3 V = normalize(eyePosition - P);
+	float3 H = normalize(V + L);
+	float specularCoef = pow(max(dot(H,N), 0), shininess);
+	if(specularCoef <= 0)
+	{
+		specularCoef = 0;
+	}
+	specularResult = attenuation *  light.color * specularCoef;
+}
+
+void main_f(float3 position : TEXCOORD0,
+	        float3 normal : TEXCOORD1,
+	       	uniform Light light,
+	       	uniform Material material,
+	        out color : COLOR
+	        )
+{
+	
+}

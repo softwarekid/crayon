@@ -143,6 +143,8 @@
     <ClInclude Include="src\unitTest\VectorGtest.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="src\example\attenuateLight\attenuateLight_F.cg" />
+    <None Include="src\example\attenuateLight\attenuateLight_V.cg" />
     <None Include="src\example\HalfVectorInVert\HalfVectorInVert_F.cg" />
     <None Include="src\example\HalfVectorInVert\HalfVectorInVert_V.cg" />
     <None Include="src\example\TextureSampling\TextureSampling_F.cg" />

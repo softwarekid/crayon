@@ -14,7 +14,8 @@ struct Light
 };
 
 
-void ComputeBRDFLighting(Light light, float3 P, float3 N, float3 eyePosition, float shininess, out float3 difResult, out float3  specularResult)
+void ComputeBRDFLighting(Light light, float3 P, float3 N, float3 eyePosition, float shininess, 
+	out float3 difResult, out float3  specularResult)
 {
 	float3 L = normalize(light.position - P);
 	float difCoef = max(dot(N, L), 0);
