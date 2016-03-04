@@ -39,12 +39,12 @@ void ComputeBRDFLighting(Light light, float3 P, float3 N, float3 eyePosition, fl
 void main_f(float3 position : TEXCOORD0,
 	        float3 normal : TEXCOORD1,
 
-	        uniform float3 globalAmbient,
 	        uniform float3 eyePosition,
+	        uniform float3 globalAmbient,
 
 	       	uniform Light light,
 	       	uniform Material material,
-	        out color : COLOR
+	        out float4 color : COLOR
 	        )
 {
 	float3 emissive = material.Ke;

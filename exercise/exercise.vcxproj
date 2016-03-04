@@ -93,6 +93,9 @@
     <ClCompile Include="src\coreUtil\Vector3f.cpp" />
     <ClCompile Include="src\coreUtil\Vector4f.cpp" />
     <ClCompile Include="src\Crayon.cpp" />
+    <ClCompile Include="src\example\AttenuateLight\AttenuateLighting.cpp" />
+    <ClCompile Include="src\example\AttenuateLight\AttenuateLightingFsParam.cpp" />
+    <ClCompile Include="src\example\AttenuateLight\AttenuateLightingVsParam.cpp" />
     <ClCompile Include="src\example\HalfVectorInVert\HalfVectorFsParam.cpp" />
     <ClCompile Include="src\example\HalfVectorInVert\HalfVectorInVert.cpp" />
     <ClCompile Include="src\example\HalfVectorInVert\HalfVectorVsParam.cpp" />
@@ -110,9 +113,6 @@
     <ClCompile Include="src\unitTest\unitTest.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AttenateLighting.h" />
-    <ClInclude Include="AttenateLightingFsParam.h" />
-    <ClInclude Include="AttenateLightingVsParam.h" />
     <ClInclude Include="src\cgWrapper\CgLog.h" />
     <ClInclude Include="src\cgWrapper\CgShader.h" />
     <ClInclude Include="src\cgWrapper\CgShaderParametersBase.h" />
@@ -126,6 +126,9 @@
     <ClInclude Include="src\coreUtil\Vector3f.h" />
     <ClInclude Include="src\coreUtil\Vector4f.h" />
     <ClInclude Include="src\demon_image.h" />
+    <ClInclude Include="src\example\AttenuateLight\AttenuateLighting.h" />
+    <ClInclude Include="src\example\AttenuateLight\AttenuateLightingFsParam.h" />
+    <ClInclude Include="src\example\AttenuateLight\AttenuateLightingVsParam.h" />
     <ClInclude Include="src\example\HalfVectorInVert\HalfVectorFsParam.h" />
     <ClInclude Include="src\example\HalfVectorInVert\HalfVectorInVert.h" />
     <ClInclude Include="src\example\HalfVectorInVert\HalfVectorVsParam.h" />

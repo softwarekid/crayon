@@ -22,7 +22,7 @@ private:
     void _SetEmissiveOnly(int lightIndex);
     void _InitMaterial();
     void _SetMaterial(const Material& m);
-    void _Draw(const Vector4f& rotation, const Vector3f& translate,const Vector3f& eyePos, const std::vector<Vector3f>& lightPostions, const Material& m, RenderObject obj );
+    void _Draw(const Vector4f& rotation, const Vector3f& translate,const Vector3f& eyePos, const std::vector<Vector3f>& lightPositions, const Material& m, RenderObject obj );
 protected:
     void _Idle() override;
     void _Display(void) override;

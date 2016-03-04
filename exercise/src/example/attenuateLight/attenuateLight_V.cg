@@ -10,6 +10,6 @@ void main_v(float4 position : POSITION,
 			)
 {
 	oPosition = mul(MVPMatrix, position);
-	oNormal = normal;
+	objNormal = normal;
 	objPosition = position.xyz;
 }

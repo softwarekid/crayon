@@ -57,11 +57,11 @@
     <Filter Include="Header Files\example\TwoLightsWithStruct">
       <UniqueIdentifier>{9b359ac6-75ea-420f-8fae-fb61c1e20a2e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\example\AttenateLighting">
-      <UniqueIdentifier>{3da14e08-eb53-48a7-a2c5-a899af006649}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\example\AttenateLighting">
       <UniqueIdentifier>{0b74cc8e-c7bd-4b93-ac5a-df57263461c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\example\AttenuateLighting">
+      <UniqueIdentifier>{3da14e08-eb53-48a7-a2c5-a899af006649}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -142,6 +142,15 @@
     </ClCompile>
     <ClCompile Include="src\example\TwoLightsWithStruct\TwoLightsWithStructFsParamcpp.cpp">
       <Filter>Source Files\example\TwoLightsWithStruct</Filter>
+    </ClCompile>
+    <ClCompile Include="src\example\AttenuateLight\AttenuateLighting.cpp">
+      <Filter>Source Files\example\AttenateLighting</Filter>
+    </ClCompile>
+    <ClCompile Include="src\example\AttenuateLight\AttenuateLightingFsParam.cpp">
+      <Filter>Source Files\example\AttenateLighting</Filter>
+    </ClCompile>
+    <ClCompile Include="src\example\AttenuateLight\AttenuateLightingVsParam.cpp">
+      <Filter>Source Files\example\AttenateLighting</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -238,14 +247,14 @@
     <ClInclude Include="src\coreUtil\Material.h">
       <Filter>Header Files\CoreUtil</Filter>
     </ClInclude>
-    <ClInclude Include="AttenateLighting.h">
-      <Filter>Header Files\example\AttenateLighting</Filter>
+    <ClInclude Include="src\example\AttenuateLight\AttenuateLighting.h">
+      <Filter>Header Files\example\AttenuateLighting</Filter>
     </ClInclude>
-    <ClInclude Include="AttenateLightingVsParam.h">
-      <Filter>Header Files\example\AttenateLighting</Filter>
+    <ClInclude Include="src\example\AttenuateLight\AttenuateLightingFsParam.h">
+      <Filter>Header Files\example\AttenuateLighting</Filter>
     </ClInclude>
-    <ClInclude Include="AttenateLightingFsParam.h">
-      <Filter>Header Files\example\AttenateLighting</Filter>
+    <ClInclude Include="src\example\AttenuateLight\AttenuateLightingVsParam.h">
+      <Filter>Header Files\example\AttenuateLighting</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
