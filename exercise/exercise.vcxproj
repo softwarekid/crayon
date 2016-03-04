@@ -110,6 +110,9 @@
     <ClCompile Include="src\unitTest\unitTest.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AttenateLighting.h" />
+    <ClInclude Include="AttenateLightingFsParam.h" />
+    <ClInclude Include="AttenateLightingVsParam.h" />
     <ClInclude Include="src\cgWrapper\CgLog.h" />
     <ClInclude Include="src\cgWrapper\CgShader.h" />
     <ClInclude Include="src\cgWrapper\CgShaderParametersBase.h" />
