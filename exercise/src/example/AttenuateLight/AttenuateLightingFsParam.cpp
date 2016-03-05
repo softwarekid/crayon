@@ -67,8 +67,8 @@ void AttenuateLightingFsParam::ExtractParams()
     _GetProgramParam(lightPosition, "light.position");
     _GetProgramParam(lightColor, "light.color");
     _GetProgramParam(lightAttenKc, "light.kc");
-    _GetProgramParam(lightAttenKq, "light.kl");
-    _GetProgramParam(lightAttenKl, "light.kq");
+    _GetProgramParam(lightAttenKl, "light.kl");
+    _GetProgramParam(lightAttenKq, "light.kq");
     _GetProgramParam(materialKe, "material.Ke");
     _GetProgramParam(materialKa, "material.Ka");
     _GetProgramParam(materialKd, "material.Kd");
@@ -76,6 +76,6 @@ void AttenuateLightingFsParam::ExtractParams()
     _GetProgramParam(materialShininess, "material.shininess");
 }
 
-AttenuateLightingFsParam::AttenuateLightingFsParam(const CgShader shader) : CgShaderParametersBase(shader)
+AttenuateLightingFsParam::AttenuateLightingFsParam(const CgShader& shader) : CgShaderParametersBase(shader)
 {
 }

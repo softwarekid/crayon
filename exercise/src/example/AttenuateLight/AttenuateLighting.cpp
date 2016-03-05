@@ -26,10 +26,10 @@ void AttenateLighting::_Draw(const Vector4f& rotation, const Vector3f& translate
     // deferred params are updated, aka, perform a draw call
     _vertShader->UpdateParams();
     _fragShader->UpdateParams();
-    _RenderObject(obj);
+    _RenderMesh(obj);
 }
 
-void AttenateLighting::_RenderObject(RenderObject mesh)
+void AttenateLighting::_RenderMesh(RenderObject mesh)
 {
     switch (mesh)
     {
@@ -41,6 +41,40 @@ void AttenateLighting::_RenderObject(RenderObject mesh)
         break;
     case RenderObject::SmallSphere:
         glutSolidSphere(0.2, 12, 12);
+        break;
+    case RenderObject::Cube:
+        glBegin(GL_QUADS);
+        glNormal3f(0, 1, 0);
+        glVertex3f(12, -2, -12);
+        glVertex3f(-12, -2, -12);
+        glVertex3f(-12, -2, 12);
+        glVertex3f(12, -2, 12);
+
+        glNormal3f(0, 0, 1);
+        glVertex3f(-12, -2, -12);
+        glVertex3f(12, -2, -12);
+        glVertex3f(12, 10, -12);
+        glVertex3f(-12, 10, -12);
+
+        glNormal3f(0, -1, 0);
+        glVertex3f(-12, 10, -12);
+        glVertex3f(12, 10, -12);
+        glVertex3f(12, 10, 12);
+        glVertex3f(-12, 10, 12);
+
+        glNormal3f(1, 0, 0);
+        glVertex3f(-12, -2, 12);
+        glVertex3f(-12, -2, -12);
+        glVertex3f(-12, 10, -12);
+        glVertex3f(-12, 10, 12);
+
+        glNormal3f(-1, 0, 0);
+        glVertex3f(12, -2, -12);
+        glVertex3f(12, -2, 12);
+        glVertex3f(12, 10, 12);
+        glVertex3f(12, 10, -12);
+        glEnd();
+        break;
     }
 }
 
@@ -56,7 +90,7 @@ void AttenateLighting::_SetMaterial(const Material& m)
 void AttenateLighting::_SetLightIntrinsicParam()
 {
     _fragParams->SetLightColor(_lightColor);
-    _fragParams->SetGlobalAmbient(Vector3f(0.5f, 0.5f, 0.5f));
+    _fragParams->SetGlobalAmbient(Vector3f(0.5,0.5,0.5));
     _fragParams->SetLightAttenKc(_lightKc);
     _fragParams->SetLightAttenKl(_lightKl);
     _fragParams->SetLightAttenKq(_lightKq);
@@ -98,7 +132,7 @@ void AttenateLighting::_Idle()
     _lightAngle += 0.008;  /* Add a small angle (in radians). */
     if (_lightAngle > 2 * Constants::Math::PI)
     {
-        _lightAngle = 2 * Constants::Math::PI;
+        _lightAngle -= 2 * Constants::Math::PI;
     }
     glutPostRedisplay();
 }
@@ -122,9 +156,26 @@ void AttenateLighting::_Display()
 
     Vector3f translation;
     Vector4f rotation;
+
     translation = Vector3f(2, 0, 0);
-    rotation = Vector4f(-70, 1, 1, 1);
+    rotation = Vector4f(0, 1, 1, 1);
     _Draw(rotation, translation, eyePosition, lightPosition, _brassMaterial, RenderObject::Sphere);
+
+    translation = Vector3f(-2, -1.5, 0);
+    rotation = Vector4f(-90, 1, 0, 0);
+    _Draw(rotation, translation, eyePosition, lightPosition, _redPlasticMaterial, RenderObject::Cone);
+
+
+    translation = Vector3f(0, 0, 0);
+    rotation = Vector4f(0, 1, 0, 0);
+    _Draw(rotation, translation, eyePosition, lightPosition, _greenEmeraldMaterial, RenderObject::Cube);
+
+    translation = lightPosition;
+    rotation = Vector4f(0, 1, 0, 0);
+    _Draw(rotation, translation, eyePosition, lightPosition, _emissiveMaterial, RenderObject::SmallSphere);
+
+    _vertShader->DisableProfile();
+    _fragShader->DisableProfile();
     glutSwapBuffers();
 }
 
@@ -153,16 +204,18 @@ void AttenateLighting::_InitFragShader()
 AttenateLighting::AttenateLighting(const char* title, int width, int height) :GlutWrapper(title, width, height)
 {
     glEnable(GL_DEPTH_TEST);
+    glClearColor(0.1, 0.1, 0.1, 0);  /* Gray background. */
     _context = cgCreateContext();
     CgLog::Log("create content", _context);
     cgGLSetDebugMode(CG_TRUE);
     cgSetParameterSettingMode(_context,CG_DEFERRED_PARAMETER_SETTING);
     CgLog::Log("selecting vertex profile", _context);
 
-    _lightAngle = -0.1;
-    _lightColor = Vector3f(0.95, 0.95, 0.95);
+    _lightAngle = -0.4;
+    _lightColor = Vector3f(1,1,1);
      
     _lightKc = 0.4f;
     _lightKl = 0.1f;
     _lightKq = 0.03f;
+    _InitMaterial();
 }

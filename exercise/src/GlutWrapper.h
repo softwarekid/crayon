@@ -29,6 +29,7 @@ protected:
         Sphere,
         Cone,
         SmallSphere,
+        Cube,
     };
 
 
@@ -38,6 +39,7 @@ protected:
     virtual void _Keyboard(int c, int x, int y);
     virtual void _Idle(void) {};
     virtual void _Reshape(int width, int height);
+    // 每个物体的初始坐标都在原点（0，0, 0）
     virtual void _Display(void) = 0;
     virtual void _Menu(){};
     virtual void _Exit();

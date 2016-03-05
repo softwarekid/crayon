@@ -50,8 +50,8 @@ void main_f(float3 position : TEXCOORD0,
 	float3 emissive = material.Ke;
 	float3 ambient = material.Ka * globalAmbient;
 
-	float3 difLighting = 0;
-	float3 specLighting = 0;
+	float3 difLighting ;
+	float3 specLighting;
 	ComputeBRDFLighting(light, position, normal, eyePosition, material.shininess, difLighting, specLighting);
 
 	float3 diffuse = difLighting * material.Kd;

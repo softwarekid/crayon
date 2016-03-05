@@ -33,7 +33,7 @@ public:
 
     void ExtractParams() override;
 
-    explicit AttenuateLightingFsParam(const CgShader shader);
+    explicit AttenuateLightingFsParam(const CgShader& shader);
 };
 
 #endif

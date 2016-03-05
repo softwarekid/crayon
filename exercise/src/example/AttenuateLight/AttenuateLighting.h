@@ -23,7 +23,7 @@ private:
     Vector3f _globleAmbient;
 
     void _Draw(const Vector4f& rotation, const Vector3f& translate,const Vector3f& eyePos, const Vector3f& lightPostion, const Material& m, RenderObject obj );
-    void _RenderObject(RenderObject mesh);
+    void _RenderMesh(RenderObject mesh);
     void _SetMaterial(const Material& m);
     void _SetLightIntrinsicParam();
     void _InitMaterial();
