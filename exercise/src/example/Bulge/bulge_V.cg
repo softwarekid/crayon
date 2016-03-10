@@ -1,0 +1,47 @@
+float3 computerLighing(float3 lightPos,
+                       float3 lightColor,
+                       float3 kd,
+                       float shininess,
+                       float3 P,
+                       float3 N,
+                       float3 eyePos)
+{
+
+  // Compute the diffuse lighting
+  float3 L = normalize(lightPos - P);
+  float diffuseLight = max(dot(N, L), 0);
+  float3 diffuseResult = kd * lightColor * diffuseLight;
+  // Compute the specular lighting
+  float3 V = normalize(eyePos - P);
+  float3 H = normalize(L + V);
+  float3 specularLight = lightColor * pow(max(dot(N, H), 0), 
+                                          shininess);
+  if (diffuseLight <= 0) specularLight = 0;
+  float3 specularResult = lightColor * specularLight;
+  return diffuseResult + specularResult;
+}
+
+void main_v(float4 position : POSITION,
+            float3 normal : NORMAL,
+
+            out float4 oPosition : POSITION,
+            out float4 color : COLOR,
+
+            uniform float4x4 modelViewProj,
+            uniform float time,
+            uniform float frequency,
+            uniform float scaleFactor,
+            uniform float3 kd,
+            uniform float shininess,
+            uniform float3 eyePos,
+            uniform float3 lightPos,
+            uniform float3 lightColor
+            )
+{
+    float displacement = scaleFactor * 0.5 * sin(position.y * frequency * time) + 1;
+    float4 displacementDir = float4(normal.x, normal.y, normal.z, 0);
+    float4 newPos = position + displacement * displacementDir;
+    oPosition = mul(modelViewProj, newPos);
+    color.xyz =  computerLighing(lightPos, lightColor, kd, shininess, newPos.xyz, normal, eyePos);
+    color.w = 1;
+}

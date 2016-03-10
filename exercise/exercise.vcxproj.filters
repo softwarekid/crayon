@@ -63,6 +63,12 @@
     <Filter Include="Header Files\example\AttenuateLighting">
       <UniqueIdentifier>{3da14e08-eb53-48a7-a2c5-a899af006649}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\example\Bulge">
+      <UniqueIdentifier>{5d5778aa-163b-46dd-b8d3-9e71a80e2076}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\example\Bulge">
+      <UniqueIdentifier>{a4b2a256-4843-4270-8d8a-af685c1f81d3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\cgWrapper\CgLog.cpp">
@@ -151,6 +157,15 @@
     </ClCompile>
     <ClCompile Include="src\example\AttenuateLight\AttenuateLightingVsParam.cpp">
       <Filter>Source Files\example\AttenateLighting</Filter>
+    </ClCompile>
+    <ClCompile Include="src\example\Bulge\Bulge.cpp">
+      <Filter>Source Files\example\Bulge</Filter>
+    </ClCompile>
+    <ClCompile Include="src\example\Bulge\BulgeFsParam.cpp">
+      <Filter>Source Files\example\Bulge</Filter>
+    </ClCompile>
+    <ClCompile Include="src\example\Bulge\BulgeVsParam.cpp">
+      <Filter>Source Files\example\Bulge</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -255,6 +270,15 @@
     </ClInclude>
     <ClInclude Include="src\example\AttenuateLight\AttenuateLightingVsParam.h">
       <Filter>Header Files\example\AttenuateLighting</Filter>
+    </ClInclude>
+    <ClInclude Include="src\example\Bulge\Bulge.h">
+      <Filter>Header Files\example\Bulge</Filter>
+    </ClInclude>
+    <ClInclude Include="src\example\Bulge\BulgeVsParam.h">
+      <Filter>Header Files\example\Bulge</Filter>
+    </ClInclude>
+    <ClInclude Include="src\example\Bulge\BulgeFsParam.h">
+      <Filter>Header Files\example\Bulge</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
