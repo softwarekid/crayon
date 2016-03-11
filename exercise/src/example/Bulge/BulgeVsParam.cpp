@@ -5,6 +5,21 @@ void BulgeVsParam::SetMVPMatrix(const Matrix4f& matrix)
     _setMatrix4fParam(modelViewProj, matrix);
 }
 
+void BulgeVsParam::SetTime(const float time_)
+{
+    _Set1fParam(time, time_);
+}
+
+void BulgeVsParam::SetFrequency(const float frequency_)
+{
+    _Set1fParam(frequency, frequency_);
+}
+
+void BulgeVsParam::SetFScaleFactor(const float sFactor)
+{
+    _Set1fParam(scaleFactor, sFactor);
+}
+
 void BulgeVsParam::SetEyePosition(const Vector3f& eyePos)
 {
     _Set3fvParam(eyePosition, eyePos);
@@ -32,5 +47,17 @@ void BulgeVsParam::SetShininess(const float shininess_)
 
 void BulgeVsParam::ExtractParams()
 {
+    _GetProgramParam(modelViewProj, "modelViewProj");
+    _GetProgramParam(time, "time");
+    _GetProgramParam(frequency, "frequency");
+    _GetProgramParam(scaleFactor, "scaleFactor");
+    _GetProgramParam(kd, "kd");
+    _GetProgramParam(shininess, "shininess");
+    _GetProgramParam(eyePosition, "eyePos");
+    _GetProgramParam(lightPosition, "lightPos");
+    _GetProgramParam(lightColor, "lightColor");
+}
 
+BulgeVsParam::BulgeVsParam(const CgShader& shader) : CgShaderParametersBase(shader)
+{
 }

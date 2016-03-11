@@ -5,6 +5,9 @@ class BulgeVsParam : public CgShaderParametersBase
 {
 private:
     CGparameter modelViewProj;
+    CGparameter time;
+    CGparameter frequency;
+    CGparameter scaleFactor;
     CGparameter eyePosition;
     CGparameter lightPosition;
     CGparameter lightColor;
@@ -13,6 +16,9 @@ private:
     
 public:
     void SetMVPMatrix(const Matrix4f& matrix);
+    void SetTime(const float time_);
+    void SetFrequency(const float frequency);
+    void SetFScaleFactor(const float sFactor);
     void SetEyePosition(const Vector3f& eyePos);
     void SetLightPos(const Vector3f& lightPos);
     void SetLightColor(const Vector3f& lightColor1);
@@ -20,6 +26,7 @@ public:
     void SetShininess(const float shininess);
 
     void ExtractParams() override;
+    explicit BulgeVsParam(const CgShader& shader);
 };
 
 #endif

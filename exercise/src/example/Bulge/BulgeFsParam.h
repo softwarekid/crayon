@@ -3,7 +3,8 @@
 #include <CgShaderParametersBase.h>
 class BulgeFsParam : public CgShaderParametersBase
 {
-    
+public:
+    explicit BulgeFsParam(const CgShader& shader);
 };
 
 #endif

@@ -312,5 +312,8 @@
     <None Include="src\example\attenuateLight\attenuateLight_V.cg">
       <Filter>Source Files\example\AttenateLighting</Filter>
     </None>
+    <None Include="src\example\Bulge\bulge_V.cg">
+      <Filter>Source Files\example\Bulge</Filter>
+    </None>
   </ItemGroup>
 </Project>
