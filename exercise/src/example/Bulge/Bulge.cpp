@@ -3,6 +3,8 @@
 #include "BulgeVsParam.h"
 #include "BulgeFsParam.h"
 #include <CgLog.h>
+#include "Constants.h"
+#include <GL/glut.h>
 
 void Bulge::_InitMaterial()
 {
@@ -25,8 +27,61 @@ void Bulge::_SetMaterial(Material m)
     _vertParams->SetShininess(m.shininess);
 }
 
+void Bulge::_Draw(const Vector4f& rotation, const Vector3f& translate, const Vector3f& eyePos, const Vector3f& lightPosition, const Material& m, std::function<void()> draw)
+{
+    _SetMaterial(m);
+    _transform.SetArbitraryRotation(rotation[1], rotation[2], rotation[3], rotation[4]);
+    _transform.SetTranslate(translate.x, translate.y, translate.z);
+    Matrix4f modelMatrix;
+    _transform.GetModelMatrix(modelMatrix);
+    //TODO can I use rvalue-reference here?
+    Matrix4f invModelMatrix = modelMatrix.Invert();
+
+    Vector3f objSpaceEyePosition = _MatVecMulReduced(invModelMatrix, eyePos);
+    _vertParams->SetEyePosition(objSpaceEyePosition);
+    Vector3f objSpaceLightPosition = _MatVecMulReduced(invModelMatrix, lightPosition);
+    _vertParams->SetLightPos(objSpaceLightPosition);
+    Matrix4f modelViewProjMatix;
+    _transform.GetMVPMatrix(modelViewProjMatix);
+    _vertParams->SetMVPMatrix(modelViewProjMatix);
+    // deferred params are updated, aka, perform a draw call
+    _vertShader->UpdateParams();
+    _fragShader->UpdateParams();
+    draw();
+}
+
 void Bulge::_Idle()
 {
+    static float lightVelocity = 0.008;
+    static float timeFlow = 0.01;
+
+    /* Repeat rotating light around front 180 degrees. */
+    if (_lightAngle > Constants::Math::PI / 2)
+    {
+        _lightAngle = Constants::Math::PI / 2;
+        lightVelocity = -lightVelocity;
+    }
+    else if (_lightAngle < -Constants::Math::PI / 2)
+    {
+        _lightAngle = -Constants::Math::PI / 2;
+        lightVelocity = -lightVelocity;
+    }
+    _lightAngle += lightVelocity;  /* Add a small angle (in radians). */
+
+    /* Repeatedly advance and rewind time. */
+    if (_time > 10)
+    {
+        _time = 10;
+        timeFlow = -timeFlow;
+    }
+    else if (_time < 0)
+    {
+        _time = 0;
+        timeFlow = -timeFlow;
+    }
+    _time += timeFlow;  /* Add time delta. */
+    glutPostRedisplay();
+
 }
 
 void Bulge::_Display()
@@ -49,13 +104,13 @@ void Bulge::_Display()
     _transform.SetCamera(camera);
     Vector3f translation;
     Vector4f rotation;
-    translation = Vector3f(2.2, 1, 0.2);
+    translation = Vector3f(2.2, -1, 0.2);
     rotation = Vector4f(-70, 1, 1, 1);
-    _Draw(rotation, translation, eyePosition, lightPosition, redMaterial, _sphereDrawer);
+    _Draw(rotation, translation, eyePosition, lightPosition, redMaterial, [](){glutSolidSphere(1, 40, 40); });
 
-    translation = Vector3f(-2, -1.5, 0);
+    translation = Vector3f(-2, 1.5, 0);
     rotation = Vector4f(-55, 1, 0, 0);
-    _Draw(rotation, translation, eyePosition, lightPosition, greenMaterial, _torusDrawer);
+    _Draw(rotation, translation, eyePosition, lightPosition, greenMaterial, [](){glutSolidTorus(0.15, 1.7, 40, 40); });
 
     _vertShader->DisableProfile();
     _fragShader->DisableProfile();
