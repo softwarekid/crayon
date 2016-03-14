@@ -42,7 +42,7 @@ void AttenateLighting::_RenderMesh(RenderObject mesh)
     case RenderObject::SmallSphere:
         glutSolidSphere(0.2, 12, 12);
         break;
-    case RenderObject::Cube:
+    case RenderObject::Box:
         glBegin(GL_QUADS);
         glNormal3f(0, 1, 0);
         glVertex3f(12, -2, -12);
@@ -168,7 +168,7 @@ void AttenateLighting::_Display()
 
     translation = Vector3f(0, 0, 0);
     rotation = Vector4f(0, 1, 0, 0);
-    _Draw(rotation, translation, eyePosition, lightPosition, _greenEmeraldMaterial, RenderObject::Cube);
+    _Draw(rotation, translation, eyePosition, lightPosition, _greenEmeraldMaterial, RenderObject::Box);
 
     translation = lightPosition;
     rotation = Vector4f(0, 1, 0, 0);

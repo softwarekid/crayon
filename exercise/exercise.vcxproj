@@ -98,6 +98,8 @@
     <ClCompile Include="src\example\AttenuateLight\AttenuateLightingVsParam.cpp" />
     <ClCompile Include="src\example\Bulge\Bulge.cpp" />
     <ClCompile Include="src\example\Bulge\BulgeFsParam.cpp" />
+    <ClCompile Include="src\example\Bulge\BulgeLightFsParam.cpp" />
+    <ClCompile Include="src\example\Bulge\BulgeLightVsParam.cpp" />
     <ClCompile Include="src\example\Bulge\BulgeVsParam.cpp" />
     <ClCompile Include="src\example\HalfVectorInVert\HalfVectorFsParam.cpp" />
     <ClCompile Include="src\example\HalfVectorInVert\HalfVectorInVert.cpp" />
@@ -134,6 +136,8 @@
     <ClInclude Include="src\example\AttenuateLight\AttenuateLightingVsParam.h" />
     <ClInclude Include="src\example\Bulge\Bulge.h" />
     <ClInclude Include="src\example\Bulge\BulgeFsParam.h" />
+    <ClInclude Include="src\example\Bulge\BulgeLightFsParam.h" />
+    <ClInclude Include="src\example\Bulge\BulgeLightVsParam.h" />
     <ClInclude Include="src\example\Bulge\BulgeVsParam.h" />
     <ClInclude Include="src\example\HalfVectorInVert\HalfVectorFsParam.h" />
     <ClInclude Include="src\example\HalfVectorInVert\HalfVectorInVert.h" />
@@ -157,7 +161,10 @@
   <ItemGroup>
     <None Include="src\example\attenuateLight\attenuateLight_F.cg" />
     <None Include="src\example\attenuateLight\attenuateLight_V.cg" />
+    <None Include="src\example\Bulge\bulge_F.cg" />
     <None Include="src\example\Bulge\bulge_V.cg" />
+    <None Include="src\example\Bulge\LightFsParam.cg" />
+    <None Include="src\example\Bulge\LightVsParam.cg" />
     <None Include="src\example\HalfVectorInVert\HalfVectorInVert_F.cg" />
     <None Include="src\example\HalfVectorInVert\HalfVectorInVert_V.cg" />
     <None Include="src\example\TextureSampling\TextureSampling_F.cg" />

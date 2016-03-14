@@ -15,7 +15,7 @@ void BulgeVsParam::SetFrequency(const float frequency_)
     _Set1fParam(frequency, frequency_);
 }
 
-void BulgeVsParam::SetFScaleFactor(const float sFactor)
+void BulgeVsParam::SetScaleFactor(const float sFactor)
 {
     _Set1fParam(scaleFactor, sFactor);
 }

@@ -167,6 +167,12 @@
     <ClCompile Include="src\example\Bulge\BulgeVsParam.cpp">
       <Filter>Source Files\example\Bulge</Filter>
     </ClCompile>
+    <ClCompile Include="src\example\Bulge\BulgeLightVsParam.cpp">
+      <Filter>Source Files\example\Bulge</Filter>
+    </ClCompile>
+    <ClCompile Include="src\example\Bulge\BulgeLightFsParam.cpp">
+      <Filter>Source Files\example\Bulge</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\cgWrapper\CgLog.h">
@@ -280,6 +286,12 @@
     <ClInclude Include="src\example\Bulge\BulgeFsParam.h">
       <Filter>Header Files\example\Bulge</Filter>
     </ClInclude>
+    <ClInclude Include="src\example\Bulge\BulgeLightFsParam.h">
+      <Filter>Header Files\example\Bulge</Filter>
+    </ClInclude>
+    <ClInclude Include="src\example\Bulge\BulgeLightVsParam.h">
+      <Filter>Header Files\example\Bulge</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\example\HalfVectorInVert\HalfVectorInVert_F.cg">
@@ -313,6 +325,15 @@
       <Filter>Source Files\example\AttenateLighting</Filter>
     </None>
     <None Include="src\example\Bulge\bulge_V.cg">
+      <Filter>Source Files\example\Bulge</Filter>
+    </None>
+    <None Include="src\example\Bulge\LightFsParam.cg">
+      <Filter>Source Files\example\Bulge</Filter>
+    </None>
+    <None Include="src\example\Bulge\LightVsParam.cg">
+      <Filter>Source Files\example\Bulge</Filter>
+    </None>
+    <None Include="src\example\Bulge\bulge_F.cg">
       <Filter>Source Files\example\Bulge</Filter>
     </None>
   </ItemGroup>

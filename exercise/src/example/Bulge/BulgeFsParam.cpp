@@ -2,4 +2,5 @@
 
 BulgeFsParam::BulgeFsParam(const CgShader& shader) :CgShaderParametersBase(shader)
 {
+    
 }
