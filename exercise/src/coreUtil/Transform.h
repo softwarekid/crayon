@@ -1,6 +1,7 @@
+#ifndef transform_h__
+#define transform_h__
 #include "Matrix.h"
 #include "Camera.h"
-
 // todo: refractor this class, camera and model-view transform ought to be seperate
 class Transform
 {
@@ -41,3 +42,5 @@ private:
     bool _CanMVMatrixRead();
     bool _CanMVPMatrixRead();
 };
+
+#endif

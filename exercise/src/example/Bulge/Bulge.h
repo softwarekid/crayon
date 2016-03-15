@@ -5,6 +5,7 @@
 #include "BulgeFsParam.h"
 #include "BulgeLightFsParam.h"
 #include "BulgeLightVsParam.h"
+#include "SceneShaderProgram.h"
 #include "Material.h"
 #include <functional>
 
@@ -16,12 +17,15 @@ private:
     //BulgeFsParam* _fragParams;
     //CgShader* _lightVertexShader;
     //CgShader* _lightFragShader;
-    BulgeLightVsParam* _lightVsParam;
-    BulgeLightFsParam* _lightFsParam;
-
+    //BulgeLightVsParam* _lightVsParam;
+    //BulgeLightFsParam* _lightFsParam;
+    SceneShaderProgram* _sceneProgram;
     float _time;
     float _lightAngle;
-
+    const std::string sceneVertShaderName = R"(src\example\Bulge\bulge_V.cg)";
+    const std::string sceneFragShaderName = R"(src\example\Bulge\bulge_F.cg)";
+    const std::string vertEntry = R"(main_v)";
+    const std::string fragEntry = R"(main_f)";
     Material redMaterial;
     Material greenMaterial;
     void _InitMaterial();
@@ -36,5 +40,7 @@ protected:
 
 public:
     Bulge(const char* title, int width, int height);
+    ~Bulge();
+
 };
 #endif

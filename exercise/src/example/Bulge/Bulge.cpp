@@ -25,23 +25,6 @@ void Bulge::_SetMaterial(Material m)
 void Bulge::_Draw(const Vector4f& rotation, const Vector3f& translate, const Vector3f& eyePos, const Vector3f& lightPosition, const Material& m, std::function<void()> draw)
 {
     _SetMaterial(m);
-    _transform.SetArbitraryRotation(rotation[1], rotation[2], rotation[3], rotation[4]);
-    _transform.SetTranslate(translate.x, translate.y, translate.z);
-    Matrix4f modelMatrix;
-    _transform.GetModelMatrix(modelMatrix);
-    //TODO can I use rvalue-reference here?
-    Matrix4f invModelMatrix = modelMatrix.Invert();
-
-    Vector3f objSpaceEyePosition = _MatVecMulReduced(invModelMatrix, eyePos);
-    _vertParams->SetEyePosition(objSpaceEyePosition);
-    Vector3f objSpaceLightPosition = _MatVecMulReduced(invModelMatrix, lightPosition);
-    _vertParams->SetLightPos(objSpaceLightPosition);
-    Matrix4f modelViewProjMatix;
-    _transform.GetMVPMatrix(modelViewProjMatix);
-    _vertParams->SetMVPMatrix(modelViewProjMatix);
-    // deferred params are updated, aka, perform a draw call
-    _vertShader->UpdateParams();
-    _fragShader->UpdateParams();
     draw();
 }
 
@@ -93,19 +76,19 @@ void Bulge::_Display()
     _vertShader->BindProgram();
     _fragShader->BindProgram();
 
-    _InitConstShaderParams();
-    _vertParams->SetTime(_time);
+    _sceneProgram->InitConstShaderParams();
+    _sceneProgram->SetTime(_time);
     Camera camera(eyePosition, eyeCenter, eyeUp);
     _transform.SetCamera(camera);
     Vector3f translation;
     Vector4f rotation;
     translation = Vector3f(2.2, -1, 0.2);
     rotation = Vector4f(-70, 1, 1, 1);
-    _Draw(rotation, translation, eyePosition, lightPosition, redMaterial, [](){glutSolidSphere(1, 40, 40); });
+    _sceneProgram->Draw(camera, rotation, translation, eyePosition, lightPosition, redMaterial, [](){glutSolidSphere(1, 40, 40); });
 
     translation = Vector3f(-2, 1.5, 0);
     rotation = Vector4f(-55, 1, 0, 0);
-    _Draw(rotation, translation, eyePosition, lightPosition, greenMaterial, [](){glutSolidTorus(0.15, 1.7, 40, 40); });
+    _sceneProgram->Draw(camera, rotation, translation, eyePosition, lightPosition, redMaterial, [](){glutSolidTorus(0.15, 1.7, 40, 40);});
 
     _vertShader->DisableProfile();
     _fragShader->DisableProfile();
@@ -130,17 +113,17 @@ void Bulge::_InitVertShader()
 
 void Bulge::_InitFragShader()
 {
-    auto profileFrag = cgGLGetLatestProfile(CG_GL_FRAGMENT);
-    std::string fileName(R"(src\example\Bulge\bulge_F.cg)");
-    std::string entry("main_f");
-    _fragShader = new CgShader(_context, profileFrag, fileName, entry);
-    _fragParams = new BulgeFsParam(*_fragShader);
-    _fragParams->ExtractParams();
+    //auto profileFrag = cgGLGetLatestProfile(CG_GL_FRAGMENT);
+    //std::string fileName(R"()");
+    //std::string entry("main_f");
+    //_fragShader = new CgShader(_context, profileFrag, fileName, entry);
+    //_fragParams = new BulgeFsParam(*_fragShader);
+    //_fragParams->ExtractParams();
 
-    string lightFragFileName(R"(src\example\Bulge\LightFsParam.cg)");
-    _lightFragShader = new CgShader(_context, profileFrag, lightFragFileName, entry);
-    _lightFsParam = new BulgeLightFsParam(*_lightFragShader);
-    cgGLSetOptimalOptions(profileFrag);
+    //string lightFragFileName(R"(src\example\Bulge\LightFsParam.cg)");
+    //_lightFragShader = new CgShader(_context, profileFrag, lightFragFileName, entry);
+    //_lightFsParam = new BulgeLightFsParam(*_lightFragShader);
+    //cgGLSetOptimalOptions(profileFrag);
 }
 
 Bulge::Bulge(const char* title, int width, int height) : GlutWrapper(title, width, height)
@@ -153,7 +136,13 @@ Bulge::Bulge(const char* title, int width, int height) : GlutWrapper(title, widt
     cgSetParameterSettingMode(_context,CG_DEFERRED_PARAMETER_SETTING);
     CgLog::Log("selecting vertex profile", _context);
 
+    _sceneProgram = new SceneShaderProgram(_context, sceneVertShaderName, vertEntry, sceneFragShaderName, fragEntry);
     _lightAngle = -0.4f;
     _time = 0;
     _InitMaterial();
+}
+
+Bulge::~Bulge()
+{
+    delete _sceneProgram;
 }

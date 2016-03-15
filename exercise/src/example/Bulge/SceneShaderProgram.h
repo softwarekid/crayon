@@ -9,11 +9,12 @@ private:
     BulgeFsParam* _fragParam;
     BulgeVsParam* _vertParam;
 
+    void _SetMaterial(const Material& m) override;
 public:
+    void SetTime(float time);
     void InitConstShaderParams() override;
-    void SetMaterial(const Material& m) override;
-    void Draw(const Vector4f& rotation, const Vector3f& translate,const Vector3f& eyePos, const Vector3f& lightPosition, const Material& m, std::function<void()> draw) override;
-    SceneShaderProgram(CGcontext content, CGprofile profile, std::string vertFileName, std::string vertEntry, std::string fragFilename, std::string fragEntry);
+    void Draw(const Camera& camrea, const Vector4f& rotation, const Vector3f& translate,const Vector3f& eyePos, const Vector3f& lightPosition, const Material& m, std::function<void()> draw) override;
+    SceneShaderProgram(CGcontext content, std::string vertFileName, std::string vertEntry, std::string fragFilename, std::string fragEntry);
     ~SceneShaderProgram();
 };
 
