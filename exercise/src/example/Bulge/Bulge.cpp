@@ -16,15 +16,10 @@ void Bulge::_InitMaterial()
 
 void Bulge::_InitConstShaderParams()
 {
-    _vertParams->SetLightColor(Vector3f(0.95f, 0.95f, 0.95f));
-    _vertParams->SetScaleFactor(0.3);
-    _vertParams->SetFrequency(2.4);
 }
 
 void Bulge::_SetMaterial(Material m)
 {
-    _vertParams->SetKd(m.kd);
-    _vertParams->SetShininess(m.shininess);
 }
 
 void Bulge::_Draw(const Vector4f& rotation, const Vector3f& translate, const Vector3f& eyePos, const Vector3f& lightPosition, const Material& m, std::function<void()> draw)
@@ -119,18 +114,18 @@ void Bulge::_Display()
 
 void Bulge::_InitVertShader()
 {
-    auto profileVertex = cgGLGetLatestProfile(CG_GL_VERTEX);
-    std::string fileName(R"(src\example\Bulge\bulge_V.cg)");
-    std::string entry("main_v");
-    _vertShader = new CgShader(_context, profileVertex, fileName, entry);
-    _vertParams = new BulgeVsParam(*_vertShader);
-    _vertParams->ExtractParams();
+    //auto profileVertex = cgGLGetLatestProfile(CG_GL_VERTEX);
+    //std::string fileName(R"(src\example\Bulge\bulge_V.cg)");
+    //std::string entry("main_v");
+    //_vertShader = new CgShader(_context, profileVertex, fileName, entry);
+    //_vertParams = new BulgeVsParam(*_vertShader);
+    //_vertParams->ExtractParams();
 
-    string lightVetexFileName(R"(src\example\Bulge\LightVsParam.cg)");
-    _lightVertexShader = new CgShader(_context, profileVertex, lightVetexFileName, entry);
-    _lightVsParam = new BulgeLightVsParam(*_lightVertexShader);
-    _lightVsParam->ExtractParams();
-    cgGLSetOptimalOptions(profileVertex);
+    //string lightVetexFileName(R"(src\example\Bulge\LightVsParam.cg)");
+    //_lightVertexShader = new CgShader(_context, profileVertex, lightVetexFileName, entry);
+    //_lightVsParam = new BulgeLightVsParam(*_lightVertexShader);
+    //_lightVsParam->ExtractParams();
+    //cgGLSetOptimalOptions(profileVertex);
 }
 
 void Bulge::_InitFragShader()

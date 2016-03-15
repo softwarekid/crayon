@@ -12,10 +12,10 @@ class Bulge : public GlutWrapper
 {
 private:
 
-    BulgeVsParam* _vertParams;
-    BulgeFsParam* _fragParams;
-    CgShader* _lightVertexShader;
-    CgShader* _lightFragShader;
+    //BulgeVsParam* _vertParams;
+    //BulgeFsParam* _fragParams;
+    //CgShader* _lightVertexShader;
+    //CgShader* _lightFragShader;
     BulgeLightVsParam* _lightVsParam;
     BulgeLightFsParam* _lightFsParam;
 
