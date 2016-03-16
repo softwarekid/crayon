@@ -1,9 +1,9 @@
 #ifndef scene_shader_progarm_h__
 #define scene_shader_progarm_h__
-#include "CgProgram.h"
+#include "CgProgramWrapper.h"
 #include "BulgeFsParam.h"
 #include "BulgeVsParam.h"
-class SceneShaderProgram : public CgProgram
+class SceneShaderProgram : public CgProgramWrapper
 {
 private:
     BulgeFsParam* _fragParam;

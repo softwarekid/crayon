@@ -1,4 +1,7 @@
 #include "SceneShaderProgram.h"
+#include <functional>
+#include <Material.h>
+#include <Camera.h>
 
 void SceneShaderProgram::SetTime(float time)
 {
@@ -8,8 +11,8 @@ void SceneShaderProgram::SetTime(float time)
 void SceneShaderProgram::InitConstShaderParams()
 {
     _vertParam->SetLightColor(Vector3f(0.95f, 0.95f, 0.95f));
-    _vertParam->SetScaleFactor(0.3);
-    _vertParam->SetFrequency(2.4);
+    _vertParam->SetScaleFactor(0.3f);
+    _vertParam->SetFrequency(2.4f);
 }
 
 void SceneShaderProgram::_SetMaterial(const Material& m)
@@ -42,10 +45,10 @@ void SceneShaderProgram::Draw(const Camera& camera, const Vector4f& rotation, co
     draw();
 }
 
-SceneShaderProgram::SceneShaderProgram(CGcontext content, std::string vertFileName, std::string vertEntry, std::string fragFilename, std::string fragEntry) : CgProgram(content, vertFileName, vertEntry, fragFilename, fragEntry)
+SceneShaderProgram::SceneShaderProgram(CGcontext content, std::string vertFileName, std::string vertEntry, std::string fragFilename, std::string fragEntry) : CgProgramWrapper(content, vertFileName, vertEntry, fragFilename, fragEntry)
 {
     _vertParam = new BulgeVsParam(*_vertShader);
-    _fragParam = new BulgeFsParam(*_fragParam);
+    _fragParam = new BulgeFsParam(*_fragShader);
 
     _vertParam->ExtractParams();
     _fragParam->ExtractParams();

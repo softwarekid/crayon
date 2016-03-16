@@ -83,8 +83,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\cgWrapper\CgLog.cpp" />
-    <ClCompile Include="src\cgWrapper\CgProgram.cpp" />
-    <ClCompile Include="src\cgWrapper\CgProgram.h" />
+    <ClCompile Include="src\cgWrapper\CgProgramWrapper.cpp" />
     <ClCompile Include="src\cgWrapper\CgShader.cpp" />
     <ClCompile Include="src\cgWrapper\CgShaderParametersBase.cpp" />
     <ClCompile Include="src\coreUtil\Camera.cpp" />
@@ -122,6 +121,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\cgWrapper\CgLog.h" />
+    <ClInclude Include="src\cgWrapper\CgProgramWrapper.h" />
     <ClInclude Include="src\cgWrapper\CgShader.h" />
     <ClInclude Include="src\cgWrapper\CgShaderParametersBase.h" />
     <ClInclude Include="src\coreUtil\Camera.h" />
