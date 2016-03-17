@@ -72,6 +72,7 @@ void Transform::SetAxisAngles(float xDegree, float yDegree, float zDegree)
 
 }
 
+// todo: move this to camera
 void Transform::SetProjection(float fov, float aspectRatio, float zNear, float zFar)
 {
     _projDirty = true;
