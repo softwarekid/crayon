@@ -42,6 +42,6 @@ void main_v(float4 position : POSITION,
     float4 displacementDir = float4(normal.x, normal.y, normal.z, 0);
     float4 newPos = position + displacement * displacementDir;
     oPosition = mul(modelViewProj, newPos);
-    color.xyz =  computerLighing(lightPos, lightColor, kd, shininess, newPos.xyz, normal, eyePos);
+    color.xyz = computerLighing(lightPos, lightColor, kd, shininess, newPos.xyz, normal, eyePos);
     color.w = 1;
 }

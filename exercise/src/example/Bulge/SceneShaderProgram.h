@@ -11,6 +11,9 @@ private:
 
     void _SetMaterial(const Material& m) override;
 public:
+    void SetProjection(float fov, float aspectRatio, float zNear, float zFar);
+    void EnableProfile();
+    void DisableProfile();
     void SetTime(float time);
     void InitConstShaderParams() override;
     void Draw(const Camera& camrea, const Vector4f& rotation, const Vector3f& translate,const Vector3f& eyePos, const Vector3f& lightPosition, const Material& m, std::function<void()> draw) override;

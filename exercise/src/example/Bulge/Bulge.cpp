@@ -71,15 +71,11 @@ void Bulge::_Display()
     const Vector3f eyeUp(0, 1, 0);
     const Vector3f lightPosition(5 * sin(_lightAngle), 1.5, 5 * cos(_lightAngle));
 
-    _vertShader->EnableProfile();
-    _fragShader->EnableProfile();
-    _vertShader->BindProgram();
-    _fragShader->BindProgram();
-
+    _sceneProgram->EnableProfile();
     _sceneProgram->InitConstShaderParams();
     _sceneProgram->SetTime(_time);
     Camera camera(eyePosition, eyeCenter, eyeUp);
-    _transform.SetCamera(camera);
+    //_transform.SetCamera(camera);
     Vector3f translation;
     Vector4f rotation;
     translation = Vector3f(2.2, -1, 0.2);
@@ -88,10 +84,9 @@ void Bulge::_Display()
 
     translation = Vector3f(-2, 1.5, 0);
     rotation = Vector4f(-55, 1, 0, 0);
-    _sceneProgram->Draw(camera, rotation, translation, eyePosition, lightPosition, redMaterial, [](){glutSolidTorus(0.15, 1.7, 40, 40);});
+    _sceneProgram->Draw(camera, rotation, translation, eyePosition, lightPosition, greenMaterial, [](){glutSolidTorus(0.15, 1.7, 40, 40);});
 
-    _vertShader->DisableProfile();
-    _fragShader->DisableProfile();
+    _sceneProgram->DisableProfile();
     glutSwapBuffers();
 }
 
@@ -137,6 +132,7 @@ Bulge::Bulge(const char* title, int width, int height) : GlutWrapper(title, widt
     CgLog::Log("selecting vertex profile", _context);
 
     _sceneProgram = new SceneShaderProgram(_context, sceneVertShaderName, vertEntry, sceneFragShaderName, fragEntry);
+    _sceneProgram->SetProjection(40, (float)width / (float)height, 0.1, 100);
     _lightAngle = -0.4f;
     _time = 0;
     _InitMaterial();

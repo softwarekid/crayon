@@ -14,8 +14,10 @@ CgProgramWrapper::CgProgramWrapper(CGcontext content, std::string vertFileName, 
 {
     auto profileVert = cgGLGetLatestProfile(CG_GL_VERTEX);
     _vertShader = new CgShader(content, profileVert, vertFileName, vertEntry);
+    cgGLSetOptimalOptions(profileVert);
     auto profileFrag = cgGLGetLatestProfile(CG_GL_FRAGMENT);
     _fragShader = new CgShader(content, profileFrag, fragFilename, fragEntry);
+    cgGLSetOptimalOptions(profileFrag);
 }
 
 CgProgramWrapper::~CgProgramWrapper()
