@@ -21,23 +21,6 @@ void SceneShaderProgram::_SetMaterial(const Material& m)
     _vertParam->SetShininess(m.shininess);
 }
 
-void SceneShaderProgram::SetProjection(float fov, float aspectRatio, float zNear, float zFar)
-{
-    _transform.SetProjection(fov, aspectRatio, zNear, zFar);
-}
-
-void SceneShaderProgram::EnableProfile()
-{
-    _vertShader->EnableProfile();
-    _fragShader->EnableProfile();
-}
-
-void SceneShaderProgram::DisableProfile()
-{
-    _vertShader->DisableProfile();
-    _fragShader->DisableProfile();
-}
-
 void SceneShaderProgram::Draw(const Camera& camera, const Vector4f& rotation, const Vector3f& translate, const Vector3f& eyePos, const Vector3f& lightPosition, const Material& m, std::function<void()> draw)
 {
     _SetMaterial(m);
@@ -62,16 +45,13 @@ void SceneShaderProgram::Draw(const Camera& camera, const Vector4f& rotation, co
     draw();
 }
 
-SceneShaderProgram::SceneShaderProgram(CGcontext content, std::string vertFileName, std::string vertEntry, std::string fragFilename, std::string fragEntry) : CgProgramWrapper(content, vertFileName, vertEntry, fragFilename, fragEntry)
+SceneShaderProgram::SceneShaderProgram(CGcontext content, CGprofile vertProfile, CGprofile fragProfile,std::string vertFileName, std::string vertEntry, std::string fragFilename, std::string fragEntry) : CgProgramWrapper(content, vertProfile, fragProfile, vertFileName, vertEntry, fragFilename, fragEntry)
 {
     _vertParam = new BulgeVsParam(*_vertShader);
     _fragParam = new BulgeFsParam(*_fragShader);
 
     _vertParam->ExtractParams();
     _fragParam->ExtractParams();
-
-    _vertShader->BindProgram();
-    _fragShader->BindProgram();
 }
 
 SceneShaderProgram::~SceneShaderProgram()

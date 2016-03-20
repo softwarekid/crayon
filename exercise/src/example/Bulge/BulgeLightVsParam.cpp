@@ -7,7 +7,7 @@ void BulgeLightVsParam::SetMVPMatrix(const Matrix4f& matrix)
 
 void BulgeLightVsParam::ExtractParams()
 {
-    _GetProgramParam(modelViewProj, "modelViewProj");
+    _GetProgramParam(modelViewProj, "MVPMatrix");
 }
 
 BulgeLightVsParam::BulgeLightVsParam(const CgShader& shader) : CgShaderParametersBase(shader)

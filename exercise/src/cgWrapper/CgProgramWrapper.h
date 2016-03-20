@@ -15,9 +15,13 @@ protected:
     Transform _transform;
     Vector3f _MatVecMulReduced(const Matrix4f& matrix, const Vector4f& vector);
 public:
-    void virtual InitConstShaderParams() = 0;
+    void BindShader();
+    void EnableProfile();
+    void DisableProfile();
+    void SetProjection(float fov, float aspectRatio, float zNear, float zFar);
+    void virtual InitConstShaderParams(){};
     void virtual Draw(const Camera& camera, const Vector4f& rotation, const Vector3f& translate, const Vector3f& eyePos, const Vector3f& lightPosition, const Material& m, std::function<void()> draw){};
-    CgProgramWrapper(CGcontext content, std::string vertFileName, std::string vertEntry, std::string fragFilename, std::string fragEntry);
+    CgProgramWrapper(CGcontext content, CGprofile vertProfile, CGprofile fragProfile, std::string vertFileName, std::string vertEntry, std::string fragFilename, std::string fragEntry);
     virtual ~CgProgramWrapper();
 };
 
