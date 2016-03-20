@@ -11,3 +11,4 @@ help中start point指的就是commit
 rm -rf  lua/FF/GeneratedCode/Enum/CmdID.lua.orig
 git cherry-pick e02b9f423987a0acb740e7af7f70b0656e4a64c3
 gitk --all&
+git checkout -b remote_branch origin/remote_branch 创建一个新的名叫remote_branch的分支，这个分支up-to-date到orign/remote_branch
