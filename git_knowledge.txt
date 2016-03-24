@@ -5,10 +5,15 @@
 
 
 stage 是指git add执行后的状态
-origin 是指远端
+origin 是指远端,可以看成是remote地址的别名
 HEAD可以理解为当前branch名字的symbolic name
 help中start point指的就是commit
 rm -rf  lua/FF/GeneratedCode/Enum/CmdID.lua.orig
 git cherry-pick e02b9f423987a0acb740e7af7f70b0656e4a64c3
 gitk --all&
 git checkout -b remote_branch origin/remote_branch 创建一个新的名叫remote_branch的分支，这个分支up-to-date到orign/remote_branch
+
+跟踪当前branch到远端
+git branch -u upstream/foo
+if local branch foo is not the current branch:
+git branch -u upstream/foo foo
