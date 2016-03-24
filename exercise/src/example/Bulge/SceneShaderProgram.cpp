@@ -45,7 +45,7 @@ void SceneShaderProgram::Draw(const Camera& camera, const Vector4f& rotation, co
     draw();
 }
 
-SceneShaderProgram::SceneShaderProgram(CGcontext content, CGprofile vertProfile, CGprofile fragProfile,std::string vertFileName, std::string vertEntry, std::string fragFilename, std::string fragEntry) : CgProgramWrapper(content, vertProfile, fragProfile, vertFileName, vertEntry, fragFilename, fragEntry)
+SceneShaderProgram::SceneShaderProgram(CGcontext content, CGprofile vertProfile, CGprofile fragProfile,std::string vertFileName, std::string vertEntry, std::string fragFilename, std::string fragEntry) : CgDrawCall(content, vertProfile, fragProfile, vertFileName, vertEntry, fragFilename, fragEntry)
 {
     _vertParam = new BulgeVsParam(*_vertShader);
     _fragParam = new BulgeFsParam(*_fragShader);

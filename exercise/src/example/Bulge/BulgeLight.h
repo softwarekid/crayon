@@ -3,7 +3,7 @@
 #include "CgProgramWrapper.h"
 #include "BulgeLightFsParam.h"
 #include "BulgeLightVsParam.h"
-class BulgeLight : public CgProgramWrapper
+class BulgeLight : public CgDrawCall
 {
 private:
     BulgeLightFsParam* _fragParam;

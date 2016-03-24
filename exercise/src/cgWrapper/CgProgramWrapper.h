@@ -6,7 +6,7 @@
 #include <Material.h>
 #include <Transform.h>
 
-class CgProgramWrapper
+class CgDrawCall
 {
 protected:
     void virtual _SetMaterial(const Material& m) = 0;
@@ -21,8 +21,8 @@ public:
     void SetProjection(float fov, float aspectRatio, float zNear, float zFar);
     void virtual InitConstShaderParams(){};
     void virtual Draw(const Camera& camera, const Vector4f& rotation, const Vector3f& translate, const Vector3f& eyePos, const Vector3f& lightPosition, const Material& m, std::function<void()> draw){};
-    CgProgramWrapper(CGcontext content, CGprofile vertProfile, CGprofile fragProfile, std::string vertFileName, std::string vertEntry, std::string fragFilename, std::string fragEntry);
-    virtual ~CgProgramWrapper();
+    CgDrawCall(CGcontext content, CGprofile vertProfile, CGprofile fragProfile, std::string vertFileName, std::string vertEntry, std::string fragFilename, std::string fragEntry);
+    virtual ~CgDrawCall();
 };
 
 

@@ -22,12 +22,6 @@ void Bulge::_SetMaterial(Material m)
 {
 }
 
-void Bulge::_Draw(const Vector4f& rotation, const Vector3f& translate, const Vector3f& eyePos, const Vector3f& lightPosition, const Material& m, std::function<void()> draw)
-{
-    _SetMaterial(m);
-    draw();
-}
-
 void Bulge::_Idle()
 {
     static float lightVelocity = 0.008;

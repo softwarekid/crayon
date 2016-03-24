@@ -99,7 +99,6 @@
     <ClCompile Include="src\example\AttenuateLight\AttenuateLightingVsParam.cpp" />
     <ClCompile Include="src\example\Bulge\Bulge.cpp" />
     <ClCompile Include="src\example\Bulge\BulgeFsParam.cpp" />
-    <ClCompile Include="src\example\Bulge\BulgeLight.cpp" />
     <ClCompile Include="src\example\Bulge\BulgeLightFsParam.cpp" />
     <ClCompile Include="src\example\Bulge\BulgeLightVsParam.cpp" />
     <ClCompile Include="src\example\Bulge\BulgeVsParam.cpp" />
@@ -107,6 +106,7 @@
     <ClCompile Include="src\example\HalfVectorInVert\HalfVectorFsParam.cpp" />
     <ClCompile Include="src\example\HalfVectorInVert\HalfVectorInVert.cpp" />
     <ClCompile Include="src\example\HalfVectorInVert\HalfVectorVsParam.cpp" />
+    <ClCompile Include="src\example\KeyFrameAnim\KeyFrameAnim.cpp" />
     <ClCompile Include="src\example\TextureSampling\TextureSampling.cpp" />
     <ClCompile Include="src\example\TextureSampling\TextureSamplingFsParam.cpp" />
     <ClCompile Include="src\example\TextureSampling\TextureSamplingVsParam.cpp" />
@@ -140,7 +140,6 @@
     <ClInclude Include="src\example\AttenuateLight\AttenuateLightingVsParam.h" />
     <ClInclude Include="src\example\Bulge\Bulge.h" />
     <ClInclude Include="src\example\Bulge\BulgeFsParam.h" />
-    <ClInclude Include="src\example\Bulge\BulgeLight.h" />
     <ClInclude Include="src\example\Bulge\BulgeLightFsParam.h" />
     <ClInclude Include="src\example\Bulge\BulgeLightVsParam.h" />
     <ClInclude Include="src\example\Bulge\BulgeVsParam.h" />
@@ -148,6 +147,7 @@
     <ClInclude Include="src\example\HalfVectorInVert\HalfVectorFsParam.h" />
     <ClInclude Include="src\example\HalfVectorInVert\HalfVectorInVert.h" />
     <ClInclude Include="src\example\HalfVectorInVert\HalfVectorVsParam.h" />
+    <ClInclude Include="src\example\KeyFrameAnim\KeyFrameAnim.h" />
     <ClInclude Include="src\example\TextureSampling\TextureSampling.h" />
     <ClInclude Include="src\example\TextureSampling\TextureSamplingFsParam.h" />
     <ClInclude Include="src\example\TextureSampling\TextureSamplingVsParam.h" />
@@ -169,8 +169,8 @@
     <None Include="src\example\attenuateLight\attenuateLight_V.cg" />
     <None Include="src\example\Bulge\bulge_F.cg" />
     <None Include="src\example\Bulge\bulge_V.cg" />
-    <None Include="src\example\Bulge\bulgeLight_F.cg" />
-    <None Include="src\example\Bulge\bulgeLight_V.cg" />
+    <None Include="src\example\Bulge\LightFsParam.cg" />
+    <None Include="src\example\Bulge\LightVsParam.cg" />
     <None Include="src\example\HalfVectorInVert\HalfVectorInVert_F.cg" />
     <None Include="src\example\HalfVectorInVert\HalfVectorInVert_V.cg" />
     <None Include="src\example\TextureSampling\TextureSampling_F.cg" />

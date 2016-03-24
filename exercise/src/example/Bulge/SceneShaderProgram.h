@@ -3,7 +3,7 @@
 #include "CgProgramWrapper.h"
 #include "BulgeFsParam.h"
 #include "BulgeVsParam.h"
-class SceneShaderProgram : public CgProgramWrapper
+class SceneShaderProgram : public CgDrawCall
 {
 private:
     BulgeFsParam* _fragParam;

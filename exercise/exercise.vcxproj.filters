@@ -69,6 +69,12 @@
     <Filter Include="Source Files\example\Bulge">
       <UniqueIdentifier>{a4b2a256-4843-4270-8d8a-af685c1f81d3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\example\KeyFrameAnim">
+      <UniqueIdentifier>{c668377b-c123-4a81-91b0-873082f40a56}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\example\KeyFrameAnim">
+      <UniqueIdentifier>{0df34eeb-4f32-4ac0-8eb9-17e2044a3fff}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\cgWrapper\CgLog.cpp">
@@ -179,8 +185,8 @@
     <ClCompile Include="src\cgWrapper\CgProgramWrapper.cpp">
       <Filter>Source Files\CgProgram</Filter>
     </ClCompile>
-    <ClCompile Include="src\example\Bulge\BulgeLight.cpp">
-      <Filter>Source Files\example\Bulge</Filter>
+    <ClCompile Include="src\example\KeyFrameAnim\KeyFrameAnim.cpp">
+      <Filter>Source Files\example\KeyFrameAnim</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -307,8 +313,8 @@
     <ClInclude Include="src\cgWrapper\CgProgramWrapper.h">
       <Filter>Header Files\cgProgram</Filter>
     </ClInclude>
-    <ClInclude Include="src\example\Bulge\BulgeLight.h">
-      <Filter>Header Files\example\Bulge</Filter>
+    <ClInclude Include="src\example\KeyFrameAnim\KeyFrameAnim.h">
+      <Filter>Header Files\example\KeyFrameAnim</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -345,13 +351,13 @@
     <None Include="src\example\Bulge\bulge_V.cg">
       <Filter>Source Files\example\Bulge</Filter>
     </None>
+    <None Include="src\example\Bulge\LightFsParam.cg">
+      <Filter>Source Files\example\Bulge</Filter>
+    </None>
+    <None Include="src\example\Bulge\LightVsParam.cg">
+      <Filter>Source Files\example\Bulge</Filter>
+    </None>
     <None Include="src\example\Bulge\bulge_F.cg">
-      <Filter>Source Files\example\Bulge</Filter>
-    </None>
-    <None Include="src\example\Bulge\bulgeLight_F.cg">
-      <Filter>Source Files\example\Bulge</Filter>
-    </None>
-    <None Include="src\example\Bulge\bulgeLight_V.cg">
       <Filter>Source Files\example\Bulge</Filter>
     </None>
   </ItemGroup>

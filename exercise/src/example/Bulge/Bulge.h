@@ -26,7 +26,6 @@ private:
     void _InitMaterial();
     void _InitConstShaderParams();
     void _SetMaterial(Material m);
-    void _Draw(const Vector4f& rotation, const Vector3f& translate,const Vector3f& eyePos, const Vector3f& lightPosition, const Material& m, std::function<void()> draw);
 protected:
     void _Idle() override;
     void _Display(void) override;

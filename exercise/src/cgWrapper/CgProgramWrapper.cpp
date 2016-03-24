@@ -3,43 +3,43 @@
 #include <string>
 
 
-Vector3f CgProgramWrapper::_MatVecMulReduced(const Matrix4f& matrix, const Vector4f& vector)
+Vector3f CgDrawCall::_MatVecMulReduced(const Matrix4f& matrix, const Vector4f& vector)
 {
     auto result = matrix.Mul(vector);
     result.ReduceTo3DSpace();
     return Vector3f(result[1], result[2], result[3]);
 }
 
-void CgProgramWrapper::BindShader()
+void CgDrawCall::BindShader()
 {
     _vertShader->BindProgram();
     _fragShader->BindProgram();
 }
 
-void CgProgramWrapper::EnableProfile()
+void CgDrawCall::EnableProfile()
 {
     _vertShader->EnableProfile();
     _fragShader->EnableProfile();
 }
 
-void CgProgramWrapper::DisableProfile()
+void CgDrawCall::DisableProfile()
 {
     _vertShader->DisableProfile();
     _fragShader->DisableProfile();
 }
 
-void CgProgramWrapper::SetProjection(float fov, float aspectRatio, float zNear, float zFar)
+void CgDrawCall::SetProjection(float fov, float aspectRatio, float zNear, float zFar)
 {
     _transform.SetProjection(fov, aspectRatio, zNear, zFar);
 }
 
-CgProgramWrapper::CgProgramWrapper(CGcontext content, CGprofile vertProfile, CGprofile fragProfile,std::string vertFileName, std::string vertEntry, std::string fragFilename, std::string fragEntry)
+CgDrawCall::CgDrawCall(CGcontext content, CGprofile vertProfile, CGprofile fragProfile,std::string vertFileName, std::string vertEntry, std::string fragFilename, std::string fragEntry)
 {
     _vertShader = new CgShader(content, vertProfile, vertFileName, vertEntry);
     _fragShader = new CgShader(content, fragProfile, fragFilename, fragEntry);
 }
 
-CgProgramWrapper::~CgProgramWrapper()
+CgDrawCall::~CgDrawCall()
 {
     // maybe I can use unique_ptr
     delete _vertShader;
