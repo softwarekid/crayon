@@ -10,14 +10,33 @@ Vector3f CgProgramWrapper::_MatVecMulReduced(const Matrix4f& matrix, const Vecto
     return Vector3f(result[1], result[2], result[3]);
 }
 
-CgProgramWrapper::CgProgramWrapper(CGcontext content, std::string vertFileName, std::string vertEntry, std::string fragFilename, std::string fragEntry)
+void CgProgramWrapper::BindShader()
 {
-    auto profileVert = cgGLGetLatestProfile(CG_GL_VERTEX);
-    _vertShader = new CgShader(content, profileVert, vertFileName, vertEntry);
-    cgGLSetOptimalOptions(profileVert);
-    auto profileFrag = cgGLGetLatestProfile(CG_GL_FRAGMENT);
-    _fragShader = new CgShader(content, profileFrag, fragFilename, fragEntry);
-    cgGLSetOptimalOptions(profileFrag);
+    _vertShader->BindProgram();
+    _fragShader->BindProgram();
+}
+
+void CgProgramWrapper::EnableProfile()
+{
+    _vertShader->EnableProfile();
+    _fragShader->EnableProfile();
+}
+
+void CgProgramWrapper::DisableProfile()
+{
+    _vertShader->DisableProfile();
+    _fragShader->DisableProfile();
+}
+
+void CgProgramWrapper::SetProjection(float fov, float aspectRatio, float zNear, float zFar)
+{
+    _transform.SetProjection(fov, aspectRatio, zNear, zFar);
+}
+
+CgProgramWrapper::CgProgramWrapper(CGcontext content, CGprofile vertProfile, CGprofile fragProfile,std::string vertFileName, std::string vertEntry, std::string fragFilename, std::string fragEntry)
+{
+    _vertShader = new CgShader(content, vertProfile, vertFileName, vertEntry);
+    _fragShader = new CgShader(content, fragProfile, fragFilename, fragEntry);
 }
 
 CgProgramWrapper::~CgProgramWrapper()

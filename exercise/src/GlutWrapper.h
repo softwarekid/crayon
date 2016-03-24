@@ -43,8 +43,8 @@ protected:
     virtual void _Display(void) = 0;
     virtual void _Menu(){};
     virtual void _Exit();
-    virtual void _InitVertShader() = 0;
-    virtual void _InitFragShader() = 0;
+    virtual void _InitVertShader() {};
+    virtual void _InitFragShader() {};
 
     Transform _transform;
     Mesh _mesh;

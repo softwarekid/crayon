@@ -1,7 +1,7 @@
 void main_v(inout float4 position : POSITION,
             uniform float4x4 MVPMatrix,
-            float4 color : COLOR)
+            out float4 color : COLOR)
 {
     position = mul(MVPMatrix, position);
-    color = float4(1,1,0,1);
+    color = float4(1,1,1,1);
 }

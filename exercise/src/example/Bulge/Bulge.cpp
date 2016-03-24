@@ -71,11 +71,11 @@ void Bulge::_Display()
     const Vector3f eyeUp(0, 1, 0);
     const Vector3f lightPosition(5 * sin(_lightAngle), 1.5, 5 * cos(_lightAngle));
 
+    _sceneProgram->BindShader();
     _sceneProgram->EnableProfile();
     _sceneProgram->InitConstShaderParams();
     _sceneProgram->SetTime(_time);
     Camera camera(eyePosition, eyeCenter, eyeUp);
-    //_transform.SetCamera(camera);
     Vector3f translation;
     Vector4f rotation;
     translation = Vector3f(2.2, -1, 0.2);
@@ -86,39 +86,13 @@ void Bulge::_Display()
     rotation = Vector4f(-55, 1, 0, 0);
     _sceneProgram->Draw(camera, rotation, translation, eyePosition, lightPosition, greenMaterial, [](){glutSolidTorus(0.15, 1.7, 40, 40);});
 
+    translation = lightPosition;
+    rotation = Vector4f(0 ,1, 0, 0);
+    _lightPrgoram->BindShader();
+    _lightPrgoram->Draw(camera, rotation, translation, eyePosition, lightPosition, emptyMaterial, [](){glutSolidSphere(0.1, 12, 12);});
+    _lightPrgoram->DisableProfile();
     _sceneProgram->DisableProfile();
     glutSwapBuffers();
-}
-
-void Bulge::_InitVertShader()
-{
-    //auto profileVertex = cgGLGetLatestProfile(CG_GL_VERTEX);
-    //std::string fileName(R"(src\example\Bulge\bulge_V.cg)");
-    //std::string entry("main_v");
-    //_vertShader = new CgShader(_context, profileVertex, fileName, entry);
-    //_vertParams = new BulgeVsParam(*_vertShader);
-    //_vertParams->ExtractParams();
-
-    //string lightVetexFileName(R"(src\example\Bulge\LightVsParam.cg)");
-    //_lightVertexShader = new CgShader(_context, profileVertex, lightVetexFileName, entry);
-    //_lightVsParam = new BulgeLightVsParam(*_lightVertexShader);
-    //_lightVsParam->ExtractParams();
-    //cgGLSetOptimalOptions(profileVertex);
-}
-
-void Bulge::_InitFragShader()
-{
-    //auto profileFrag = cgGLGetLatestProfile(CG_GL_FRAGMENT);
-    //std::string fileName(R"()");
-    //std::string entry("main_f");
-    //_fragShader = new CgShader(_context, profileFrag, fileName, entry);
-    //_fragParams = new BulgeFsParam(*_fragShader);
-    //_fragParams->ExtractParams();
-
-    //string lightFragFileName(R"(src\example\Bulge\LightFsParam.cg)");
-    //_lightFragShader = new CgShader(_context, profileFrag, lightFragFileName, entry);
-    //_lightFsParam = new BulgeLightFsParam(*_lightFragShader);
-    //cgGLSetOptimalOptions(profileFrag);
 }
 
 Bulge::Bulge(const char* title, int width, int height) : GlutWrapper(title, width, height)
@@ -129,10 +103,20 @@ Bulge::Bulge(const char* title, int width, int height) : GlutWrapper(title, widt
     CgLog::Log("create content", _context);
     cgGLSetDebugMode(CG_TRUE);
     cgSetParameterSettingMode(_context,CG_DEFERRED_PARAMETER_SETTING);
+
+    
+    auto profileVert = cgGLGetLatestProfile(CG_GL_VERTEX);
+    auto profileFrag = cgGLGetLatestProfile(CG_GL_FRAGMENT);
+    cgGLSetOptimalOptions(profileVert);
+    cgGLSetOptimalOptions(profileFrag);
     CgLog::Log("selecting vertex profile", _context);
 
-    _sceneProgram = new SceneShaderProgram(_context, sceneVertShaderName, vertEntry, sceneFragShaderName, fragEntry);
+    _sceneProgram = new SceneShaderProgram(_context, profileVert, profileFrag, sceneVertShaderName, vertEntry, sceneFragShaderName, fragEntry);
     _sceneProgram->SetProjection(40, (float)width / (float)height, 0.1, 100);
+
+    _lightPrgoram = new BulgeLight(_context, profileVert, profileFrag, lightVertShaderName , vertEntry, lightFragShaderName, fragEntry);
+    _lightPrgoram->SetProjection(40, (float)width / (float)height, 0.1, 100);
+
     _lightAngle = -0.4f;
     _time = 0;
     _InitMaterial();
@@ -141,4 +125,5 @@ Bulge::Bulge(const char* title, int width, int height) : GlutWrapper(title, widt
 Bulge::~Bulge()
 {
     delete _sceneProgram;
+    delete _lightPrgoram;
 }
