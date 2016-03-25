@@ -1,8 +1,8 @@
 #ifndef bulge_h__
 #define  bulge_h__
 #include "GlutWrapper.h"
-#include "SceneShaderProgram.h"
-#include "BulgeLight.h"
+#include "SceneDrawCall.h"
+#include "BulgeLightDrawCall.h"
 #include "Material.h"
 #include <functional>
 
@@ -10,8 +10,8 @@ class Bulge : public GlutWrapper
 {
 private:
 
-    SceneShaderProgram* _sceneProgram;
-    BulgeLight* _lightPrgoram;
+    SceneDrawCall* _sceneProgram;
+    BulgeLightDrawCall* _lightPrgoram;
     float _time;
     float _lightAngle;
     const std::string sceneVertShaderName = R"(src\example\Bulge\bulge_V.cg)";

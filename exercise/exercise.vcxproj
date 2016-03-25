@@ -99,10 +99,11 @@
     <ClCompile Include="src\example\AttenuateLight\AttenuateLightingVsParam.cpp" />
     <ClCompile Include="src\example\Bulge\Bulge.cpp" />
     <ClCompile Include="src\example\Bulge\BulgeFsParam.cpp" />
+    <ClCompile Include="src\example\Bulge\BulgeLight.cpp" />
     <ClCompile Include="src\example\Bulge\BulgeLightFsParam.cpp" />
     <ClCompile Include="src\example\Bulge\BulgeLightVsParam.cpp" />
     <ClCompile Include="src\example\Bulge\BulgeVsParam.cpp" />
-    <ClCompile Include="src\example\Bulge\SceneShaderProgram.cpp" />
+    <ClCompile Include="src\example\Bulge\SceneDrawCall.cpp" />
     <ClCompile Include="src\example\HalfVectorInVert\HalfVectorFsParam.cpp" />
     <ClCompile Include="src\example\HalfVectorInVert\HalfVectorInVert.cpp" />
     <ClCompile Include="src\example\HalfVectorInVert\HalfVectorVsParam.cpp" />
@@ -140,10 +141,11 @@
     <ClInclude Include="src\example\AttenuateLight\AttenuateLightingVsParam.h" />
     <ClInclude Include="src\example\Bulge\Bulge.h" />
     <ClInclude Include="src\example\Bulge\BulgeFsParam.h" />
+    <ClInclude Include="src\example\Bulge\BulgeLightDrawCall.h" />
     <ClInclude Include="src\example\Bulge\BulgeLightFsParam.h" />
     <ClInclude Include="src\example\Bulge\BulgeLightVsParam.h" />
     <ClInclude Include="src\example\Bulge\BulgeVsParam.h" />
-    <ClInclude Include="src\example\Bulge\SceneShaderProgram.h" />
+    <ClInclude Include="src\example\Bulge\SceneDrawCall.h" />
     <ClInclude Include="src\example\HalfVectorInVert\HalfVectorFsParam.h" />
     <ClInclude Include="src\example\HalfVectorInVert\HalfVectorInVert.h" />
     <ClInclude Include="src\example\HalfVectorInVert\HalfVectorVsParam.h" />

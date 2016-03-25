@@ -105,10 +105,10 @@ Bulge::Bulge(const char* title, int width, int height) : GlutWrapper(title, widt
     cgGLSetOptimalOptions(profileFrag);
     CgLog::Log("selecting vertex profile", _context);
 
-    _sceneProgram = new SceneShaderProgram(_context, profileVert, profileFrag, sceneVertShaderName, vertEntry, sceneFragShaderName, fragEntry);
+    _sceneProgram = new SceneDrawCall(_context, profileVert, profileFrag, sceneVertShaderName, vertEntry, sceneFragShaderName, fragEntry);
     _sceneProgram->SetProjection(40, (float)width / (float)height, 0.1, 100);
 
-    _lightPrgoram = new BulgeLight(_context, profileVert, profileFrag, lightVertShaderName , vertEntry, lightFragShaderName, fragEntry);
+    _lightPrgoram = new BulgeLightDrawCall(_context, profileVert, profileFrag, lightVertShaderName , vertEntry, lightFragShaderName, fragEntry);
     _lightPrgoram->SetProjection(40, (float)width / (float)height, 0.1, 100);
 
     _lightAngle = -0.4f;
