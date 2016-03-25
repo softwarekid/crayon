@@ -1,11 +1,11 @@
-#include "BulgeLight.h"
+#include "BulgeLightDrawCall.h"
 
-void BulgeLight::_SetMaterial(const Material& m)
+void BulgeLightDrawCall::_SetMaterial(const Material& m)
 {
     
 }
 
-void BulgeLight::Draw(const Camera& camera, const Vector4f& rotation, const Vector3f& translate, const Vector3f& eyePos, const Vector3f& lightPosition, const Material& m, std::function<void()> draw)
+void BulgeLightDrawCall::Draw(const Camera& camera, const Vector4f& rotation, const Vector3f& translate, const Vector3f& eyePos, const Vector3f& lightPosition, const Material& m, std::function<void()> draw)
 {
     //_SetMaterial(m);
     _transform.SetCamera(camera);
@@ -21,7 +21,7 @@ void BulgeLight::Draw(const Camera& camera, const Vector4f& rotation, const Vect
     draw();
 }
 
-BulgeLight::BulgeLight(CGcontext content, CGprofile vertProfile, CGprofile fragProfile, std::string vertFileName, std::string vertEntry, std::string fragFilename, std::string fragEntry) :CgProgramWrapper(content,vertProfile,fragProfile, vertFileName, vertEntry, fragFilename, fragEntry)
+BulgeLightDrawCall::BulgeLightDrawCall(CGcontext content, CGprofile vertProfile, CGprofile fragProfile, std::string vertFileName, std::string vertEntry, std::string fragFilename, std::string fragEntry) :CgDrawCall(content, vertProfile, fragProfile, vertFileName, vertEntry, fragFilename, fragEntry)
 {
     _vertParam = new BulgeLightVsParam(*_vertShader);
     _fragParam = new BulgeLightFsParam(*_fragShader);

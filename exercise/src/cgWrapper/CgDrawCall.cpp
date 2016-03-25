@@ -1,6 +1,6 @@
-#include "CgProgramWrapper.h"
 #include <CG/cgGL.h>
 #include <string>
+#include "CgDrawCall.h"
 
 
 Vector3f CgDrawCall::_MatVecMulReduced(const Matrix4f& matrix, const Vector4f& vector)

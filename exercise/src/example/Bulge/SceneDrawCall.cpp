@@ -1,27 +1,27 @@
-#include "SceneShaderProgram.h"
+#include "SceneDrawCall.h"
 #include <functional>
 #include <Material.h>
 #include <Camera.h>
 
-void SceneShaderProgram::SetTime(float time)
+void SceneDrawCall::SetTime(float time)
 {
     _vertParam->SetTime(time);
 }
 
-void SceneShaderProgram::InitConstShaderParams()
+void SceneDrawCall::InitConstShaderParams()
 {
     _vertParam->SetLightColor(Vector3f(0.95f, 0.95f, 0.95f));
     _vertParam->SetScaleFactor(0.3f);
     _vertParam->SetFrequency(2.4f);
 }
 
-void SceneShaderProgram::_SetMaterial(const Material& m)
+void SceneDrawCall::_SetMaterial(const Material& m)
 {
     _vertParam->SetKd(m.kd);
     _vertParam->SetShininess(m.shininess);
 }
 
-void SceneShaderProgram::Draw(const Camera& camera, const Vector4f& rotation, const Vector3f& translate, const Vector3f& eyePos, const Vector3f& lightPosition, const Material& m, std::function<void()> draw)
+void SceneDrawCall::Draw(const Camera& camera, const Vector4f& rotation, const Vector3f& translate, const Vector3f& eyePos, const Vector3f& lightPosition, const Material& m, std::function<void()> draw)
 {
     _SetMaterial(m);
     _transform.SetCamera(camera);
@@ -45,7 +45,7 @@ void SceneShaderProgram::Draw(const Camera& camera, const Vector4f& rotation, co
     draw();
 }
 
-SceneShaderProgram::SceneShaderProgram(CGcontext content, CGprofile vertProfile, CGprofile fragProfile,std::string vertFileName, std::string vertEntry, std::string fragFilename, std::string fragEntry) : CgDrawCall(content, vertProfile, fragProfile, vertFileName, vertEntry, fragFilename, fragEntry)
+SceneDrawCall::SceneDrawCall(CGcontext content, CGprofile vertProfile, CGprofile fragProfile,std::string vertFileName, std::string vertEntry, std::string fragFilename, std::string fragEntry) : CgDrawCall(content, vertProfile, fragProfile, vertFileName, vertEntry, fragFilename, fragEntry)
 {
     _vertParam = new BulgeVsParam(*_vertShader);
     _fragParam = new BulgeFsParam(*_fragShader);
@@ -54,7 +54,7 @@ SceneShaderProgram::SceneShaderProgram(CGcontext content, CGprofile vertProfile,
     _fragParam->ExtractParams();
 }
 
-SceneShaderProgram::~SceneShaderProgram()
+SceneDrawCall::~SceneDrawCall()
 {
     delete _vertParam;
     _vertParam = nullptr;

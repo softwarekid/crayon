@@ -3,7 +3,7 @@
 #include "CgProgramWrapper.h"
 #include "BulgeFsParam.h"
 #include "BulgeVsParam.h"
-class SceneShaderProgram : public CgDrawCall
+class SceneDrawCall : public CgDrawCall
 {
 private:
     BulgeFsParam* _fragParam;
@@ -14,8 +14,8 @@ public:
     void SetTime(float time);
     void InitConstShaderParams() override;
     void Draw(const Camera& camrea, const Vector4f& rotation, const Vector3f& translate,const Vector3f& eyePos, const Vector3f& lightPosition, const Material& m, std::function<void()> draw) override;
-    SceneShaderProgram(CGcontext content, CGprofile vertProfile, CGprofile fragProfile, std::string vertFileName, std::string vertEntry, std::string fragFilename, std::string fragEntry);
-    ~SceneShaderProgram();
+    SceneDrawCall(CGcontext content, CGprofile vertProfile, CGprofile fragProfile, std::string vertFileName, std::string vertEntry, std::string fragFilename, std::string fragEntry);
+    ~SceneDrawCall();
 };
 
 #endif
