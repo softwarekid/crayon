@@ -179,9 +179,6 @@
     <ClCompile Include="src\example\Bulge\BulgeLightFsParam.cpp">
       <Filter>Source Files\example\Bulge</Filter>
     </ClCompile>
-    <ClCompile Include="src\cgWrapper\CgProgramWrapper.cpp">
-      <Filter>Source Files\CgProgram</Filter>
-    </ClCompile>
     <ClCompile Include="src\example\KeyFrameAnim\KeyFrameAnim.cpp">
       <Filter>Source Files\example\KeyFrameAnim</Filter>
     </ClCompile>
@@ -190,6 +187,15 @@
     </ClCompile>
     <ClCompile Include="src\example\Bulge\BulgeLight.cpp">
       <Filter>Source Files\example\Bulge</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cgWrapper\CgDrawCall.cpp">
+      <Filter>Source Files\CgProgram</Filter>
+    </ClCompile>
+    <ClCompile Include="src\example\KeyFrameAnim\KnightDrawCall.cpp">
+      <Filter>Source Files\example\KeyFrameAnim</Filter>
+    </ClCompile>
+    <ClCompile Include="src\example\KeyFrameAnim\KnightVsLitParam.cpp">
+      <Filter>Source Files\example\KeyFrameAnim</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -310,9 +316,6 @@
     <ClInclude Include="src\example\Bulge\BulgeLightVsParam.h">
       <Filter>Header Files\example\Bulge</Filter>
     </ClInclude>
-    <ClInclude Include="src\cgWrapper\CgProgramWrapper.h">
-      <Filter>Header Files\cgProgram</Filter>
-    </ClInclude>
     <ClInclude Include="src\example\KeyFrameAnim\KeyFrameAnim.h">
       <Filter>Header Files\example\KeyFrameAnim</Filter>
     </ClInclude>
@@ -321,6 +324,15 @@
     </ClInclude>
     <ClInclude Include="src\example\Bulge\BulgeLightDrawCall.h">
       <Filter>Header Files\example\Bulge</Filter>
+    </ClInclude>
+    <ClInclude Include="src\cgWrapper\CgDrawCall.h">
+      <Filter>Header Files\cgProgram</Filter>
+    </ClInclude>
+    <ClInclude Include="src\example\KeyFrameAnim\KnightDrawCall.h">
+      <Filter>Header Files\example\KeyFrameAnim</Filter>
+    </ClInclude>
+    <ClInclude Include="src\example\KeyFrameAnim\KnightVsLitParam.h">
+      <Filter>Header Files\example\KeyFrameAnim</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -365,6 +377,9 @@
     </None>
     <None Include="src\example\Bulge\bulge_F.cg">
       <Filter>Source Files\example\Bulge</Filter>
+    </None>
+    <None Include="src\example\KeyFrameAnim\AnimationLit_V.cg">
+      <Filter>Source Files\example\KeyFrameAnim</Filter>
     </None>
   </ItemGroup>
 </Project>

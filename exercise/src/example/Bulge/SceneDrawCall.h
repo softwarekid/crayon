@@ -1,8 +1,9 @@
 #ifndef scene_shader_progarm_h__
 #define scene_shader_progarm_h__
-#include "CgProgramWrapper.h"
 #include "BulgeFsParam.h"
 #include "BulgeVsParam.h"
+#include <CgDrawCall.h>
+
 class SceneDrawCall : public CgDrawCall
 {
 private:

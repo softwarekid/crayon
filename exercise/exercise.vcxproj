@@ -83,7 +83,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\cgWrapper\CgLog.cpp" />
-    <ClCompile Include="src\cgWrapper\CgProgramWrapper.cpp" />
+    <ClCompile Include="src\cgWrapper\CgDrawCall.cpp" />
     <ClCompile Include="src\cgWrapper\CgShader.cpp" />
     <ClCompile Include="src\cgWrapper\CgShaderParametersBase.cpp" />
     <ClCompile Include="src\coreUtil\Camera.cpp" />
@@ -108,6 +108,8 @@
     <ClCompile Include="src\example\HalfVectorInVert\HalfVectorInVert.cpp" />
     <ClCompile Include="src\example\HalfVectorInVert\HalfVectorVsParam.cpp" />
     <ClCompile Include="src\example\KeyFrameAnim\KeyFrameAnim.cpp" />
+    <ClCompile Include="src\example\KeyFrameAnim\KnightDrawCall.cpp" />
+    <ClCompile Include="src\example\KeyFrameAnim\KnightVsLitParam.cpp" />
     <ClCompile Include="src\example\TextureSampling\TextureSampling.cpp" />
     <ClCompile Include="src\example\TextureSampling\TextureSamplingFsParam.cpp" />
     <ClCompile Include="src\example\TextureSampling\TextureSamplingVsParam.cpp" />
@@ -123,7 +125,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\cgWrapper\CgLog.h" />
-    <ClInclude Include="src\cgWrapper\CgProgramWrapper.h" />
+    <ClInclude Include="src\cgWrapper\CgDrawCall.h" />
     <ClInclude Include="src\cgWrapper\CgShader.h" />
     <ClInclude Include="src\cgWrapper\CgShaderParametersBase.h" />
     <ClInclude Include="src\coreUtil\Camera.h" />
@@ -150,6 +152,8 @@
     <ClInclude Include="src\example\HalfVectorInVert\HalfVectorInVert.h" />
     <ClInclude Include="src\example\HalfVectorInVert\HalfVectorVsParam.h" />
     <ClInclude Include="src\example\KeyFrameAnim\KeyFrameAnim.h" />
+    <ClInclude Include="src\example\KeyFrameAnim\KnightDrawCall.h" />
+    <ClInclude Include="src\example\KeyFrameAnim\KnightVsLitParam.h" />
     <ClInclude Include="src\example\TextureSampling\TextureSampling.h" />
     <ClInclude Include="src\example\TextureSampling\TextureSamplingFsParam.h" />
     <ClInclude Include="src\example\TextureSampling\TextureSamplingVsParam.h" />
@@ -175,6 +179,7 @@
     <None Include="src\example\Bulge\LightVsParam.cg" />
     <None Include="src\example\HalfVectorInVert\HalfVectorInVert_F.cg" />
     <None Include="src\example\HalfVectorInVert\HalfVectorInVert_V.cg" />
+    <None Include="src\example\KeyFrameAnim\AnimationLit_V.cg" />
     <None Include="src\example\TextureSampling\TextureSampling_F.cg" />
     <None Include="src\example\TextureSampling\TextureSampling_V.cg" />
     <None Include="src\example\TwoLightsWithStruct\TwoLightsWithStruct_F.cg" />

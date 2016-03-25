@@ -1,0 +1,9 @@
+void main_v(float3 position: POSITION, // shader dosen't know whether the last component of POSITION is 1 or not, it is guaranteed by the client
+			float3 normal: NORMAL,
+
+			uniform float keyFrameBlend,
+			uniform float
+			)
+{
+
+}
