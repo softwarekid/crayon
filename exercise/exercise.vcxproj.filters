@@ -194,7 +194,10 @@
     <ClCompile Include="src\example\KeyFrameAnim\KnightDrawCall.cpp">
       <Filter>Source Files\example\KeyFrameAnim</Filter>
     </ClCompile>
-    <ClCompile Include="src\example\KeyFrameAnim\KnightVsLitParam.cpp">
+    <ClCompile Include="src\example\KeyFrameAnim\KeyFrameAnimLitFsParam.cpp">
+      <Filter>Source Files\example\KeyFrameAnim</Filter>
+    </ClCompile>
+    <ClCompile Include="src\example\KeyFrameAnim\KeyFrameAnimLitVsParam.cpp">
       <Filter>Source Files\example\KeyFrameAnim</Filter>
     </ClCompile>
   </ItemGroup>
@@ -331,7 +334,10 @@
     <ClInclude Include="src\example\KeyFrameAnim\KnightDrawCall.h">
       <Filter>Header Files\example\KeyFrameAnim</Filter>
     </ClInclude>
-    <ClInclude Include="src\example\KeyFrameAnim\KnightVsLitParam.h">
+    <ClInclude Include="src\example\KeyFrameAnim\KeyFrameAnimLitVsParam.h">
+      <Filter>Header Files\example\KeyFrameAnim</Filter>
+    </ClInclude>
+    <ClInclude Include="src\example\KeyFrameAnim\KeyFrameAnimLitFsParam.h">
       <Filter>Header Files\example\KeyFrameAnim</Filter>
     </ClInclude>
   </ItemGroup>
@@ -379,6 +385,9 @@
       <Filter>Source Files\example\Bulge</Filter>
     </None>
     <None Include="src\example\KeyFrameAnim\AnimationLit_V.cg">
+      <Filter>Source Files\example\KeyFrameAnim</Filter>
+    </None>
+    <None Include="src\example\KeyFrameAnim\AnimationLit_F.cg">
       <Filter>Source Files\example\KeyFrameAnim</Filter>
     </None>
   </ItemGroup>

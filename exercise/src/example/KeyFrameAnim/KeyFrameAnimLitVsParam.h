@@ -2,7 +2,7 @@
 #define Knight_Vs_h__
 #include <CgShaderParametersBase.h>
 
-class KnightVsLitParam : public CgShaderParametersBase
+class KeyFrameAnimLitVsParam : public CgShaderParametersBase
 {
 private:
     CGparameter _modelViewProj;
@@ -10,7 +10,7 @@ private:
     CGparameter _lightPosition;
     CGparameter _lightColor;
     CGparameter _shininess;
-    CGparameter _blendCoef;
+    CGparameter _blend;
 
 public:
 
@@ -22,6 +22,6 @@ public:
     void SetBlendCoef(const float blendCoef);
 
     void ExtractParams() override;
-    explicit KnightVsLitParam(const CgShader& shader);
+    explicit KeyFrameAnimLitVsParam(const CgShader& shader);
 };
 #endif // !Knight_Vs_h__

@@ -7,7 +7,6 @@ class TextureSamplingFsParam : public CgShaderParametersBase
 {
 private:
     CGparameter decal;
-
 public:
     void EnableTexture();
     void DisableTexture();

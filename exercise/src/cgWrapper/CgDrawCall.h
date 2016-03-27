@@ -1,7 +1,6 @@
 #ifndef cg_program_h__
 #define cg_program_h__
 #include "CgShader.h"
-#include "CgShaderParametersBase.h"
 #include <functional>
 #include <Material.h>
 #include <Transform.h>

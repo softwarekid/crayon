@@ -1,0 +1,8 @@
+float4 main_f(float4 color : COLOR,
+              float2 texcoord: TEXCOORD0,
+
+              uniform float2 scaleFactor,
+              uniform sampler2D decal) : COLOR
+{
+    return color * tex2D(decal, texcoord * scaleFactor);
+}

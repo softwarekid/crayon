@@ -1,8 +1,8 @@
 #ifndef bulge_Light_h__
 #define bulge_Light_h__
-#include "CgProgramWrapper.h"
 #include "BulgeLightFsParam.h"
 #include "BulgeLightVsParam.h"
+#include "CgDrawCall.h"
 class BulgeLightDrawCall : public CgDrawCall
 {
 private:
