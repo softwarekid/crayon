@@ -11,7 +11,7 @@ help中start point指的就是commit
 rm -rf  lua/FF/GeneratedCode/Enum/CmdID.lua.orig
 git cherry-pick e02b9f423987a0acb740e7af7f70b0656e4a64c3
 gitk --all&
-git checkout -b remote_branch origin/remote_branch 创建一个新的名叫remote_branch的分支，这个分支up-to-date到orign/remote_branch
+git checkout -b local_branch origin/remote_branch 创建一个新的名叫local_branch的分支，这个分支up-to-date到orign/remote_branch
 git push origin localbranch:remotebranch 将本地分支推到服务器，如果服务器没有改分支就会创建一个
 git push origin :remotebranch 删除服务器分支remotebranch，可以从上条命令的含义中推断这条命令的意义
 
