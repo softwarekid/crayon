@@ -19,7 +19,7 @@ public:
     void SetLightPos(const Vector3f& lightPos);
     void SetLightColor(const Vector3f& lightColor);
     void SetShininess(const float shininess);
-    void SetBlendCoef(const float blendCoef);
+    void SetBlendFactor(const float blendCoef);
 
     void ExtractParams() override;
     explicit KeyFrameAnimLitVsParam(const CgShader& shader);

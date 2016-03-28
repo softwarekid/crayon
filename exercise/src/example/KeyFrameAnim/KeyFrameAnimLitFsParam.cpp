@@ -1,22 +1,34 @@
 #include "KeyFrameAnimLitFsParam.h"
+#include <CG/cgGL.h>
 
-void KeyFrameAnimLitFsParam::SetFactorScalar(const float factor)
+
+void KeyFrameAnimLitFsParam::SetScaleFactor(const float xScale, const float yScale)
 {
-    _Set1fParam(factorScalar, factor);
+    _Set2fParam(factorScalar, xScale, yScale);
 }
 
 void KeyFrameAnimLitFsParam::SetTexture(GLuint name)
 {
-    _SetTextureParam(texture, name);
+    _SetTextureParam(decal, name);
 }
 
 void KeyFrameAnimLitFsParam::ExtractParams()
 {
     _GetProgramParam(factorScalar, "scaleFactor");
-    _GetProgramParam(texture, "decal");
+    _GetProgramParam(decal, "decal");
+}
+
+void KeyFrameAnimLitFsParam::EnableTexture()
+{
+    cgGLEnableTextureParameter(decal);
+}
+
+void KeyFrameAnimLitFsParam::DisableTexture()
+{
+    cgGLDisableTextureParameter(decal);
 }
 
 KeyFrameAnimLitFsParam::KeyFrameAnimLitFsParam(const CgShader& shader) : CgShaderParametersBase(shader)
 {
-
+    
 }

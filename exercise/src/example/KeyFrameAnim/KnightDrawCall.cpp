@@ -1,21 +1,13 @@
 #include "KnightDrawCall.h"
 
-void KnightDrawCall::SetBlendParam(float blend)
+void KnightDrawCall::SetConstParams(const Vector3f& lightColor,GLuint textureName,const float xScale, const float yScale)
 {
-    _blendParam = blend;
+    _vertParam->SetLightColor(lightColor);
+    _fragParam->SetTexture(textureName);
+    _fragParam->SetScaleFactor(xScale, yScale);
 }
 
-void KnightDrawCall::SetConstParams()
-{
-
-}
-
-void KnightDrawCall::SetVaringParams()
-{
-
-}
-
-void KnightDrawCall::Draw(const Camera& camrea, const Vector4f& rotation, const Vector3f& translate, const Vector3f& eyePos, const Vector3f& lightPosition, const Material& m, std::function<void()> draw)
+void KnightDrawCall::SetVaringParams(const Camera& camrea, const Vector4f& rotation, const Vector3f& translate, const Vector3f& eyePos, const Vector3f& lightPosition, const float blendFactor)
 {
     _transform.SetCamera(camrea);
     _transform.SetArbitraryRotation(rotation[1], rotation[2], rotation[3], rotation[4]);
@@ -32,10 +24,18 @@ void KnightDrawCall::Draw(const Camera& camrea, const Vector4f& rotation, const 
     Matrix4f modelViewProjMatix;
     _transform.GetMVPMatrix(modelViewProjMatix);
     _vertParam->SetMVPMatrix(modelViewProjMatix);
+    _vertParam->SetBlendFactor(blendFactor);
+
     // deferred params are updated, aka, perform a draw call
     _vertShader->UpdateParams();
     _fragShader->UpdateParams();
-    draw();
+}
+
+void KnightDrawCall::Draw(std::function<void()> doDraw)
+{
+    _fragParam->EnableTexture();
+
+    _fragParam->DisableTexture();
 }
 
 KnightDrawCall::KnightDrawCall(CGcontext content, CGprofile vertProfile, CGprofile fragProfile, std::string vertFileName, std::string vertEntry, std::string fragFilename, std::string fragEntry) :CgDrawCall(content, vertProfile, fragProfile,vertFileName,vertEntry,fragFilename,fragEntry)

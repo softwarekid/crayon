@@ -6,12 +6,14 @@ class KeyFrameAnimLitFsParam : public CgShaderParametersBase
 {
 private:
     CGparameter factorScalar;
-    CGparameter texture;
+    CGparameter decal;
 
 public:
-    void SetFactorScalar(const float factor);
+    void SetScaleFactor(const float xFactor, const float yFactor);
     void SetTexture(GLuint name);
     void ExtractParams() override;
+    void EnableTexture();
+    void DisableTexture();
 
     explicit KeyFrameAnimLitFsParam(const CgShader& shader);
 };
