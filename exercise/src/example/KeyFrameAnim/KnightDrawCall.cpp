@@ -34,7 +34,7 @@ void KnightDrawCall::SetVaringParams(const Camera& camrea, const Vector4f& rotat
 void KnightDrawCall::Draw(std::function<void()> doDraw)
 {
     _fragParam->EnableTexture();
-
+    doDraw();
     _fragParam->DisableTexture();
 }
 

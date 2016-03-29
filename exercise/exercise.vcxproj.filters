@@ -75,6 +75,12 @@
     <Filter Include="Source Files\example\KeyFrameAnim">
       <UniqueIdentifier>{0df34eeb-4f32-4ac0-8eb9-17e2044a3fff}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\example\KeyFrameAnim\tga_c_loader">
+      <UniqueIdentifier>{29c2c573-7ec9-4618-ac05-9e76f5c36585}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\example\KeyFrameAnim\tga_c_loader">
+      <UniqueIdentifier>{3e87a49b-0f62-4a18-a39e-f1907c7e237c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\cgWrapper\CgLog.cpp">
@@ -199,6 +205,30 @@
     </ClCompile>
     <ClCompile Include="src\example\KeyFrameAnim\KeyFrameAnimLitVsParam.cpp">
       <Filter>Source Files\example\KeyFrameAnim</Filter>
+    </ClCompile>
+    <ClCompile Include="src\example\KeyFrameAnim\tga_c_loader\gli_convert.c">
+      <Filter>Source Files\example\KeyFrameAnim\tga_c_loader</Filter>
+    </ClCompile>
+    <ClCompile Include="src\example\KeyFrameAnim\tga_c_loader\gli_misc.c">
+      <Filter>Source Files\example\KeyFrameAnim\tga_c_loader</Filter>
+    </ClCompile>
+    <ClCompile Include="src\example\KeyFrameAnim\tga_c_loader\gli_scale.c">
+      <Filter>Source Files\example\KeyFrameAnim\tga_c_loader</Filter>
+    </ClCompile>
+    <ClCompile Include="src\example\KeyFrameAnim\tga_c_loader\gli_tga.c">
+      <Filter>Source Files\example\KeyFrameAnim\tga_c_loader</Filter>
+    </ClCompile>
+    <ClCompile Include="src\example\KeyFrameAnim\tga_c_loader\loadtex.c">
+      <Filter>Source Files\example\KeyFrameAnim\tga_c_loader</Filter>
+    </ClCompile>
+    <ClCompile Include="src\example\KeyFrameAnim\tga_c_loader\md2file.c">
+      <Filter>Source Files\example\KeyFrameAnim\tga_c_loader</Filter>
+    </ClCompile>
+    <ClCompile Include="src\example\KeyFrameAnim\tga_c_loader\md2normals.c">
+      <Filter>Source Files\example\KeyFrameAnim\tga_c_loader</Filter>
+    </ClCompile>
+    <ClCompile Include="src\example\KeyFrameAnim\tga_c_loader\md2render.cpp">
+      <Filter>Source Files\example\KeyFrameAnim\tga_c_loader</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -339,6 +369,24 @@
     </ClInclude>
     <ClInclude Include="src\example\KeyFrameAnim\KeyFrameAnimLitFsParam.h">
       <Filter>Header Files\example\KeyFrameAnim</Filter>
+    </ClInclude>
+    <ClInclude Include="src\example\KeyFrameAnim\tga_c_loader\gli.h">
+      <Filter>Header Files\example\KeyFrameAnim\tga_c_loader</Filter>
+    </ClInclude>
+    <ClInclude Include="src\example\KeyFrameAnim\tga_c_loader\gli_tga.h">
+      <Filter>Header Files\example\KeyFrameAnim\tga_c_loader</Filter>
+    </ClInclude>
+    <ClInclude Include="src\example\KeyFrameAnim\tga_c_loader\loadtex.h">
+      <Filter>Header Files\example\KeyFrameAnim\tga_c_loader</Filter>
+    </ClInclude>
+    <ClInclude Include="src\example\KeyFrameAnim\tga_c_loader\md2.h">
+      <Filter>Header Files\example\KeyFrameAnim\tga_c_loader</Filter>
+    </ClInclude>
+    <ClInclude Include="src\example\KeyFrameAnim\tga_c_loader\md2file.h">
+      <Filter>Header Files\example\KeyFrameAnim\tga_c_loader</Filter>
+    </ClInclude>
+    <ClInclude Include="src\example\KeyFrameAnim\tga_c_loader\md2render.h">
+      <Filter>Header Files\example\KeyFrameAnim\tga_c_loader</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

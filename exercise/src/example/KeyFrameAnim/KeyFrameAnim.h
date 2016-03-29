@@ -6,7 +6,7 @@
 #include "tga_c_loader/md2render.h"
 #include "tga_c_loader/loadtex.h"
 
-class KeyFrameAnim : GlutWrapper
+class KeyFrameAnim : public GlutWrapper
 {
 private:
     float _lightAngle;
@@ -19,16 +19,17 @@ private:
     KnightDrawCall* _knightDrawCall;
     Md2Model* _myKnightModel;
     MD2render* _myMD2render;
-    float myFrameKnob = 0;
+    float _myFrameKnob = 0;
 
+private:
+    float _AddDeltaFrame(float baseFrameKnob, float delta);
 protected:
     void _Idle() override;
     void _Display(void) override;
-
     void _LoadModelAndTexture();
 
 public:
-    KeyFrameAnim(const char* title, int width, int height, float lightAngle);
+    KeyFrameAnim(const char* title, int width, int height );
     KeyFrameAnim() = delete;
     ~KeyFrameAnim();
 };
