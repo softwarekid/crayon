@@ -111,6 +111,14 @@
     <ClCompile Include="src\example\KeyFrameAnim\KeyFrameAnimLitFsParam.cpp" />
     <ClCompile Include="src\example\KeyFrameAnim\KnightDrawCall.cpp" />
     <ClCompile Include="src\example\KeyFrameAnim\KeyFrameAnimLitVsParam.cpp" />
+    <ClCompile Include="src\example\KeyFrameAnim\tga_c_loader\gli_convert.c" />
+    <ClCompile Include="src\example\KeyFrameAnim\tga_c_loader\gli_misc.c" />
+    <ClCompile Include="src\example\KeyFrameAnim\tga_c_loader\gli_scale.c" />
+    <ClCompile Include="src\example\KeyFrameAnim\tga_c_loader\gli_tga.c" />
+    <ClCompile Include="src\example\KeyFrameAnim\tga_c_loader\loadtex.c" />
+    <ClCompile Include="src\example\KeyFrameAnim\tga_c_loader\md2file.c" />
+    <ClCompile Include="src\example\KeyFrameAnim\tga_c_loader\md2normals.c" />
+    <ClCompile Include="src\example\KeyFrameAnim\tga_c_loader\md2render.cpp" />
     <ClCompile Include="src\example\TextureSampling\TextureSampling.cpp" />
     <ClCompile Include="src\example\TextureSampling\TextureSamplingFsParam.cpp" />
     <ClCompile Include="src\example\TextureSampling\TextureSamplingVsParam.cpp" />
@@ -156,6 +164,12 @@
     <ClInclude Include="src\example\KeyFrameAnim\KeyFrameAnim.h" />
     <ClInclude Include="src\example\KeyFrameAnim\KnightDrawCall.h" />
     <ClInclude Include="src\example\KeyFrameAnim\KeyFrameAnimLitVsParam.h" />
+    <ClInclude Include="src\example\KeyFrameAnim\tga_c_loader\gli.h" />
+    <ClInclude Include="src\example\KeyFrameAnim\tga_c_loader\gli_tga.h" />
+    <ClInclude Include="src\example\KeyFrameAnim\tga_c_loader\loadtex.h" />
+    <ClInclude Include="src\example\KeyFrameAnim\tga_c_loader\md2.h" />
+    <ClInclude Include="src\example\KeyFrameAnim\tga_c_loader\md2file.h" />
+    <ClInclude Include="src\example\KeyFrameAnim\tga_c_loader\md2render.h" />
     <ClInclude Include="src\example\TextureSampling\TextureSampling.h" />
     <ClInclude Include="src\example\TextureSampling\TextureSamplingFsParam.h" />
     <ClInclude Include="src\example\TextureSampling\TextureSamplingVsParam.h" />

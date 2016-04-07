@@ -25,7 +25,7 @@ void KeyFrameAnimLitVsParam::SetShininess(const float shininess)
     _Set1fParam(_shininess, shininess);
 }
 
-void KeyFrameAnimLitVsParam::SetBlendCoef(const float blendCoef)
+void KeyFrameAnimLitVsParam::SetBlendFactor(const float blendCoef)
 {
     _Set1fParam(_blend, blendCoef);
 }

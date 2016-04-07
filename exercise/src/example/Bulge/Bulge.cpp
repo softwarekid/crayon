@@ -79,13 +79,14 @@ void Bulge::_Display()
     translation = Vector3f(-2, 1.5, 0);
     rotation = Vector4f(-55, 1, 0, 0);
     _sceneProgram->Draw(camera, rotation, translation, eyePosition, lightPosition, greenMaterial, [](){glutSolidTorus(0.15, 1.7, 40, 40);});
+    _sceneProgram->DisableProfile();
 
     translation = lightPosition;
     rotation = Vector4f(0 ,1, 0, 0);
     _lightPrgoram->BindShader();
-    _lightPrgoram->Draw(camera, rotation, translation, eyePosition, lightPosition, emptyMaterial, [](){glutSolidSphere(0.1, 12, 12);});
+    _lightPrgoram->EnableProfile();
+    _lightPrgoram->Draw(camera, rotation, lightPosition, eyePosition, lightPosition, emptyMaterial, [](){glutSolidSphere(0.1, 12, 12);});
     _lightPrgoram->DisableProfile();
-    _sceneProgram->DisableProfile();
     glutSwapBuffers();
 }
 
