@@ -19,3 +19,5 @@ git push origin :remotebranch 删除服务器分支remotebranch，可以从上条命令的含义中
 git branch -u upstream/foo
 if local branch foo is not the current branch:
 git branch -u upstream/foo foo
+
+cherry-pick可以把commit pick到分支，如果想将一个commit中的文件pick到分支只能用checkout commit_hash filename
