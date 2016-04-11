@@ -81,6 +81,9 @@
     <Filter Include="Source Files\example\KeyFrameAnim\tga_c_loader">
       <UniqueIdentifier>{3e87a49b-0f62-4a18-a39e-f1907c7e237c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\example\ProjectedTexture">
+      <UniqueIdentifier>{8ec606f2-c152-46af-b7ec-ba5496253d75}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\cgWrapper\CgLog.cpp">
@@ -387,6 +390,9 @@
     </ClInclude>
     <ClInclude Include="src\example\KeyFrameAnim\tga_c_loader\md2render.h">
       <Filter>Header Files\example\KeyFrameAnim\tga_c_loader</Filter>
+    </ClInclude>
+    <ClInclude Include="src\example\ProjectedTexture\ProjectedTexture.h">
+      <Filter>Header Files\example\ProjectedTexture</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

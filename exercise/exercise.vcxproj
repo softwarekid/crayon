@@ -170,6 +170,7 @@
     <ClInclude Include="src\example\KeyFrameAnim\tga_c_loader\md2.h" />
     <ClInclude Include="src\example\KeyFrameAnim\tga_c_loader\md2file.h" />
     <ClInclude Include="src\example\KeyFrameAnim\tga_c_loader\md2render.h" />
+    <ClInclude Include="src\example\ProjectedTexture\ProjectedTexture.h" />
     <ClInclude Include="src\example\TextureSampling\TextureSampling.h" />
     <ClInclude Include="src\example\TextureSampling\TextureSamplingFsParam.h" />
     <ClInclude Include="src\example\TextureSampling\TextureSamplingVsParam.h" />
