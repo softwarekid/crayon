@@ -4,7 +4,6 @@
 #include "KnightDrawCall.h"
 #include "tga_c_loader/md2.h"
 #include "tga_c_loader/md2render.h"
-#include "tga_c_loader/loadtex.h"
 
 class KeyFrameAnim : public GlutWrapper
 {

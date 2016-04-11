@@ -84,6 +84,9 @@
     <Filter Include="Header Files\example\ProjectedTexture">
       <UniqueIdentifier>{8ec606f2-c152-46af-b7ec-ba5496253d75}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\example\ProjectedTexture">
+      <UniqueIdentifier>{ad33878c-727c-4aa2-a2df-034961c2bfff}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\cgWrapper\CgLog.cpp">
@@ -233,6 +236,18 @@
     <ClCompile Include="src\example\KeyFrameAnim\tga_c_loader\md2render.cpp">
       <Filter>Source Files\example\KeyFrameAnim\tga_c_loader</Filter>
     </ClCompile>
+    <ClCompile Include="src\example\ProjectedTexture\ProjectedTexture.cpp">
+      <Filter>Source Files\example\ProjectedTexture</Filter>
+    </ClCompile>
+    <ClCompile Include="src\example\ProjectedTexture\ProjectedTextureFsParam.cpp">
+      <Filter>Source Files\example\ProjectedTexture</Filter>
+    </ClCompile>
+    <ClCompile Include="src\example\ProjectedTexture\ProjectedTextureVsParam.cpp">
+      <Filter>Source Files\example\ProjectedTexture</Filter>
+    </ClCompile>
+    <ClCompile Include="src\example\ProjectedTexture\ProjectedTextureDrawPass.cpp">
+      <Filter>Source Files\example\ProjectedTexture</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\cgWrapper\CgLog.h">
@@ -361,9 +376,6 @@
     <ClInclude Include="src\example\Bulge\BulgeLightDrawCall.h">
       <Filter>Header Files\example\Bulge</Filter>
     </ClInclude>
-    <ClInclude Include="src\cgWrapper\CgDrawCall.h">
-      <Filter>Header Files\cgProgram</Filter>
-    </ClInclude>
     <ClInclude Include="src\example\KeyFrameAnim\KnightDrawCall.h">
       <Filter>Header Files\example\KeyFrameAnim</Filter>
     </ClInclude>
@@ -392,6 +404,18 @@
       <Filter>Header Files\example\KeyFrameAnim\tga_c_loader</Filter>
     </ClInclude>
     <ClInclude Include="src\example\ProjectedTexture\ProjectedTexture.h">
+      <Filter>Header Files\example\ProjectedTexture</Filter>
+    </ClInclude>
+    <ClInclude Include="src\cgWrapper\CgDrawPass.h">
+      <Filter>Header Files\cgProgram</Filter>
+    </ClInclude>
+    <ClInclude Include="src\example\ProjectedTexture\ProjectedTextureDrawPass.h">
+      <Filter>Header Files\example\ProjectedTexture</Filter>
+    </ClInclude>
+    <ClInclude Include="src\example\ProjectedTexture\ProjectedTextureVsParam.h">
+      <Filter>Header Files\example\ProjectedTexture</Filter>
+    </ClInclude>
+    <ClInclude Include="src\example\ProjectedTexture\ProjectedTextureFsParam.h">
       <Filter>Header Files\example\ProjectedTexture</Filter>
     </ClInclude>
   </ItemGroup>

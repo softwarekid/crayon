@@ -2,10 +2,10 @@
 #define knight_draw_call_h__
 #include "KeyFrameAnimLitVsParam.h"
 #include "KeyFrameAnimLitFsParam.h"
-#include "CgDrawCall.h"
+#include "CgDrawPass.h"
 
 //本质上这就是设置shader 的参数，至于draw什么是由程序外指定的。
-class KnightDrawCall : public CgDrawCall
+class KnightDrawCall : public CgDrawPass
 {
 private:
     float _blendParam;

@@ -21,10 +21,18 @@ void BulgeLightDrawCall::Draw(const Camera& camera, const Vector4f& rotation, co
     draw();
 }
 
-BulgeLightDrawCall::BulgeLightDrawCall(CGcontext content, CGprofile vertProfile, CGprofile fragProfile, std::string vertFileName, std::string vertEntry, std::string fragFilename, std::string fragEntry) :CgDrawCall(content, vertProfile, fragProfile, vertFileName, vertEntry, fragFilename, fragEntry)
+BulgeLightDrawCall::BulgeLightDrawCall(CGcontext content, CGprofile vertProfile, CGprofile fragProfile, std::string vertFileName, std::string vertEntry, std::string fragFilename, std::string fragEntry) :CgDrawPass(content, vertProfile, fragProfile, vertFileName, vertEntry, fragFilename, fragEntry)
 {
     _vertParam = new BulgeLightVsParam(*_vertShader);
     _fragParam = new BulgeLightFsParam(*_fragShader);
 
     _vertParam->ExtractParams();
+}
+
+BulgeLightDrawCall::~BulgeLightDrawCall()
+{
+    delete _vertParam;
+    _vertParam = nullptr;
+    delete _fragParam;
+    _fragParam = nullptr;
 }

@@ -45,7 +45,7 @@ void SceneDrawCall::Draw(const Camera& camera, const Vector4f& rotation, const V
     draw();
 }
 
-SceneDrawCall::SceneDrawCall(CGcontext content, CGprofile vertProfile, CGprofile fragProfile,std::string vertFileName, std::string vertEntry, std::string fragFilename, std::string fragEntry) : CgDrawCall(content, vertProfile, fragProfile, vertFileName, vertEntry, fragFilename, fragEntry)
+SceneDrawCall::SceneDrawCall(CGcontext content, CGprofile vertProfile, CGprofile fragProfile,std::string vertFileName, std::string vertEntry, std::string fragFilename, std::string fragEntry) : CgDrawPass(content, vertProfile, fragProfile, vertFileName, vertEntry, fragFilename, fragEntry)
 {
     _vertParam = new BulgeVsParam(*_vertShader);
     _fragParam = new BulgeFsParam(*_fragShader);

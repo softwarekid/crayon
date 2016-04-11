@@ -2,8 +2,9 @@
 #define bulge_Light_h__
 #include "BulgeLightFsParam.h"
 #include "BulgeLightVsParam.h"
-#include "CgDrawCall.h"
-class BulgeLightDrawCall : public CgDrawCall
+#include "CgDrawPass.h"
+
+class BulgeLightDrawCall : public CgDrawPass
 {
 private:
     BulgeLightFsParam* _fragParam;
@@ -13,6 +14,7 @@ private:
 public :
     void Draw(const Camera& camrea, const Vector4f& rotation, const Vector3f& translate,const Vector3f& eyePos, const Vector3f& lightPosition, const Material& m, std::function<void()> draw) override;
     BulgeLightDrawCall(CGcontext content, CGprofile vertProfile, CGprofile fragProfile,std::string vertFileName, std::string vertEntry, std::string fragFilename, std::string fragEntry);
+    ~BulgeLightDrawCall();
 
 };
 

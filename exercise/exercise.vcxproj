@@ -119,6 +119,10 @@
     <ClCompile Include="src\example\KeyFrameAnim\tga_c_loader\md2file.c" />
     <ClCompile Include="src\example\KeyFrameAnim\tga_c_loader\md2normals.c" />
     <ClCompile Include="src\example\KeyFrameAnim\tga_c_loader\md2render.cpp" />
+    <ClCompile Include="src\example\ProjectedTexture\ProjectedTexture.cpp" />
+    <ClCompile Include="src\example\ProjectedTexture\ProjectedTextureDrawPass.cpp" />
+    <ClCompile Include="src\example\ProjectedTexture\ProjectedTextureFsParam.cpp" />
+    <ClCompile Include="src\example\ProjectedTexture\ProjectedTextureVsParam.cpp" />
     <ClCompile Include="src\example\TextureSampling\TextureSampling.cpp" />
     <ClCompile Include="src\example\TextureSampling\TextureSamplingFsParam.cpp" />
     <ClCompile Include="src\example\TextureSampling\TextureSamplingVsParam.cpp" />
@@ -134,7 +138,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\cgWrapper\CgLog.h" />
-    <ClInclude Include="src\cgWrapper\CgDrawCall.h" />
+    <ClInclude Include="src\cgWrapper\CgDrawPass.h" />
     <ClInclude Include="src\cgWrapper\CgShader.h" />
     <ClInclude Include="src\cgWrapper\CgShaderParametersBase.h" />
     <ClInclude Include="src\coreUtil\Camera.h" />
@@ -171,6 +175,9 @@
     <ClInclude Include="src\example\KeyFrameAnim\tga_c_loader\md2file.h" />
     <ClInclude Include="src\example\KeyFrameAnim\tga_c_loader\md2render.h" />
     <ClInclude Include="src\example\ProjectedTexture\ProjectedTexture.h" />
+    <ClInclude Include="src\example\ProjectedTexture\ProjectedTextureDrawPass.h" />
+    <ClInclude Include="src\example\ProjectedTexture\ProjectedTextureFsParam.h" />
+    <ClInclude Include="src\example\ProjectedTexture\ProjectedTextureVsParam.h" />
     <ClInclude Include="src\example\TextureSampling\TextureSampling.h" />
     <ClInclude Include="src\example\TextureSampling\TextureSamplingFsParam.h" />
     <ClInclude Include="src\example\TextureSampling\TextureSamplingVsParam.h" />

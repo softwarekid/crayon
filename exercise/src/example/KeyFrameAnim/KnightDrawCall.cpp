@@ -39,7 +39,7 @@ void KnightDrawCall::Draw(std::function<void()> doDraw)
     _fragParam->DisableTexture();
 }
 
-KnightDrawCall::KnightDrawCall(CGcontext content, CGprofile vertProfile, CGprofile fragProfile, std::string vertFileName, std::string vertEntry, std::string fragFilename, std::string fragEntry) :CgDrawCall(content, vertProfile, fragProfile,vertFileName,vertEntry,fragFilename,fragEntry)
+KnightDrawCall::KnightDrawCall(CGcontext content, CGprofile vertProfile, CGprofile fragProfile, std::string vertFileName, std::string vertEntry, std::string fragFilename, std::string fragEntry) :CgDrawPass(content, vertProfile, fragProfile,vertFileName,vertEntry,fragFilename,fragEntry)
 {
     _vertParam = new KeyFrameAnimLitVsParam(*_vertShader);
     _fragParam = new KeyFrameAnimLitFsParam(*_fragShader);

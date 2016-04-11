@@ -2,9 +2,9 @@
 #define scene_shader_progarm_h__
 #include "BulgeFsParam.h"
 #include "BulgeVsParam.h"
-#include <CgDrawCall.h>
+#include <CgDrawPass.h>
 
-class SceneDrawCall : public CgDrawCall
+class SceneDrawCall : public CgDrawPass
 {
 private:
     BulgeFsParam* _fragParam;
