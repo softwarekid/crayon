@@ -4,12 +4,10 @@
 #include "SceneDrawCall.h"
 #include "BulgeLightDrawCall.h"
 #include "Material.h"
-#include <functional>
 
 class Bulge : public GlutWrapper
 {
 private:
-
     SceneDrawCall* _sceneProgram;
     BulgeLightDrawCall* _lightPrgoram;
     float _time;
