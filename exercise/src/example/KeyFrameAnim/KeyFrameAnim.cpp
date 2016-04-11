@@ -36,10 +36,19 @@ void KeyFrameAnim::_Display()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    const Vector3f eyePosition(0, 0, 13);
+
+    const float eyeRadius = 85;
+    const float lightRadius = 40;
+    float myLightAngle = 0.78f;  /* Angle in radians light rotates around knight. */
+    float myLightHeight = 12.0f; /* Vertical height of light. */
+    float myEyeAngle = 0.53f;    /* Angle in radians eye rotates around knight. */
+
+    const Vector3f eyePosition(cos(myEyeAngle)*eyeRadius, 0, sin(myEyeAngle)*eyeRadius);
     const Vector3f eyeCenter(0, 0, 0);
     const Vector3f eyeUp(0, 1, 0);
-    const Vector3f lightPosition(5 * sin(_lightAngle), 1.5, 5 * cos(_lightAngle));
+    const Vector3f lightPosition(lightRadius*sin(myLightAngle),
+        myLightHeight,
+        lightRadius*cos(myLightAngle));
 
     _knightDrawCall->BindShader();
     _knightDrawCall->EnableProfile();

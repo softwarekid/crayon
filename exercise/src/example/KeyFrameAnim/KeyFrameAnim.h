@@ -11,8 +11,8 @@ class KeyFrameAnim : public GlutWrapper
 private:
     float _lightAngle;
     GLuint name;
-    const std::string _animVertShaderName = R"(src\example\KeyFrameAnim\AnimationLit_F.cg)";
-    const std::string _animFragShaderName = R"(src\example\KeyFrameAnim\AnimationLit_V.cg)";
+    const std::string _animVertShaderName = R"(src\example\KeyFrameAnim\AnimationLit_V.cg)";
+    const std::string _animFragShaderName = R"(src\example\KeyFrameAnim\AnimationLit_F.cg)";
     const std::string _vertEntry = R"(main_v)";
     const std::string _fragEntry = R"(main_f)";
 

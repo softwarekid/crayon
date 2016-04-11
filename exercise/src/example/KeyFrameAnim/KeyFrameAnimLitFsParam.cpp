@@ -7,6 +7,7 @@ void KeyFrameAnimLitFsParam::SetScaleFactor(const float xScale, const float ySca
     _Set2fParam(factorScalar, xScale, yScale);
 }
 
+// texutre can only be presented by a 
 void KeyFrameAnimLitFsParam::SetTexture(GLuint name)
 {
     _SetTextureParam(decal, name);

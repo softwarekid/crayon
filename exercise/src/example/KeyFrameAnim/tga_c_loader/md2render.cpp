@@ -260,7 +260,7 @@ void drawMD2render(MD2render *m, int frameA, int frameB)
 {
   ModelRenderInfo *mri = reinterpret_cast<ModelRenderInfo *>(m);
 
-  //mri->bindArrayElementsForGL();
+  mri->bindArrayElementsForGL();
   mri->bindTexCoordsForGL(0);
   mri->bindPositionsAndNormalsForGL(frameA, frameB, 1);
   mri->drawModel();

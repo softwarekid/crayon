@@ -4,7 +4,7 @@
 
 #include "gli.h"
 
-extern const char *myProgramName;
+//extern const char *myProgramName;
 
 gliGenericImage *
 readImage(const char *filename)
@@ -15,12 +15,12 @@ readImage(const char *filename)
 
   file = fopen(filename, "rb");
   if (file == NULL) {
-    printf("%s: could not open \"%s\"\n", myProgramName, filename);
+    //printf("%s: could not open \"%s\"\n", myProgramName, filename);
     exit(1);
   }
   image = gliReadTGA(file, filename, yFlip);
   if (image == NULL) {
-    printf("%s: \"%s\" is not a TGA image\n", myProgramName, filename);
+    //printf("%s: \"%s\" is not a TGA image\n", myProgramName, filename);
     exit(1);
   }
   fclose(file);

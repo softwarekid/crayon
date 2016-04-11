@@ -11,6 +11,7 @@ void TextureSamplingFsParam::DisableTexture()
     cgGLDisableTextureParameter(decal);
 }
 
+// 
 void TextureSamplingFsParam::SetTexture(GLuint name)
 {
     _SetTextureParam(decal, name);

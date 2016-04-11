@@ -2,7 +2,8 @@
 
 void KnightDrawCall::SetConstParams(const Vector3f& lightColor,GLuint textureName,const float xScale, const float yScale)
 {
-    _vertParam->SetLightColor(lightColor);
+    _vertParam->SetLightColor(Vector3f(1.0f, 1.0f, 1.0f));
+    _vertParam->SetShininess(8.0f);
     _fragParam->SetTexture(textureName);
     _fragParam->SetScaleFactor(xScale, yScale);
 }
@@ -40,5 +41,16 @@ void KnightDrawCall::Draw(std::function<void()> doDraw)
 
 KnightDrawCall::KnightDrawCall(CGcontext content, CGprofile vertProfile, CGprofile fragProfile, std::string vertFileName, std::string vertEntry, std::string fragFilename, std::string fragEntry) :CgDrawCall(content, vertProfile, fragProfile,vertFileName,vertEntry,fragFilename,fragEntry)
 {
+    _vertParam = new KeyFrameAnimLitVsParam(*_vertShader);
+    _fragParam = new KeyFrameAnimLitFsParam(*_fragShader);
+    _vertParam->ExtractParams();
+    _fragParam->ExtractParams();
+}
 
+KnightDrawCall::~KnightDrawCall()
+{
+    delete _vertParam;
+    _vertParam = nullptr;
+    delete _fragParam;
+    _fragParam = nullptr;
 }

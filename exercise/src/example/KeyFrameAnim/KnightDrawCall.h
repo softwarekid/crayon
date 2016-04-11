@@ -19,6 +19,7 @@ public:
     void SetVaringParams(const Camera& camrea, const Vector4f& rotation, const Vector3f& translate,const Vector3f& eyePos, const Vector3f& lightPosition, const float blendFactor);
     void Draw(std::function<void()> doDraw);
     KnightDrawCall(CGcontext content, CGprofile vertProfile, CGprofile fragProfile, std::string vertFileName, std::string vertEntry, std::string fragFilename, std::string fragEntry);
+    ~KnightDrawCall();
 };
 
 
