@@ -23,3 +23,15 @@ git branch -u upstream/foo foo
 cherry-pick可以把commit pick到分支，如果想将一个commit中的文件pick到分支只能用checkout commit_hash filename
 
 git diff查看的是尚未暂存起来的变化
+git push origin master 将本地的master分支推到origin上
+git log master..test 显示所有在test中而不在master中的commit。
+git log master...test在这两个branches中，但又不是公共的那些commit。一般会和--left-right联合使用，可以更清晰得看到分别属于哪个分支
+记住这个图http://stackoverflow.com/questions/7251477/what-are-the-differences-between-double-dot-and-triple-dot-in-git-dif。
+git commit --amend 不要再push后再使用这个命令，这会是的提交记录像rebase
+git blame可以指出代码是由谁改的。但是当我们不知道是哪个commit出错的时候，就需要先定位到出错的commit。这时候 git bisect就很有用，它用二分查找到出问题的commit。用法如下：
+1. git bisect start
+2. git bisect bad (告诉系统当前commit是有问题的)
+3. git bisect good commit1.0(告诉系统commit1.0是好的)，然后系统就会二分查找了。
+4. git bisect reset 这样就能回到原来的commit
+注意：start和reset是成对的。
+这就要求git的提交要尽量清晰，粒度要尽量小，这样可以方便定位。最好是一个bug一个提交，一个小功能一个提交。
